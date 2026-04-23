@@ -23,7 +23,8 @@
       "Bash(node -e ' *)",
       "Bash(python -c \"import selenium; print\\('selenium ok'\\)\")",
       "Bash(python -c \"import playwright; print\\('playwright ok'\\)\")",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(python -m http.server 8080)"
     ]
   }
 }
