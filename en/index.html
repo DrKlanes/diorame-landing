@@ -1345,5 +1345,19 @@
     <span style="color:#d6d6d6;font-size:13px;cursor:url('../assets/cursor.png') 1 1, auto !important;">|</span>
     <a href="/es/" onclick="localStorage.setItem('diorame-lang','es')" style="font-family:Manrope,sans-serif;font-size:13px;font-weight:600;color:#7c3aed;text-decoration:none;cursor:url('../assets/cursor.png') 1 1, auto !important;">ES</a>
   </div>
+  <script>
+    // LANG SWITCHER CURSOR FIX v3 — force custom cursor via JS setProperty('important')
+    // If you see this log in DevTools console, the latest code is running (not cached).
+    (function () {
+      var cursorValue = "url('../assets/cursor.png') 1 1, auto";
+      var ls = document.getElementById('lang-switcher');
+      if (!ls) { console.warn('[cursor-fix] #lang-switcher not found'); return; }
+      ls.style.setProperty('cursor', cursorValue, 'important');
+      ls.querySelectorAll('*').forEach(function (el) {
+        el.style.setProperty('cursor', cursorValue, 'important');
+      });
+      console.log('%c[cursor-fix v3] custom cursor forced on #lang-switcher and children', 'color:#7c3aed;font-weight:bold');
+    })();
+  </script>
 </body>
 </html>
