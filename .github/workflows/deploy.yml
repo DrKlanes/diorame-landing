@@ -1,44 +1,67 @@
-name: Deploy to GitHub Pages
+name: Deploy Diorame Landing
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   deploy-en:
-    name: Deploy EN → gh-pages-en
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Deploy /en to gh-pages-en
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Prepare EN build
+        run: |
+          mkdir -p _build_en
+          cp -r en/. _build_en/
+          cp -r assets _build_en/assets
+
+      - name: Deploy EN to gh-pages-en
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./en
+          publish_dir: ./_build_en
           publish_branch: gh-pages-en
-          force_orphan: true
-          user_name: github-actions[bot]
-          user_email: github-actions[bot]@users.noreply.github.com
-          commit_message: "deploy: en → gh-pages-en (${{ github.sha }})"
+          cname: diorame.com
 
   deploy-es:
-    name: Deploy ES → gh-pages-es
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Deploy /es to gh-pages-es
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Prepare ES build
+        run: |
+          mkdir -p _build_es
+          cp -r es/. _build_es/
+          cp -r assets _build_es/assets
+
+      - name: Deploy ES to gh-pages-es
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./es
+          publish_dir: ./_build_es
           publish_branch: gh-pages-es
-          force_orphan: true
-          user_name: github-actions[bot]
-          user_email: github-actions[bot]@users.noreply.github.com
-          commit_message: "deploy: es → gh-pages-es (${{ github.sha }})"
+          cname: es.diorame.com
+
+  deploy-root:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare root build
+        run: |
+          mkdir -p _build_root
+          cp index.html _build_root/
+          cp -r assets _build_root/assets
+
+      - name: Deploy root to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_build_root
+          publish_branch: gh-pages
+          cname: diorame.com
