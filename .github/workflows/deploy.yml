@@ -6,62 +6,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy-en:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Prepare EN build
-        run: |
-          mkdir -p _build_en
-          cp -r en/. _build_en/
-          cp -r assets _build_en/assets
-
-      - name: Deploy EN to gh-pages-en
+      - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_build_en
-          publish_branch: gh-pages-en
-          cname: diorame.com
-
-  deploy-es:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Prepare ES build
-        run: |
-          mkdir -p _build_es
-          cp -r es/. _build_es/
-          cp -r assets _build_es/assets
-
-      - name: Deploy ES to gh-pages-es
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_build_es
-          publish_branch: gh-pages-es
-          cname: es.diorame.com
-
-  deploy-root:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Prepare root build
-        run: |
-          mkdir -p _build_root
-          cp index.html _build_root/
-          cp -r assets _build_root/assets
-
-      - name: Deploy root to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_build_root
+          publish_dir: ./
           publish_branch: gh-pages
+          exclude_assets: '.github'
           cname: diorame.com
