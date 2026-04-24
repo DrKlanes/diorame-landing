@@ -1200,10 +1200,18 @@
       ls.querySelectorAll('*').forEach(function (el) {
         el.style.setProperty('cursor', 'crosshair', 'important');
       });
-      console.log('%c[cursor-diag v4] SET cursor:crosshair on #lang-switcher — hover over pill, do you see a crosshair?', 'color:#e11;font-weight:bold;font-size:14px');
-      console.log('[cursor-diag v4] computed cursor on pill:', getComputedStyle(ls).cursor);
-      var firstA = ls.querySelector('a');
-      if (firstA) console.log('[cursor-diag v4] computed cursor on first <a>:', getComputedStyle(firstA).cursor);
+      console.log('%c[cursor-diag v5] move mouse over the arrow-cursor column to identify the element', 'color:#e11;font-weight:bold;font-size:14px');
+      var lastTag = '';
+      document.addEventListener('mousemove', function (e) {
+        var el = document.elementFromPoint(e.clientX, e.clientY);
+        if (!el) return;
+        var tag = el.tagName + (el.id ? '#' + el.id : '') + (el.className && typeof el.className === 'string' ? '.' + el.className.replace(/\s+/g, '.') : '');
+        if (tag !== lastTag) {
+          lastTag = tag;
+          var cs = getComputedStyle(el);
+          console.log('[hover]', tag, '| cursor:', cs.cursor, '| pos:', cs.position, '| z:', cs.zIndex, '| size:', el.getBoundingClientRect().width + 'x' + el.getBoundingClientRect().height);
+        }
+      }, { passive: true });
     })();
   </script>
 </body>
