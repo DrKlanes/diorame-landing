@@ -92,7 +92,7 @@
     #lang-switcher a:focus,
     #lang-switcher a:active,
     #lang-switcher span {
-      cursor: url('../assets/cursor.png') 111 0, auto !important;
+      cursor: url('../assets/cursor-small.png') 1 1, auto !important;
     }
 
     img { max-width: 100%; display: block; }
@@ -1186,15 +1186,15 @@
   </script>
 
 
-  <div id="lang-switcher" style="position:fixed;top:16px;right:16px;z-index:9999;display:flex;gap:8px;background:rgba(255,255,255,0.95);border:1px solid rgba(124,58,237,0.2);border-radius:24px;padding:6px 14px;box-shadow:0 2px 12px rgba(0,0,0,0.08);cursor:url('../assets/cursor.png') 111 0, auto !important;">
-    <a href="/en/" onclick="localStorage.setItem('diorame-lang','en')" style="font-family:Manrope,sans-serif;font-size:13px;font-weight:600;color:#7c3aed;text-decoration:none;cursor:url('../assets/cursor.png') 111 0, auto !important;">EN</a>
-    <span style="color:#d6d6d6;font-size:13px;cursor:url('../assets/cursor.png') 111 0, auto !important;">|</span>
-    <a href="/es/" onclick="localStorage.setItem('diorame-lang','es')" style="font-family:Manrope,sans-serif;font-size:13px;font-weight:700;color:#1a0d3d;text-decoration:none;cursor:url('../assets/cursor.png') 111 0, auto !important;">ES</a>
+  <div id="lang-switcher" style="position:fixed;top:16px;right:16px;z-index:9999;display:flex;gap:8px;background:rgba(255,255,255,0.95);border:1px solid rgba(124,58,237,0.2);border-radius:24px;padding:6px 14px;box-shadow:0 2px 12px rgba(0,0,0,0.08);cursor:url('../assets/cursor-small.png') 1 1, auto !important;">
+    <a href="/en/" onclick="localStorage.setItem('diorame-lang','en')" style="font-family:Manrope,sans-serif;font-size:13px;font-weight:600;color:#7c3aed;text-decoration:none;cursor:url('../assets/cursor-small.png') 1 1, auto !important;">EN</a>
+    <span style="color:#d6d6d6;font-size:13px;cursor:url('../assets/cursor-small.png') 1 1, auto !important;">|</span>
+    <a href="/es/" onclick="localStorage.setItem('diorame-lang','es')" style="font-family:Manrope,sans-serif;font-size:13px;font-weight:700;color:#1a0d3d;text-decoration:none;cursor:url('../assets/cursor-small.png') 1 1, auto !important;">ES</a>
   </div>
   <script>
     // LANG SWITCHER CURSOR FIX — hotspot at top-right so image extends down-left (stays inside viewport)
     (function () {
-      var cursorValue = "url('../assets/cursor.png') 111 0, auto";
+      var cursorValue = "url('../assets/cursor-small.png') 1 1, auto";
       var ls = document.getElementById('lang-switcher');
       if (!ls) return;
       ls.style.setProperty('cursor', cursorValue, 'important');
