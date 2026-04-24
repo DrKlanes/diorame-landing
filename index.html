@@ -29,9 +29,7 @@
     (function () {
       var saved = localStorage.getItem('diorame-lang');
       var lang = saved || (navigator.language || navigator.userLanguage || 'en');
-      var target = lang.toLowerCase().startsWith('es')
-        ? 'https://es.diorame.com'
-        : 'https://en.diorame.com';
+      var target = lang.toLowerCase().startsWith('es') ? '/es/' : '/en/';
       window.location.replace(target);
     })();
   </script>
