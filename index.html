@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
+  <!-- SEO -->
+  <title>Diorame — Free Browser-Based Drawing App with 3D Parallax &amp; Cinematic Effects</title>
+  <meta name="description" content="Diorame is a free browser-based illustration app. Draw in 2D with layered Risograph-style tools, then explore your scene in 3D with parallax cameras, depth effects, and cinematic filters. No install needed.">
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Diorame — Free Browser-Based Drawing App with 3D Parallax &amp; Cinematic Effects">
+  <meta property="og:description" content="Diorame is a free browser-based illustration app. Draw in 2D with layered Risograph-style tools, then explore your scene in 3D with parallax cameras, depth effects, and cinematic filters. No install needed.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://diorame.com/">
+  <meta property="og:image" content="https://diorame.com/assets/og-image.png">
+  <meta property="og:image:alt" content="Diorame — Free Browser-Based Drawing App with 3D Parallax &amp; Cinematic Effects">
+  <meta property="og:site_name" content="Diorame — Free Browser-Based Drawing App with 3D Parallax &amp; Cinematic Effects">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://diorame.com/">
+  <meta name="twitter:title" content="Diorame — Free Browser-Based Drawing App with 3D Parallax &amp; Cinematic Effects">
+  <meta name="twitter:description" content="Diorame is a free browser-based illustration app. Draw in 2D with layered Risograph-style tools, then explore your scene in 3D with parallax cameras, depth effects, and cinematic filters. No install needed.">
+  <meta name="twitter:image" content="https://diorame.com/assets/og-image.png">
+  <meta name="twitter:image:alt" content="Diorame — Free Browser-Based Drawing App with 3D Parallax &amp; Cinematic Effects">
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en" href="https://diorame.com/">
+  <link rel="alternate" hreflang="es" href="https://es.diorame.com/">
+  <link rel="alternate" hreflang="x-default" href="https://diorame.com/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Reset ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ─── Design tokens ──────────────────────────────────────────── */
+    :root {
+      --white:      #ffffff;
+      --black:      #000000;
+      --navy:       #1a0d3d;
+      --purple:     #7c3aed;   /* borders, accents, card text          */
+      --vivid:      #9707d2;   /* banner / FAQ bg, mission brand color */
+      --bg-light:   #fbf5ff;   /* mission bg                           */
+      --text:       #353535;   /* brand name                           */
+      --text-dark:  #030213;
+      --text-muted: #666666;
+      --text-dim:   #d6d6d6;   /* FAQ answers, banner subtitle         */
+      --f:  'Manrope', sans-serif;
+      --fd: 'Chewy', cursive;
+    }
+
+    /* ─── Base ───────────────────────────────────────────────────── */
+    body {
+      font-family: var(--f);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      cursor: url('../assets/cursor.png') 1 1, auto;
+    }
+
+    /* Custom cursor — overrides UA pointer on all elements and hover states */
+    *,
+    *::before,
+    *::after,
+    a, a:hover, a:focus, a:active,
+    button, button:hover, button:focus, button:active,
+    [role="button"],
+    .btn-cta, .btn-cta:hover, .btn-cta:active,
+    .faq-btn, .faq-btn:hover,
+    input, select, textarea {
+      cursor: url('../assets/cursor.png') 1 1, auto !important;
+    }
+
+    #lang-switcher,
+    #lang-switcher *,
+    #lang-switcher a,
+    #lang-switcher a:hover,
+    #lang-switcher a:focus,
+    #lang-switcher a:active,
+    #lang-switcher span {
+      cursor: url('../assets/cursor-small.png') 1 1, auto !important;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ─── Skip link ──────────────────────────────────────────────── */
+    .skip-link {
+      position: absolute; top: -100%; left: 16px;
+      background: var(--black); color: var(--white);
+      border: 1px solid var(--white); border-radius: 12px;
+      padding: 12px 16px; font-size: 15px; z-index: 999;
+    }
+    .skip-link:focus { top: 16px; }
+
+    /* ─── Content column (610 px centred) ───────────────────────── */
+    .col {
+      max-width: 610px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── CTA button ─────────────────────────────────────────────── */
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--navy);
+      color: var(--white);
+      border: 2px solid var(--purple);
+      border-radius: 96px;
+      padding: 24px 32px;
+      font-family: var(--f);
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      box-shadow: 0 8px 12px rgba(0,0,0,0.48);
+      --stroke-0: #ffffff; /* arrow.svg colour token */
+    }
+
+    .btn-cta .btn-arrow { width: 18px; height: 18px; object-fit: contain; }
+
+    /* ════════════════════════════════════════════════════════════════
+       1 · HERO
+    ════════════════════════════════════════════════════════════════ */
+    .s-hero {
+      position: relative;
+      isolation: isolate;
+      background: url('../assets/hero-bg.webp'), #FFFFFF;
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 64px;
+      min-height: 1260px;
+      padding: 64px 0 144px;
+      text-align: center;
+    }
+
+    /* Inner content block (logo → sub), compact 16 px gaps */
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 0 24px;
+    }
+
+    .hero-logo {
+      width: 260px;
+      height: auto;
+    }
+
+    .hero-brand {
+      font-family: var(--f);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-top: calc(8px - 24px); /* reduce gap logo→brand from 24px to 8px */
+    }
+    .hero-brand .b { font-size: 32px; }
+    .hero-brand .tm { font-size: 20px; vertical-align: super; }
+
+    .hero-tagline {
+      font-size: 42px;
+      font-weight: 600;
+      color: var(--purple);
+      letter-spacing: -0.2px;
+      line-height: 1.25;
+      max-width: 620px;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 440px;
+    }
+    .hero-sub strong { display: block; font-weight: 700; margin-bottom: 4px; }
+
+    /* Images row — iPad centred, character bleeds right */
+    .hero-images {
+      position: relative;
+      width: 100%;
+      height: clamp(480px, 58vw, 780px);
+      flex-shrink: 0;
+      overflow: visible;
+    }
+    .hero-ipad {
+      position: relative;
+      width: clamp(440px, 63vw, 910px);
+      height: auto;
+      z-index: 2;
+      display: block;
+      margin: 0 auto;
+    }
+    .hero-char {
+      position: absolute;
+      width: 1415px;
+      height: auto;
+      right: -160px;
+      bottom: -502px;
+      z-index: -1;
+    }
+
+    /* ════════════════════════════════════════════════════════════════
+       2 · BANNER  — "Draw something. Give it life. Enjoy"
+    ════════════════════════════════════════════════════════════════ */
+    .s-banner {
+      background: var(--vivid);
+      padding: 128px 24px;
+      text-align: center;
+    }
+
+    .banner-display {
+      font-family: var(--fd);
+      font-size: clamp(40px, 7vw, 84px);
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: -1.68px;
+      line-height: 1.05;
+      margin-bottom: 28px;
+    }
+
+    .banner-sub {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-dim);
+      letter-spacing: -0.2px;
+      line-height: 1.5;
+      max-width: 610px;
+      margin: 0 auto;
+    }
+
+    /* ════════════════════════════════════════════════════════════════
+       3+4 · DRAW + VIEW  (shared background wrapper)
+    ════════════════════════════════════════════════════════════════ */
+    .s-draw-view {
+      background: url('../assets/hero-bg.webp'), #FFFFFF;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+      padding: 96px 0;
+    }
+
+    /* ── DRAW ── */
+    .s-draw {
+      padding: 0;
+    }
+    .s-draw .col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .sec-badge,
+    .sec-badge--view {
+      font-family: 'Manrope', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 34px;
+      line-height: 114%;
+      text-align: center;
+      color: #9707D2;
+      width: 100%;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .sec-heading {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--navy);
+      letter-spacing: -0.2px;
+      line-height: 1.5;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .s-view .sec-heading { color: var(--text-dark); }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .tool-card {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 64px 24px 48px;
+      gap: 16px;
+      width: 281px;
+      height: 292px;
+      border: 4px solid #7C3AED;
+      border-radius: 24px;
+      flex-grow: 1;
+      text-align: center;
+    }
+    .tool-card img {
+      height: 90px;
+      width: auto;
+      object-fit: contain;
+    }
+    .tool-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--purple);
+      text-align: center;
+    }
+    .tool-card p {
+      font-size: 16px;
+      color: var(--purple);
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .sec-note {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    /* ── VIEW ── */
+    .s-view {
+      padding: 0;
+    }
+    .s-view .col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .view-wrap {
+      width: 100%;
+      height: 520px;
+      border: 4px solid var(--purple);
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      flex-shrink: 0;
+    }
+    .view-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ════════════════════════════════════════════════════════════════
+       5 · CREATOR BANNER
+    ════════════════════════════════════════════════════════════════ */
+    .s-creator {
+      background: #1A0D3D;
+      padding: 64px 24px 128px;
+      text-align: center;
+    }
+    .s-creator-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .creator-avatar {
+      width: 84px;
+      height: 84px;
+      border-radius: 200px;
+      object-fit: cover;
+      border: 1px solid var(--purple);
+      margin-bottom: 8px;
+    }
+
+    .creator-heading {
+      font-size: clamp(22px, 3.2vw, 34px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.3;
+      max-width: 580px;
+    }
+    .creator-link {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .creator-bio {
+      font-size: 16px;
+      color: var(--purple);
+    }
+    .creator-support {
+      font-size: 16px;
+      color: var(--white);
+      max-width: 480px;
+    }
+    .creator-kofi {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ════════════════════════════════════════════════════════════════
+       6 · MISSION / CTA
+    ════════════════════════════════════════════════════════════════ */
+    .s-mission {
+      background: url('../assets/view-screen.webp'), linear-gradient(0deg, #F1E1FA, #F1E1FA), url('../assets/hero-bg.webp'), #FBF5FF;
+      background-blend-mode: normal, multiply, normal, multiply;
+      background-size: cover, cover, cover, cover;
+      background-position: bottom center, center, center, center;
+      background-repeat: no-repeat, no-repeat, repeat, no-repeat;
+      height: 1110px;
+      padding: 128px 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+      overflow: hidden;
+    }
+    .s-mission .col {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0px;
+      gap: 24px;
+      width: 610px;
+      text-align: center;
+    }
+
+    .mission-heading {
+      font-size: clamp(24px, 3.5vw, 34px);
+      font-weight: 400;
+      color: var(--navy);
+      letter-spacing: 0;
+      line-height: 1.14;
+    }
+    .mission-brand { color: var(--vivid); }
+
+    .mission-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .mission-meta {
+      font-size: 16px;
+      color: var(--text-muted);
+    }
+    .mission-meta a {
+      color: var(--text-dark);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ════════════════════════════════════════════════════════════════
+       7 · FAQ
+    ════════════════════════════════════════════════════════════════ */
+    .s-faq {
+      background: var(--vivid);
+      padding: 128px 0;
+    }
+    .s-faq .col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .faq-heading {
+      font-family: var(--fd);
+      font-size: clamp(36px, 5vw, 48px);
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: -0.96px;
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    /* ── FAQ accordion ── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      border-top: 1px solid rgba(255,255,255,0.18);
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.18);
+    }
+    .faq-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      padding: 20px 0;
+      background: none;
+      border: none;
+      text-align: left;
+      font-family: var(--f);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.4;
+    }
+    .faq-btn:hover { opacity: 0.85; }
+    .faq-plus {
+      display: block;
+      width: 24px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--white);
+      flex-shrink: 0;
+      line-height: 1;
+      transition: transform 0.25s ease;
+    }
+    .faq-item.is-open .faq-plus { transform: rotate(45deg); }
+    .faq-answer {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.35s ease, opacity 0.25s ease;
+    }
+    .faq-answer.is-open {
+      max-height: 800px;
+      opacity: 1;
+    }
+    .faq-answer p {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.65;
+    }
+    .faq-answer p:last-child { padding-bottom: 20px; }
+    .faq-answer p:not(:last-child) { margin-bottom: 10px; }
+
+    /* ════════════════════════════════════════════════════════════════
+       8 · FOOTER
+    ════════════════════════════════════════════════════════════════ */
+    .s-footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 64px 24px 128px;
+      gap: 16px;
+      width: 100%;
+      background: linear-gradient(0deg, #DFC760, #DFC760), url('../assets/hero-bg.webp');
+      background-blend-mode: multiply, normal;
+      background-size: cover;
+    }
+    .s-footer p {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
+      font-size: 34px;
+      line-height: 114%;
+      text-align: center;
+      color: #1A0D3D;
+    }
+
+    /* ─── Motion ────────────────────────────────────────────────── */
+
+    /* ── Scroll-reveal ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Staggered reveal */
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+    .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.12s; }
+    .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.24s; }
+    .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.36s; }
+    .reveal-stagger.visible > * { opacity: 1; transform: translateY(0); }
+
+    /* Reveal from left */
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    /* Parallax hints */
+    .parallax-slow, .parallax-fast { will-change: transform; }
+
+    /* ── Hero entrance keyframes ─── */
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes charSlideUp {
+      from { opacity: 0; transform: translateY(80px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes floatChar {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-12px); }
+    }
+
+    /* Hero staggered entrance (only elements inside .hero-content) */
+    .hero-logo    { animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.10s both; }
+    .hero-brand   { animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.25s both; }
+    .hero-tagline { animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.40s both; }
+    .hero-content .btn-cta { animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.55s both; }
+    .hero-content .btn-cta.anim-done { animation: none; }
+    .hero-sub     { animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.70s both; }
+    .hero-ipad    { animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.85s both; }
+    .hero-char    { animation: charSlideUp 1.2s cubic-bezier(0.22,1,0.36,1) 0.50s both; }
+    /* Release from animation fill so inline parallax transforms can apply */
+    .hero-ipad.anim-done,
+    .hero-char.anim-done {
+      animation: none;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    /* ── Tool-card hover ─── */
+    .tool-card {
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .tool-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(124, 58, 237, 0.18);
+    }
+
+    /* ── CTA button hover (unified — both buttons share .btn-cta) ─── */
+    .btn-cta {
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .btn-cta:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 16px 32px rgba(124, 58, 237, 0.4);
+    }
+    .btn-cta:active {
+      transform: translateY(0px) scale(0.99);
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+    }
+
+    /* ── FAQ item hover ─── */
+    .faq-item { transition: background 0.2s ease; }
+    .faq-item:hover { background: rgba(255,255,255,0.06); border-radius: 12px; }
+
+    /* ── Reduced motion ─── */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-stagger > *, .reveal-left {
+        transition: none; opacity: 1; transform: none;
+      }
+      .hero-logo, .hero-brand, .hero-tagline, .hero-sub,
+      .hero-content .btn-cta, .hero-ipad, .hero-char {
+        animation: none;
+      }
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────────── */
+
+    /* ≤ 1024 px — character repositioned */
+    @media (max-width: 1024px) {
+      .hero-char {
+        width: 1415px;
+        height: auto;
+        right: 0;
+        bottom: -98px;
+        z-index: -1;
+      }
+    }
+
+    /* ≤ 768 px — full mobile pass */
+    @media (max-width: 768px) {
+      /* FIX 1 — character */
+      .hero-char {
+        width: 665px;
+        height: auto;
+        right: 0;
+        bottom: -195px;
+        z-index: -1;
+      }
+
+      /* FIX 3 — iPad fills container */
+      .hero-ipad {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      /* FIX 6 — headings */
+      .hero-tagline   { font-size: 28px; line-height: 1.3; max-width: 100%; }
+      .hero-brand     { margin-top: calc(8px - 24px); }
+      .hero-brand .b  { font-size: 28px; }
+      .hero-brand .tm { font-size: 18px; }
+      .sec-heading    { font-size: 20px; }
+      .mission-heading { font-size: 20px; }
+      .banner-display { font-size: 48px; }
+
+      /* FIX 4 — CTA buttons */
+      .btn-cta {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Sections */
+      .s-banner   { padding: 80px 24px; }
+      .s-faq      { padding: 80px 0; }
+      .s-draw-view { gap: 0; padding: 64px 0; }
+      .s-draw,
+      .s-view     { padding: 32px 0; }
+      .s-creator  { padding: 64px 24px 80px; }
+
+      /* FIX 5 — mission */
+      .s-mission {
+        height: 728px;
+        padding: 64px 24px;
+        background-size: auto 50%, cover, cover, cover;
+        background-position: bottom center, center, center, center;
+      }
+      .s-mission .col {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      /* FIX 3 — tool cards */
+      .tools-grid { grid-template-columns: 1fr; }
+      .tool-card  { width: 100%; height: auto; min-height: 220px; }
+
+      /* View video */
+      .view-wrap  { height: 300px; }
+
+      /* FIX 6 — ensure side padding on sections */
+      .s-draw .col,
+      .s-view .col,
+      .s-faq .col { padding: 0 24px; }
+    }
+
+    /* ≤ 480 px */
+    @media (max-width: 480px) {
+      .btn-cta        { padding: 18px 24px; font-size: 14px; }
+      .hero-brand     { margin-top: calc(8px - 24px); }
+      .hero-brand .b  { font-size: 24px; }
+      .hero-brand .tm { font-size: 15px; }
+      .hero-tagline   { font-size: 22px; line-height: 1.3; }
+      .banner-display { letter-spacing: -0.5px; }
+      .faq-heading    { font-size: 32px; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ══ HERO ═════════════════════════════════════════════════════ -->
+  <section class="s-hero">
+    <div class="hero-content">
+      <img src="../assets/logo.webp" alt="Diorame logo" class="hero-logo" width="260">
+      <p class="hero-brand"><span class="b">Diorame</span><span class="tm">™</span></p>
+      <h1 class="hero-tagline">Draw in 2D, explore in 3D. A free illustration tool with automatic depth, cinematic cameras, and Risograph-inspired filters.</h1>
+      <a class="btn-cta" href="https://diorame.dumaker.com/" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/arrow.svg" alt="" aria-hidden="true" class="btn-arrow">
+        Open Diorame
+      </a>
+      <p class="hero-sub">
+        <strong>A 2D illustration app for desktop and tablet.</strong>
+        No installs, no account needed — runs entirely in your browser, completely free 👽
+      </p>
+    </div>
+    <div class="hero-images">
+      <img src="../assets/ipad.webp" alt="iPad with a Diorame illustration" class="hero-ipad" loading="lazy">
+      <img src="../assets/character.webp" alt="Character drawn with Diorame" class="hero-char" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ══ BANNER ════════════════════════════════════════════════════ -->
+  <section class="s-banner" aria-label="Tagline">
+    <p class="banner-display reveal">Draw something. Give it life. Enjoy</p>
+    <p class="banner-sub reveal">Create layered 2D illustrations with automatic Z-depth placement and 3D parallax cameras. Powerful enough to be expressive, simple enough to start in seconds.</p>
+  </section>
+
+  <!-- ══ MAIN ══════════════════════════════════════════════════════ -->
+  <main id="main">
+
+    <!-- DRAW + VIEW (shared background) ───────────────────────── -->
+    <section class="s-draw-view">
+
+    <!-- DRAW ───────────────────────────────────────────────────── -->
+    <section class="s-draw">
+      <div class="col">
+        <span class="sec-badge reveal">🖌️ DRAW</span>
+        <h2 class="sec-heading reveal">Draw without distractions using just two tools. In Diorame, every layer is automatically positioned in 3D space — no manual setup, no depth sliders.</h2>
+        <div class="tools-grid reveal-stagger">
+          <div class="tool-card">
+            <img src="../assets/blob-icon.webp" alt="Blob icon">
+            <h3>Blob</h3>
+            <p>Organic filled shapes with symmetry, draw inside, and draw behind modes</p>
+          </div>
+          <div class="tool-card">
+            <img src="../assets/brush-icon.webp" alt="Brush icon">
+            <h3>Brush</h3>
+            <p>Strokes in three styles — Tapered, Uniform, or Ink — with adjustable thickness</p>
+          </div>
+        </div>
+        <p class="sec-note reveal">Includes draw inside, draw behind, symmetry mode, eraser, and a text tool with 5 custom fonts. Export as PNG, SVG, or video — or save your project as a .dior file and continue later.</p>
+      </div>
+    </section>
+
+    <!-- VIEW ───────────────────────────────────────────────────── -->
+    <section class="s-view">
+      <div class="col">
+        <span class="sec-badge sec-badge--view reveal">🎥️ VIEW</span>
+        <h2 class="sec-heading reveal">This is where it comes alive. Apply cinematic camera movements, depth-of-field, and Risograph-style post-processing effects to turn your illustration into a scene.</h2>
+        <div class="view-wrap reveal">
+          <video autoplay loop muted playsinline class="view-video" poster="../assets/view-screen.webp">
+            <source src="../assets/hero-video.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="sec-note reveal">Apply 12 post-processing effects to your illustration — procedural Risograph halftone, Pixel Art with palette quantization and Bayer dithering, depth of field, film grain, chromatic aberration, atmospheric fog, glow, and more. Plus 10 cinematic camera modes with parallax and optional handheld shake.</p>
+      </div>
+    </section>
+
+    </section><!-- /s-draw-view -->
+
+    <!-- CREATOR BANNER ─────────────────────────────────────────── -->
+    <section class="s-creator">
+      <div class="s-creator-inner reveal">
+        <img src="../assets/dumaker.webp" alt="Dumaker" class="creator-avatar" width="84" height="84" loading="lazy">
+        <p class="creator-heading">Diorame is an idea by <a href="https://www.instagram.com/dumaker/" target="_blank" rel="noopener noreferrer" class="creator-link">@dumaker</a></p>
+        <p class="creator-bio">Illustrator™, Designer™ y Bacín™ from Albacete, Spain</p>
+        <p class="creator-support">Diorame is a free, independent project. If you'd like to support it, you can do so <a href="https://ko-fi.com/dumaker" target="_blank" rel="noopener noreferrer" class="creator-kofi">on my ko-fi</a></p>
+      </div>
+    </section>
+
+    <!-- MISSION ────────────────────────────────────────────────── -->
+    <section class="s-mission">
+      <div class="col">
+        <h2 class="mission-heading reveal"><span class="mission-brand">Diorame</span> is the drawing app I always wished for</h2>
+        <h2 class="mission-heading reveal">So I decided to make it real</h2>
+        <p class="mission-sub reveal">A free, browser-based creative tool to illustrate in 2D and explore in 3D — like a digital diorama, without the complexity.</p>
+        <a class="btn-cta reveal" href="https://diorame.dumaker.com/" target="_blank" rel="noopener noreferrer">
+          <img src="../assets/arrow.svg" alt="" aria-hidden="true" class="btn-arrow">
+          Start drawing with Diorame
+        </a>
+        <p class="mission-meta">Diorame is inspired by <a href="https://www.iorama.studio/graintouch" target="_blank" rel="noopener noreferrer">Graintouch</a>
+        <br>Built with vibe coding · Made in Albacete, Spain</p>
+              </div>
+    </section>
+
+    <!-- FAQ ────────────────────────────────────────────────────── -->
+    <section class="s-faq" id="faq" aria-label="Frequently Asked Questions" itemscope itemtype="https://schema.org/FAQPage">
+      <div class="col">
+        <h2 class="faq-heading reveal">Frequently Asked Questions</h2>
+        <div class="faq-list">
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">What is Diorame?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Diorame is a free browser-based illustration tool that lets you draw in 2D and instantly explore your work in 3D. Each layer is automatically placed at a different depth, creating real parallax effects and cinematic camera movements — no 3D knowledge needed.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">Is Diorame an alternative to Procreate, Illustrator, or other drawing apps?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Diorame is not trying to replace Procreate, Adobe Fresco, Adobe Illustrator, or Clip Studio Paint — those are professional tools with years of features. Diorame is something different: a free, browser-based illustration tool focused on simplicity, Risograph aesthetics, and automatic 3D depth. If you want a no-install, no-account drawing tool that turns your layered illustrations into cinematic 3D scenes, Diorame is the only tool that does exactly that. Think of it less as a competitor and more as a creative space you've never had before.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">Is it free? Do I need to create an account?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Completely free, no account required. Open the app, start drawing. Nothing to install, nothing to sign up for.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">What devices and browsers does Diorame support?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Diorame runs in any modern desktop or tablet browser — Chrome, Firefox, Safari, and Edge. It's designed for desktop and tablet use only; mobile phones are not supported by design. On a phone there simply isn't enough screen space to get the most out of Diorame.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">What drawing tools does Diorame have?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Two core drawing tools: Blob, for organic filled shapes, and Brush, for strokes in three styles — Tapered, Uniform, and Ink. Also includes an Eraser, a Text tool with 5 custom fonts, and a Move tool for transforming entire layers. Drawing modifiers include symmetry, draw inside, draw behind, and organic mode.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">What makes Diorame different from other drawing apps?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Most drawing apps are flat. Diorame automatically places each layer in 3D space, so when you switch to VIEW mode you get real parallax depth and cinematic camera movements — without rigging, without manual positioning. It's the only free browser-based drawing tool built around the diorama concept.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">Do I need to use the 3D and animation features?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Not at all. Diorame is, first and foremost, a drawing app. The Blob and Brush tools, the layer system, the color palettes, the modifiers — everything is designed to make drawing simple and enjoyable on its own. The 3D parallax, cinematic cameras, and post-processing effects are there when you want them, but you can ignore VIEW mode entirely and just draw. No pressure, no complexity.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">Can I use Diorame for Risograph-style illustration?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes — Diorame is built around Risograph aesthetics. Fixed color palettes, procedural halftone grain, ink spread simulation, and misregistration effects. The Riso post-processing uses a three-pass pipeline that replicates the texture and imperfection of real Riso prints.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">What post-processing effects does Diorame include?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">12 effects in total: procedural Risograph halftone, Pixel Art with palette quantization and Bayer dithering, depth of field, film grain, chromatic aberration, atmospheric fog, glow, vignette, lens distortion, particles, grunge overlay, and line wiggle. All adjustable and combinable.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">What is the Pixel Art mode?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">A dedicated post-processing effect that converts your illustration into pixel art in real time — with configurable pixel size (2–16), color depth (2–32 colors), and Bayer dithering intensity. Works on top of your layered 2D illustration, including the Riso and grain effects.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">Can I export my illustrations?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes. Diorame exports as PNG, SVG, SVGZ (compressed vector), and video (WebM/MP4) with the cinematic camera captured live. You can also save your project as a .dior file and continue working on it later.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">What are the cinematic camera modes?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">10 preset camera animations: Forward, Spiral, Yoyo, Pulse, Twist, Arc, Crane, Truck, Orbit, and Zoom. Each works with the 3D parallax depth of your layers. You can also add handheld shake at three intensity levels and adjust the overall cinematic speed.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">Does Diorame work with a stylus or Apple Pencil?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes. Diorame is optimized for tablet use and works with any stylus supported by your browser, including Apple Pencil on iPad. Touch gestures for zoom, pan, orbit, and undo/redo are fully supported.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">Any tips before I start?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Save your project often — Diorame runs entirely in the browser, and like any web app it can occasionally freeze or be closed by accident. Use the save button regularly and keep your .dior file close. Also: although Diorame includes a built-in MP4 exporter, for the best video quality we recommend using your device's native screen recording — iPad, Windows, and macOS all have built-in options that capture at full display quality.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">Will using multiple effects affect performance?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">It can. Combining several post-processing effects simultaneously — especially on less powerful machines — may slow down the cinematic camera movements in VIEW mode. If you notice lag, try reducing the number of active effects or lowering their intensity. DRAW mode is always smooth regardless of effect settings.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">What inspired Diorame?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Diorame was inspired by Graintouch, a beautiful iPad drawing app by Iorama Studio — specifically its Risograph aesthetic, its simplicity, and its organic drawing tools. But the core idea that makes Diorame unique is entirely original: automatic 3D depth per layer, real parallax in VIEW mode, cinematic camera movements, and Risograph-style post-processing. None of that exists in Graintouch. Credit where it's due — and innovation where it counts.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">Diorame was built with AI. What do you think about that?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">I'm an illustrator, a designer, and a drawer — not a programmer. I've spent years believing that the drawing tool I had in my head was simply out of reach. AI changed that. Not as a replacement for creativity, talent, or the irreplaceable spark that makes art human — I reject that idea completely — but as a collaborator that let me build something I couldn't have built alone.</p>
+              <p>The code is mine in the sense that matters: every decision, every feature, every constraint is intentional and comes from years of thinking about what a drawing tool should feel like. AI wrote the syntax. I wrote the vision.</p>
+              <p>Diorame is free and open source — CC BY-NC-SA 4.0 licensed, repository public on GitHub — because a tool built for artists should belong to artists.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ════════════════════════════════════════════════════ -->
+  <footer class="s-footer">
+    <p class="reveal">Diorame™ 2026</p>
+  </footer>
+
+  <!-- ══ FAQ accordion JS ═════════════════════════════════════════ -->
+  <script>
+    (function () {
+      var items = document.querySelectorAll('.faq-item');
+      items.forEach(function (item) {
+        var btn    = item.querySelector('.faq-btn');
+        var answer = item.querySelector('.faq-answer');
+        btn.addEventListener('click', function () {
+          var isOpen = item.classList.contains('is-open');
+          /* close all */
+          items.forEach(function (i) {
+            i.classList.remove('is-open');
+            i.querySelector('.faq-answer').classList.remove('is-open');
+            i.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+          });
+          /* open the clicked one if it was closed */
+          if (!isOpen) {
+            item.classList.add('is-open');
+            answer.classList.add('is-open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    })();
+  </script>
+
+  <!-- ══ FAQ Schema.org JSON-LD ════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Diorame?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Diorame is a free browser-based illustration tool that lets you draw in 2D and instantly explore your work in 3D. Each layer is automatically placed at a different depth, creating real parallax effects and cinematic camera movements — no 3D knowledge needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Diorame an alternative to Procreate, Illustrator, or other drawing apps?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Diorame is not trying to replace Procreate, Adobe Fresco, Adobe Illustrator, or Clip Studio Paint — those are professional tools with years of features. Diorame is something different: a free, browser-based illustration tool focused on simplicity, Risograph aesthetics, and automatic 3D depth. If you want a no-install, no-account drawing tool that turns your layered illustrations into cinematic 3D scenes, Diorame is the only tool that does exactly that. Think of it less as a competitor and more as a creative space you've never had before."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it free? Do I need to create an account?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Completely free, no account required. Open the app, start drawing. Nothing to install, nothing to sign up for."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What devices and browsers does Diorame support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Diorame runs in any modern desktop or tablet browser — Chrome, Firefox, Safari, and Edge. It's designed for desktop and tablet use only; mobile phones are not supported by design. On a phone there simply isn't enough screen space to get the most out of Diorame."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What drawing tools does Diorame have?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Two core drawing tools: Blob, for organic filled shapes, and Brush, for strokes in three styles — Tapered, Uniform, and Ink. Also includes an Eraser, a Text tool with 5 custom fonts, and a Move tool for transforming entire layers. Drawing modifiers include symmetry, draw inside, draw behind, and organic mode."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What makes Diorame different from other drawing apps?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most drawing apps are flat. Diorame automatically places each layer in 3D space, so when you switch to VIEW mode you get real parallax depth and cinematic camera movements — without rigging, without manual positioning. It's the only free browser-based drawing tool built around the diorama concept."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to use the 3D and animation features?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not at all. Diorame is, first and foremost, a drawing app. The Blob and Brush tools, the layer system, the color palettes, the modifiers — everything is designed to make drawing simple and enjoyable on its own. The 3D parallax, cinematic cameras, and post-processing effects are there when you want them, but you can ignore VIEW mode entirely and just draw. No pressure, no complexity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use Diorame for Risograph-style illustration?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Diorame is built around Risograph aesthetics — fixed color palettes, procedural halftone grain, ink spread simulation, and misregistration effects. The Riso post-processing uses a three-pass pipeline that replicates the texture and imperfection of real Riso prints."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What post-processing effects does Diorame include?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "12 effects in total: procedural Risograph halftone, Pixel Art with palette quantization and Bayer dithering, depth of field, film grain, chromatic aberration, atmospheric fog, glow, vignette, lens distortion, particles, grunge overlay, and line wiggle. All adjustable and combinable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Pixel Art mode?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A dedicated post-processing effect that converts your illustration into pixel art in real time — with configurable pixel size (2–16), color depth (2–32 colors), and Bayer dithering intensity. Works on top of your layered 2D illustration, including the Riso and grain effects."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I export my illustrations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Diorame exports as PNG, SVG, SVGZ (compressed vector), and video (WebM/MP4) with the cinematic camera captured live. You can also save your project as a .dior file and continue working on it later."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the cinematic camera modes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "10 preset camera animations: Forward, Spiral, Yoyo, Pulse, Twist, Arc, Crane, Truck, Orbit, and Zoom. Each works with the 3D parallax depth of your layers. You can also add handheld shake at three intensity levels and adjust the overall cinematic speed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Diorame work with a stylus or Apple Pencil?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Diorame is optimized for tablet use and works with any stylus supported by your browser, including Apple Pencil on iPad. Touch gestures for zoom, pan, orbit, and undo/redo are fully supported."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Any tips before I start?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Save your project often — Diorame runs entirely in the browser, and like any web app it can occasionally freeze or be closed by accident. Use the save button regularly and keep your .dior file close. Also: although Diorame includes a built-in MP4 exporter, for the best video quality we recommend using your device's native screen recording — iPad, Windows, and macOS all have built-in options that capture at full display quality."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will using multiple effects affect performance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It can. Combining several post-processing effects simultaneously — especially on less powerful machines — may slow down the cinematic camera movements in VIEW mode. If you notice lag, try reducing the number of active effects or lowering their intensity. DRAW mode is always smooth regardless of effect settings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What inspired Diorame?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Diorame was inspired by Graintouch, a beautiful iPad drawing app by Iorama Studio — specifically its Risograph aesthetic, its simplicity, and its organic drawing tools. But the core idea that makes Diorame unique is entirely original: automatic 3D depth per layer, real parallax in VIEW mode, cinematic camera movements, and Risograph-style post-processing. None of that exists in Graintouch. Credit where it's due — and innovation where it counts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Diorame was built with AI. What do you think about that?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I'm an illustrator, a designer, and a drawer — not a programmer. I've spent years believing that the drawing tool I had in my head was simply out of reach. AI changed that. Not as a replacement for creativity, talent, or the irreplaceable spark that makes art human — I reject that idea completely — but as a collaborator that let me build something I couldn't have built alone. The code is mine in the sense that matters: every decision, every feature, every constraint is intentional and comes from years of thinking about what a drawing tool should feel like. AI wrote the syntax. I wrote the vision. Diorame is free and open source — CC BY-NC-SA 4.0 licensed, repository public on GitHub — because a tool built for artists should belong to artists."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ══ Motion JS ════════════════════════════════════════════════ -->
+  <script>
+  (function () {
+
+    // ── 1. Scroll reveal via IntersectionObserver ─────────────────
+    var revealEls = document.querySelectorAll('.reveal, .reveal-stagger, .reveal-left');
+    if ('IntersectionObserver' in window) {
+      var revealObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach(function (el) { revealObs.observe(el); });
+    } else {
+      // Fallback: show everything immediately
+      revealEls.forEach(function (el) { el.classList.add('visible'); });
+    }
+
+    // ── 2–4. Parallax (desktop only) ──────────────────────────────
+    // Selectors verified against actual HTML class names:
+    //   iPad image   → .hero-ipad   (class="hero-ipad")
+    //   Character    → .hero-char   (class="hero-char")
+    //   Hero section → .s-hero      (class="s-hero")
+    var heroIpad    = document.querySelector('.hero-ipad');
+    var heroChar    = document.querySelector('.hero-char');
+    var heroSection = document.querySelector('.s-hero');
+
+    console.log('parallax init — ipad:', heroIpad, 'char:', heroChar, 'hero:', heroSection);
+
+    // CSS animations with `fill-mode: both` lock the transform above inline
+    // styles. Release the hero images once their entrance animation ends so
+    // the parallax JS transforms can actually be applied.
+    if (heroIpad) {
+      heroIpad.addEventListener('animationend', function () {
+        heroIpad.classList.add('anim-done');
+      }, { once: true });
+    }
+    if (heroChar) {
+      heroChar.addEventListener('animationend', function () {
+        heroChar.classList.add('anim-done');
+      }, { once: true });
+    }
+
+    function onScroll() {
+      var scrollY = window.scrollY;
+      if (heroIpad) heroIpad.style.transform = 'translateY(' + (scrollY * -0.08) + 'px)';
+      if (heroChar) heroChar.style.transform  = 'translateY(' + (scrollY * -0.04) + 'px)';
+    }
+
+    function onMouseMove(e) {
+      var rect = heroSection.getBoundingClientRect();
+      var cx = (e.clientX - rect.left) / rect.width  - 0.5;
+      var cy = (e.clientY - rect.top)  / rect.height - 0.5;
+      if (heroIpad) heroIpad.style.transform = 'translate(' + (cx * 12) + 'px,' + (cy * 8) + 'px)';
+      if (heroChar) heroChar.style.transform  = 'translate(' + (cx *  6) + 'px,' + (cy * 4) + 'px)';
+    }
+
+    function onMouseLeave() {
+      if (heroIpad) heroIpad.style.transform = '';
+      if (heroChar) heroChar.style.transform  = '';
+    }
+
+    if (window.innerWidth > 1024) {
+      window.addEventListener('scroll', onScroll, { passive: true });
+      if (heroSection) {
+        heroSection.addEventListener('mousemove', onMouseMove);
+        heroSection.addEventListener('mouseleave', onMouseLeave);
+      }
+    }
+
+    // ── 5. Release hero CTA from entrance animation so hover works ─
+    // Inline styles beat :hover (specificity), so we use a class instead.
+    var heroCta = document.querySelector('.hero-content .btn-cta');
+    if (heroCta) {
+      heroCta.addEventListener('animationend', function () {
+        heroCta.classList.add('anim-done');
+      }, { once: true });
+    }
+
+    // ── 6. Video fade-in ───────────────────────────────────────────
+    var video = document.querySelector('.view-video');
+    if (video && 'IntersectionObserver' in window) {
+      video.style.opacity    = '0';
+      video.style.transition = 'opacity 0.9s ease';
+      var videoObs = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          video.style.opacity = '1';
+          videoObs.unobserve(video);
+        }
+      }, { threshold: 0.2 });
+      videoObs.observe(video);
+    }
+
+  })();
+  </script>
+
+
+  <div id="lang-switcher" style="position:fixed;top:16px;right:16px;z-index:9999;display:flex;gap:8px;background:rgba(255,255,255,0.95);border:1px solid rgba(124,58,237,0.2);border-radius:24px;padding:6px 14px;box-shadow:0 2px 12px rgba(0,0,0,0.08);cursor:url('../assets/cursor-small.png') 1 1, auto !important;">
+    <a href="/en/" onclick="localStorage.setItem('diorame-lang','en')" style="font-family:Manrope,sans-serif;font-size:13px;font-weight:700;color:#1a0d3d;text-decoration:none;cursor:url('../assets/cursor-small.png') 1 1, auto !important;">EN</a>
+    <span style="color:#d6d6d6;font-size:13px;cursor:url('../assets/cursor-small.png') 1 1, auto !important;">|</span>
+    <a href="/es/" onclick="localStorage.setItem('diorame-lang','es')" style="font-family:Manrope,sans-serif;font-size:13px;font-weight:600;color:#7c3aed;text-decoration:none;cursor:url('../assets/cursor-small.png') 1 1, auto !important;">ES</a>
+  </div>
+  <script>
+    // LANG SWITCHER CURSOR FIX — hotspot at top-right so image extends down-left (stays inside viewport)
+    (function () {
+      var cursorValue = "url('../assets/cursor-small.png') 1 1, auto";
+      var ls = document.getElementById('lang-switcher');
+      if (!ls) return;
+      ls.style.setProperty('cursor', cursorValue, 'important');
+      ls.querySelectorAll('*').forEach(function (el) {
+        el.style.setProperty('cursor', cursorValue, 'important');
+      });
+    })();
+  </script>
+</body>
+</html>
