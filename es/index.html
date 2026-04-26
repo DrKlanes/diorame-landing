@@ -45,6 +45,8 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://ko-fi.com">
+  <link rel="dns-prefetch" href="https://www.instagram.com">
   <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -440,7 +442,7 @@
       background-size: cover, cover, cover, cover;
       background-position: bottom center, center, center, center;
       background-repeat: no-repeat, no-repeat, repeat, no-repeat;
-      height: 1110px;
+      min-height: 1110px;
       padding: 128px 0px;
       display: flex;
       flex-direction: column;
@@ -1142,8 +1144,8 @@
 
     function onScroll() {
       var scrollY = window.scrollY;
-      if (heroIpad) heroIpad.style.transform = 'translateY(' + (scrollY * -0.08) + 'px)';
-      if (heroChar) heroChar.style.transform  = 'translateY(' + (scrollY * -0.04) + 'px)';
+      if (heroIpad) heroIpad.style.transform = 'translate3d(0, ' + (scrollY * -0.08) + 'px, 0)';
+      if (heroChar) heroChar.style.transform  = 'translate3d(0, ' + (scrollY * -0.04) + 'px, 0)';
     }
 
     function onMouseMove(e) {
