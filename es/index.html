@@ -709,12 +709,8 @@
     .btn-secondary:active {
       transform: translateY(0);
     }
-    @media (max-width: 768px) {
-      .btn-secondary {
-        width: 100%;
-        justify-content: center;
-      }
-    }
+
+    .hero-content .btn-secondary { animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.60s both; }
 
     /* ── FAQ item hover ─── */
     .faq-item { transition: background 0.2s ease; }
@@ -771,7 +767,7 @@
       .banner-display { font-size: 48px; }
 
       /* FIX 4 — CTA buttons */
-      .btn-cta {
+      .btn-cta, .btn-secondary {
         width: 100%;
         justify-content: center;
       }
