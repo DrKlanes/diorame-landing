@@ -684,6 +684,38 @@
       box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
     }
 
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: transparent;
+      color: var(--purple);
+      border: 2px solid var(--purple);
+      border-radius: 96px;
+      padding: 18px 30px;
+      font-family: var(--f);
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                  background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                  color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .btn-secondary:hover {
+      background: var(--purple);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    .btn-secondary:active {
+      transform: translateY(0);
+    }
+    @media (max-width: 768px) {
+      .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
     /* ── FAQ item hover ─── */
     .faq-item { transition: background 0.2s ease; }
     .faq-item:hover { background: rgba(255,255,255,0.06); border-radius: 12px; }
@@ -802,6 +834,12 @@
       <a class="btn-cta" href="https://diorame.dumaker.com/" target="_blank" rel="noopener noreferrer">
         <img src="../assets/arrow.svg" alt="" aria-hidden="true" class="btn-arrow">
         Open Diorame
+      </a>
+      <a href="https://www.youtube.com/watch?v=Ieb280ncEfA" target="_blank" rel="noopener" class="btn-secondary">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/>
+        </svg>
+        Watch the tutorial
       </a>
       <p class="hero-sub">
         <strong>A 2D illustration app for desktop and tablet.</strong>
