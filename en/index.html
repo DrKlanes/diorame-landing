@@ -292,6 +292,17 @@
       text-align: center;
     }
 
+    /* ── ANIMATE ── */
+    .s-animate {
+      padding: 0;
+    }
+    .s-animate .col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
     .sec-badge,
     .sec-badge--view {
       font-family: 'Manrope', sans-serif;
@@ -803,6 +814,7 @@
       .s-faq      { padding: 80px 0; }
       .s-draw-view { gap: 0; padding: 64px 0; }
       .s-draw,
+      .s-animate,
       .s-view     { padding: 32px 0; }
       .s-creator  { padding: 64px 24px 80px; }
 
@@ -827,6 +839,7 @@
 
       /* FIX 6 — ensure side padding on sections */
       .s-draw .col,
+      .s-animate .col,
       .s-view .col,
       .s-faq .col { padding: 0 24px; }
     }
@@ -908,6 +921,25 @@
           </div>
         </div>
         <p class="sec-note reveal">Includes draw inside, draw behind, symmetry mode, eraser, and a text tool with 5 custom fonts. Export as PNG, SVG, or video — or save your project as a .dior file and continue later.</p>
+      </div>
+    </section>
+
+    <!-- ANIMATE ─────────────────────────────────────────────────── -->
+    <section class="s-animate">
+      <div class="col">
+        <span class="sec-badge reveal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19C5 19 6.5 9 9 9C11.5 9 11 16 13 16C15 16 16 5 19 5"/><circle cx="5" cy="19" r="1" fill="currentColor"/></svg> ANIMATE</span>
+        <h2 class="sec-heading reveal">Bring your layers to life. The same layers you draw become animation frames — a flipbook built right into the canvas. No timeline, no rigging, just frame by frame.</h2>
+        <div class="tools-grid reveal-stagger">
+          <div class="tool-card">
+            <h3>Frame by frame</h3>
+            <p>Each layer becomes a frame. Adjustable framerate (4/6/8 fps), loop or ping-pong playback, and onion skin to animate with reference.</p>
+          </div>
+          <div class="tool-card">
+            <h3>Animate in motion</h3>
+            <p>Animation works inside Cinema too — move the camera while your frames play, with real parallax depth or flattened flipbook style.</p>
+          </div>
+        </div>
+        <p class="sec-note reveal">Export your animation as video (MP4/WebM), GIF with adjustable scale and loop or ping-pong, or a numbered PNG sequence ready for After Effects and other software. Simple, frame-by-frame animation — true to Diorame's spirit: creative constraints over complexity.</p>
       </div>
     </section>
 
@@ -1005,6 +1037,46 @@
             </button>
             <div class="faq-answer">
               <p>Two core drawing tools: Blob, for organic filled shapes, and Brush, for strokes in three styles — Tapered, Uniform, and Ink. Also includes an Eraser, a Text tool with 5 custom fonts, and a Move tool for transforming entire layers. Drawing modifiers include symmetry, draw inside, draw behind, and organic mode.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-btn" aria-expanded="false">
+              <span>Can I animate in Diorame?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. Diorame turns your layers into animation frames — a flipbook built on the same layer system you already use. Toggle animation mode inside Draw, set your framerate, and play your frames in a loop or ping-pong. Onion skin lets you see neighboring frames as you work, just like traditional animation.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-btn" aria-expanded="false">
+              <span>What formats can I export animations in?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Video (MP4 or WebM with configurable loops), animated GIF (with adjustable scale, loop or ping-pong), or a numbered PNG sequence to assemble in external software like After Effects.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-btn" aria-expanded="false">
+              <span>Do I need to know how to animate?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>No. If you can draw on layers, you can animate. Frame-by-frame with onion skin reference keeps it approachable — no timelines, no keyframes, no rigging. Just draw each frame and press play.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-btn" aria-expanded="false">
+              <span>Does Diorame have sound?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes — Diorame includes optional sound effects: small, subtle sounds that respond to your actions for a more immersive drawing session. They're off by default and you can toggle them on anytime.</p>
             </div>
           </div>
 
@@ -1211,6 +1283,38 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Two core drawing tools: Blob, for organic filled shapes, and Brush, for strokes in three styles — Tapered, Uniform, and Ink. Also includes an Eraser, a Text tool with 5 custom fonts, and a Move tool for transforming entire layers. Drawing modifiers include symmetry, draw inside, draw behind, and organic mode."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I animate in Diorame?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Diorame turns your layers into animation frames — a flipbook built on the same layer system you already use. Toggle animation mode inside Draw, set your framerate, and play your frames in a loop or ping-pong. Onion skin lets you see neighboring frames as you work, just like traditional animation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What formats can I export animations in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Video (MP4 or WebM with configurable loops), animated GIF (with adjustable scale, loop or ping-pong), or a numbered PNG sequence to assemble in external software like After Effects."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to know how to animate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. If you can draw on layers, you can animate. Frame-by-frame with onion skin reference keeps it approachable — no timelines, no keyframes, no rigging. Just draw each frame and press play."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Diorame have sound?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — Diorame includes optional sound effects: small, subtle sounds that respond to your actions for a more immersive drawing session. They're off by default and you can toggle them on anytime."
         }
       },
       {
