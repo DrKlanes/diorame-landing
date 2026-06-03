@@ -292,6 +292,17 @@
       text-align: center;
     }
 
+    /* ── ANIMATE ── */
+    .s-animate {
+      padding: 0;
+    }
+    .s-animate .col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
     .sec-badge,
     .sec-badge--view {
       font-family: 'Manrope', sans-serif;
@@ -803,6 +814,7 @@
       .s-faq      { padding: 80px 0; }
       .s-draw-view { gap: 0; padding: 64px 0; }
       .s-draw,
+      .s-animate,
       .s-view     { padding: 32px 0; }
       .s-creator  { padding: 64px 24px 80px; }
 
@@ -827,6 +839,7 @@
 
       /* FIX 6 — ensure side padding on sections */
       .s-draw .col,
+      .s-animate .col,
       .s-view .col,
       .s-faq .col { padding: 0 24px; }
     }
@@ -908,6 +921,25 @@
           </div>
         </div>
         <p class="sec-note reveal">Incluye dibujar dentro, dibujar detrás, modo simetría, borrador y una herramienta de texto con 5 fuentes propias. Exporta como PNG, SVG o vídeo, o guarda tu proyecto como archivo .dior y continúa cuando y donde quieras.</p>
+      </div>
+    </section>
+
+    <!-- ANIMATE ─────────────────────────────────────────────────── -->
+    <section class="s-animate">
+      <div class="col">
+        <span class="sec-badge reveal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19C5 19 6.5 9 9 9C11.5 9 11 16 13 16C15 16 16 5 19 5"/><circle cx="5" cy="19" r="1" fill="currentColor"/></svg> ANIMATE</span>
+        <h2 class="sec-heading reveal">Dale vida a tus capas. Las mismas capas que dibujas se convierten en fotogramas — un flipbook integrado en el lienzo. Sin línea de tiempo, sin rigging, solo cuadro a cuadro.</h2>
+        <div class="tools-grid reveal-stagger">
+          <div class="tool-card">
+            <h3>Cuadro a cuadro</h3>
+            <p>Cada capa es un fotograma. Framerate ajustable (4/6/8 fps), reproducción en bucle o ping-pong, y papel cebolla para animar con referencia.</p>
+          </div>
+          <div class="tool-card">
+            <h3>Animación en movimiento</h3>
+            <p>La animación también funciona en Cinema: mueve la cámara mientras tus fotogramas se reproducen, con profundidad parallax real o aplanada estilo flipbook.</p>
+          </div>
+        </div>
+        <p class="sec-note reveal">Exporta tu animación como vídeo (MP4/WebM), GIF con escala ajustable y bucle o ping-pong, o una secuencia PNG numerada lista para After Effects y otros programas. Animación simple, cuadro a cuadro, fiel al espíritu de Diorame: las restricciones creativas por encima de la complejidad.</p>
       </div>
     </section>
 
@@ -1005,6 +1037,46 @@
             </button>
             <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <p itemprop="text">Dos herramientas principales: Blob, para formas rellenas orgánicas, y Brush, para trazos en tres estilos, fluído, uniforme y tinta. También incluye un Borrador, una herramienta de Texto con 5 fuentes propias y una herramienta de Mover para transformar capas enteras. Los modificadores de dibujo incluyen simetría, dibujar dentro, dibujar detrás y modo orgánico.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">¿Puedo animar en Diorame?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Sí. Diorame convierte tus capas en fotogramas de animación — un flipbook construido sobre el mismo sistema de capas que ya usas. Activa el modo animación dentro de Draw, ajusta el framerate y reproduce tus fotogramas en bucle o ping-pong. El papel cebolla te deja ver los fotogramas vecinos mientras trabajas, igual que en la animación tradicional.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">¿En qué formatos puedo exportar animaciones?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Vídeo (MP4 o WebM con bucles configurables), GIF animado (con escala ajustable, bucle o ping-pong), o una secuencia PNG numerada para montar en programas externos como After Effects.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">¿Necesito saber animar?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">No. Si sabes dibujar en capas, sabes animar. El sistema cuadro a cuadro con referencia de papel cebolla lo mantiene accesible — sin líneas de tiempo, sin keyframes, sin rigging. Solo dibuja cada fotograma y dale al play.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">¿Diorame tiene sonido?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Sí — Diorame incluye efectos de sonido opcionales: pequeños sonidos sutiles que responden a tus acciones para una sesión de dibujo más inmersiva. Están desactivados por defecto y puedes activarlos cuando quieras.</p>
             </div>
           </div>
 
