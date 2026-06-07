@@ -407,6 +407,46 @@
       display: block;
     }
 
+    /* ── CINEMA · Storytelling highlight ── */
+    .storytelling-highlight {
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto 24px;
+      padding: 28px 32px;
+      background: rgba(124, 58, 237, 0.06);
+      border: 1px solid rgba(124, 58, 237, 0.25);
+      border-radius: 20px;
+      text-align: center;
+    }
+    .storytelling-highlight .st-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 10px;
+    }
+    .storytelling-highlight h3 {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .storytelling-highlight .st-oneliner {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--purple);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .storytelling-highlight .st-support {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
     /* ════════════════════════════════════════════════════════════════
        5 · CREATOR BANNER
     ════════════════════════════════════════════════════════════════ */
@@ -954,7 +994,13 @@
             <source src="../assets/hero-video.mp4" type="video/mp4">
           </video>
         </div>
-        <p class="sec-note reveal">Aplica 12 efectos de postprocesado a tu ilustración: trama de risografía procedural, Pixel Art con cuantización de paleta y dithering Bayer, profundidad de campo, grano de película, aberración cromática, niebla atmosférica, brillo y más. Más 10 modos de cámara cinemáticos con parallax y vibración de cámara en mano opcional.</p>
+        <div class="storytelling-highlight reveal">
+          <span class="st-eyebrow">Preset de cámara destacado</span>
+          <h3>Narrativa</h3>
+          <p class="st-oneliner">Una cámara que lee tu ilustración y la convierte en cine.</p>
+          <p class="st-support">En vez de un recorrido prefijado, la cámara lee tus capas y compone un travelling que viaja por ellas — de fondo a frente, deteniéndose en cada una. Encuadre inteligente, movimiento orgánico y enfoque que sigue a la cámara. Cero configuración, un clic.</p>
+        </div>
+        <p class="sec-note reveal">Aplica 12 efectos de postprocesado a tu ilustración: trama de risografía procedural, Pixel Art con cuantización de paleta y dithering Bayer, profundidad de campo, grano de película, aberración cromática, niebla atmosférica, brillo y más. Más 11 modos de cámara cinemáticos con parallax y vibración de cámara en mano opcional.</p>
       </div>
     </section>
 
@@ -1147,7 +1193,17 @@
               <span class="faq-plus" aria-hidden="true">+</span>
             </button>
             <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">10 animaciones de cámara predefinidas: Avance, Espiral, Yoyo, Pulso, Giro, Arco, Grúa, Travelling, Órbita y Zoom. Cada una funciona con la profundidad parallax 3D de tus capas. También puedes añadir vibración de cámara en mano en tres niveles de intensidad y ajustar la velocidad cinemática general.</p>
+              <p itemprop="text">11 animaciones de cámara predefinidas: Avance, Espiral, Yoyo, Pulso, Giro, Arco, Grúa, Travelling, Órbita, Zoom y Narrativa. Cada una funciona con la profundidad parallax 3D de tus capas. También puedes añadir vibración de cámara en mano en tres niveles de intensidad y ajustar la velocidad cinemática general.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">¿Qué es el modo de cámara Narrativa?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Narrativa es un preset de cámara cinemática que anima tu dibujo solo. En vez de un movimiento fijo, lee las capas de tu ilustración y compone un travelling que viaja por ellas una a una, de fondo a frente, deteniéndose a contemplar cada una. El recorrido es data-driven — cada dibujo genera su propia ruta única. El encuadre inteligente mantiene cada capa equilibrada en el cuadro, el movimiento es orgánico con una sutil respiración tipo cámara en mano, y combinado con la profundidad de campo el foco viaja con la cámara, enfocando cada capa a medida que llega. Un clic, cero configuración.</p>
             </div>
           </div>
 
