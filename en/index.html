@@ -407,6 +407,46 @@
       display: block;
     }
 
+    /* ── CINEMA · Storytelling highlight ── */
+    .storytelling-highlight {
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto 24px;
+      padding: 28px 32px;
+      background: rgba(124, 58, 237, 0.06);
+      border: 1px solid rgba(124, 58, 237, 0.25);
+      border-radius: 20px;
+      text-align: center;
+    }
+    .storytelling-highlight .st-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 10px;
+    }
+    .storytelling-highlight h3 {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .storytelling-highlight .st-oneliner {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--purple);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .storytelling-highlight .st-support {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
     /* ════════════════════════════════════════════════════════════════
        5 · CREATOR BANNER
     ════════════════════════════════════════════════════════════════ */
@@ -954,7 +994,13 @@
             <source src="../assets/hero-video.mp4" type="video/mp4">
           </video>
         </div>
-        <p class="sec-note reveal">Apply 12 post-processing effects to your illustration — procedural Risograph halftone, Pixel Art with palette quantization and Bayer dithering, depth of field, film grain, chromatic aberration, atmospheric fog, glow, and more. Plus 10 cinematic camera modes with parallax and optional handheld shake.</p>
+        <div class="storytelling-highlight reveal">
+          <span class="st-eyebrow">Featured camera preset</span>
+          <h3>Storytelling</h3>
+          <p class="st-oneliner">A camera that reads your artwork and turns it into a film.</p>
+          <p class="st-support">Instead of a preset path, the camera reads your layers and builds a travelling shot through them — from back to front, pausing on each one. Smart framing, organic motion, and focus that follows the camera. Zero setup, one click.</p>
+        </div>
+        <p class="sec-note reveal">Apply 12 post-processing effects to your illustration — procedural Risograph halftone, Pixel Art with palette quantization and Bayer dithering, depth of field, film grain, chromatic aberration, atmospheric fog, glow, and more. Plus 11 cinematic camera modes with parallax and optional handheld shake.</p>
       </div>
     </section>
 
@@ -1147,7 +1193,17 @@
               <span class="faq-plus" aria-hidden="true">+</span>
             </button>
             <div class="faq-answer">
-              <p>10 preset camera animations: Forward, Spiral, Yoyo, Pulse, Twist, Arc, Crane, Truck, Orbit, and Zoom. Each works with the 3D parallax depth of your layers. You can also add handheld shake at three intensity levels and adjust the overall cinematic speed.</p>
+              <p>11 preset camera animations: Forward, Spiral, Yoyo, Pulse, Twist, Arc, Crane, Truck, Orbit, Zoom, and Storytelling. Each works with the 3D parallax depth of your layers. You can also add handheld shake at three intensity levels and adjust the overall cinematic speed.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-btn" aria-expanded="false">
+              <span>What is the Storytelling camera mode?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Storytelling is a cinematic camera preset that animates your drawing on its own. Instead of a fixed movement, it reads the layers of your illustration and builds a travelling shot that journeys through them one by one, from back to front, pausing to take in each one. The path is data-driven — every drawing generates its own unique route. Smart framing keeps each layer balanced in frame, the motion stays organic with a subtle handheld breathing, and when combined with depth of field the focus travels with the camera, bringing each layer into focus as it arrives. One click, zero setup.</p>
             </div>
           </div>
 
@@ -1371,7 +1427,15 @@
         "name": "What are the cinematic camera modes?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "10 preset camera animations: Forward, Spiral, Yoyo, Pulse, Twist, Arc, Crane, Truck, Orbit, and Zoom. Each works with the 3D parallax depth of your layers. You can also add handheld shake at three intensity levels and adjust the overall cinematic speed."
+          "text": "11 preset camera animations: Forward, Spiral, Yoyo, Pulse, Twist, Arc, Crane, Truck, Orbit, Zoom, and Storytelling. Each works with the 3D parallax depth of your layers. You can also add handheld shake at three intensity levels and adjust the overall cinematic speed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Storytelling camera mode?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Storytelling is a cinematic camera preset that animates your drawing on its own. Instead of a fixed movement, it reads the layers of your illustration and builds a travelling shot that journeys through them one by one, from back to front, pausing to take in each one. The path is data-driven — every drawing generates its own unique route. Smart framing keeps each layer balanced in frame, the motion stays organic with a subtle handheld breathing, and when combined with depth of field the focus travels with the camera, bringing each layer into focus as it arrives. One click, zero setup."
         }
       },
       {
