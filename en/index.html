@@ -447,6 +447,66 @@
       line-height: 1.6;
     }
 
+    /* ── CINEMA · Super Riso highlight ── */
+    .superriso-highlight {
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto 24px;
+      padding: 32px 32px 28px;
+      background: rgba(124, 58, 237, 0.06);
+      border: 1px solid rgba(124, 58, 237, 0.25);
+      border-radius: 20px;
+      text-align: center;
+    }
+    .superriso-highlight .sr-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 10px;
+    }
+    .superriso-highlight h3 {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .superriso-highlight .sr-body {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .superriso-highlight .sr-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      text-align: left;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .superriso-highlight .sr-list li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.4;
+    }
+    .superriso-highlight .sr-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--purple);
+    }
+
     /* ════════════════════════════════════════════════════════════════
        5 · CREATOR BANNER
     ════════════════════════════════════════════════════════════════ */
@@ -1000,7 +1060,18 @@
           <p class="st-oneliner">A camera that reads your artwork and turns it into a film.</p>
           <p class="st-support">Instead of a preset path, the camera reads your layers and builds a travelling shot through them — from back to front, pausing on each one. Smart framing, organic motion, and focus that follows the camera. Zero setup, one click.</p>
         </div>
-        <p class="sec-note reveal">Apply 12 post-processing effects to your illustration — procedural Risograph halftone, Pixel Art with palette quantization and Bayer dithering, depth of field, film grain, chromatic aberration, atmospheric fog, glow, and more. Plus 11 cinematic camera modes with parallax and optional handheld shake.</p>
+        <div class="superriso-highlight reveal">
+          <span class="sr-eyebrow">Featured effect</span>
+          <h3>Super Riso. Your diorama, risograph-printed.</h3>
+          <p class="sr-body">Every frame of your scene turned into a scanned risograph print, in real time: inks that never quite line up, grain, fibrous paper and that unforgiving ink edge. Pick your inks, your paper and your imperfection. Want more? Turn on animated reprint: your scene gets printed again and again, like stop motion straight off the press.</p>
+          <ul class="sr-list">
+            <li>Up to 8 inks, from your drawing's colors or a riso palette</li>
+            <li>Grain or dot screens, adjustable paper and misregistration</li>
+            <li>Animated reprint at 4–12 fps</li>
+            <li>Export PNG HQ, MP4 and GIF at full quality</li>
+          </ul>
+        </div>
+        <p class="sec-note reveal">Apply 13 post-processing effects to your illustration — procedural Risograph halftone, Super Riso, Pixel Art with palette quantization and Bayer dithering, depth of field, film grain, chromatic aberration, atmospheric fog, glow, and more. Plus 11 cinematic camera modes with parallax and optional handheld shake.</p>
       </div>
     </section>
 
@@ -1153,7 +1224,17 @@
               <span class="faq-plus" aria-hidden="true">+</span>
             </button>
             <div class="faq-answer">
-              <p>Yes — Diorame is built around Risograph aesthetics. Fixed color palettes, procedural halftone grain, ink spread simulation, and misregistration effects. The Riso post-processing uses a three-pass pipeline that replicates the texture and imperfection of real Riso prints.</p>
+              <p>Yes — Diorame is built around Risograph aesthetics. Fixed color palettes, procedural halftone grain, ink spread simulation, and misregistration effects. The Riso post-processing uses a three-pass pipeline that replicates the texture and imperfection of real Riso prints. And Diorame now includes Super Riso, a real-time effect that turns your scene into a scanned risograph print — up to 8 inks, grain or dot screens, custom textures, and animated reprint.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-btn" aria-expanded="false">
+              <span>What is Super Riso?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Super Riso is a real-time effect that turns your scene into a scanned risograph print, right in your browser. It simulates the real risography process: ink separation into up to 8 plates, grain (FM) or dot (AM) screens, misregistration between inks, irregular edges and ink micro-voids, fibrous paper and a scanner finish. The ink and paper textures are custom-made, generated from measurements of real riso prints. Choose your inks (your drawing's colors, riso CMYK, or a riso palette), your paper and your level of imperfection, with four starting styles: Clean Studio, Fanzine, Lo-fi and CMYK. You can also turn on animated reprint, which reprints the image at 4, 6, 8 or 12 fps with a fresh run each step — stop motion of the whole print. It works on desktop and iPad, exports at full quality (PNG HQ, MP4, GIF, PNG sequence), and lives alongside the lighter classic Riso effect.</p>
             </div>
           </div>
 
@@ -1163,7 +1244,7 @@
               <span class="faq-plus" aria-hidden="true">+</span>
             </button>
             <div class="faq-answer">
-              <p>12 effects in total: procedural Risograph halftone, Pixel Art with palette quantization and Bayer dithering, depth of field, film grain, chromatic aberration, atmospheric fog, glow, vignette, lens distortion, particles, grunge overlay, and line wiggle. All adjustable and combinable.</p>
+              <p>13 effects in total: procedural Risograph halftone, Super Riso, Pixel Art with palette quantization and Bayer dithering, depth of field, film grain, chromatic aberration, atmospheric fog, glow, vignette, lens distortion, particles, grunge overlay, and line wiggle. All adjustable and combinable.</p>
             </div>
           </div>
 
@@ -1395,7 +1476,15 @@
         "name": "Can I use Diorame for Risograph-style illustration?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Diorame is built around Risograph aesthetics — fixed color palettes, procedural halftone grain, ink spread simulation, and misregistration effects. The Riso post-processing uses a three-pass pipeline that replicates the texture and imperfection of real Riso prints."
+          "text": "Yes — Diorame is built around Risograph aesthetics. Fixed color palettes, procedural halftone grain, ink spread simulation, and misregistration effects. The Riso post-processing uses a three-pass pipeline that replicates the texture and imperfection of real Riso prints. And Diorame now includes Super Riso, a real-time effect that turns your scene into a scanned risograph print — up to 8 inks, grain or dot screens, custom textures, and animated reprint."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Super Riso?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Super Riso is a real-time effect that turns your scene into a scanned risograph print, right in your browser. It simulates the real risography process: ink separation into up to 8 plates, grain (FM) or dot (AM) screens, misregistration between inks, irregular edges and ink micro-voids, fibrous paper and a scanner finish. The ink and paper textures are custom-made, generated from measurements of real riso prints. Choose your inks (your drawing's colors, riso CMYK, or a riso palette), your paper and your level of imperfection, with four starting styles: Clean Studio, Fanzine, Lo-fi and CMYK. You can also turn on animated reprint, which reprints the image at 4, 6, 8 or 12 fps with a fresh run each step — stop motion of the whole print. It works on desktop and iPad, exports at full quality (PNG HQ, MP4, GIF, PNG sequence), and lives alongside the lighter classic Riso effect."
         }
       },
       {
@@ -1403,7 +1492,7 @@
         "name": "What post-processing effects does Diorame include?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "12 effects in total: procedural Risograph halftone, Pixel Art with palette quantization and Bayer dithering, depth of field, film grain, chromatic aberration, atmospheric fog, glow, vignette, lens distortion, particles, grunge overlay, and line wiggle. All adjustable and combinable."
+          "text": "13 effects in total: procedural Risograph halftone, Super Riso, Pixel Art with palette quantization and Bayer dithering, depth of field, film grain, chromatic aberration, atmospheric fog, glow, vignette, lens distortion, particles, grunge overlay, and line wiggle. All adjustable and combinable."
         }
       },
       {
