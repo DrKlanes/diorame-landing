@@ -450,8 +450,8 @@
     /* ── CINEMA · Super Riso highlight ── */
     .superriso-highlight {
       width: 100%;
-      max-width: 560px;
-      margin: 0 auto 24px;
+      width: min(760px, calc(100vw - 48px));
+      margin: 0 0 24px;
       padding: 32px 32px 28px;
       background: rgba(124, 58, 237, 0.06);
       border: 1px solid rgba(124, 58, 237, 0.25);
@@ -505,6 +505,194 @@
       height: 8px;
       border-radius: 50%;
       background: var(--purple);
+    }
+
+    .superriso-highlight .sr-body { max-width: 560px; margin-left: auto; margin-right: auto; }
+
+    /* Super Riso · before/after comparator + technique thumbs */
+    .sr-compare {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 2400 / 1792;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #eee;
+      margin: 0 auto 12px;
+      --pos: 50%;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .sr-compare img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .sr-compare-after { clip-path: inset(0 0 0 var(--pos)); }
+    .sr-compare-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--pos);
+      width: 2px;
+      margin-left: -1px;
+      background: #fff;
+      box-shadow: 0 0 0 1px rgba(26, 13, 61, 0.25);
+      pointer-events: none;
+    }
+    .sr-compare-handle::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 36px;
+      height: 36px;
+      margin: -18px 0 0 -18px;
+      border-radius: 50%;
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c3aed' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 7l-5 5 5 5M16 7l5 5-5 5'/%3E%3C/svg%3E") center / 20px no-repeat;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    .sr-compare-range {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      -webkit-appearance: none;
+      appearance: none;
+      touch-action: pan-y;
+    }
+    .sr-compare-tag {
+      position: absolute;
+      bottom: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(26, 13, 61, 0.78);
+      color: #fff;
+      pointer-events: none;
+    }
+    .sr-compare-tag--l { left: 10px; }
+    .sr-compare-tag--r { right: 10px; }
+    .sr-compare:has(.sr-compare-range:focus-visible) { outline: 3px solid var(--purple); outline-offset: 3px; }
+
+    .sr-thumbs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .sr-thumb {
+      display: block;
+      padding: 0;
+      background: none;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      font: inherit;
+      color: var(--navy);
+      text-align: center;
+      opacity: 0.75;
+      transition: opacity 0.2s ease, border-color 0.2s ease;
+    }
+    .sr-thumb img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 2400 / 1792;
+      object-fit: cover;
+      border-radius: 9px;
+      display: block;
+    }
+    .sr-thumb span {
+      display: block;
+      padding: 6px 0 4px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .sr-thumb:hover { opacity: 1; }
+    .sr-thumb.is-active { opacity: 1; border-color: var(--purple); }
+    .sr-thumb:focus-visible { outline: 3px solid var(--purple); outline-offset: 2px; }
+
+    .sr-shot {
+      margin: 22px 0 0;
+    }
+    .sr-shot img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(124, 58, 237, 0.25);
+    }
+    .sr-shot figcaption {
+      margin: 10px auto 0;
+      max-width: 520px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ── PRINT section ── */
+    .s-print { padding: 0; }
+    .s-print .col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .print-shot {
+      width: min(760px, calc(100vw - 48px));
+      margin: 0 0 24px;
+      border: 4px solid var(--purple);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .print-shot img { width: 100%; height: auto; display: block; }
+    .lab-mark {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      background: #f3e8ff;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .lab-mark img { width: 76%; height: 76%; object-fit: contain; }
+    .print-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      width: min(760px, calc(100vw - 48px));
+      margin: 0 0 24px;
+    }
+    .print-details figure { margin: 0; }
+    .print-details img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(124, 58, 237, 0.25);
+      display: block;
+    }
+    .print-details figcaption {
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+    .s-print .btn-cta { margin-top: 24px; }
+    @media (max-width: 600px) {
+      .superriso-highlight { padding: 24px 16px 22px; }
+      .print-details { grid-template-columns: 1fr; }
     }
 
     /* ════════════════════════════════════════════════════════════════
@@ -916,6 +1104,7 @@
       .s-draw-view { gap: 0; padding: 64px 0; }
       .s-draw,
       .s-animate,
+      .s-print,
       .s-view     { padding: 32px 0; }
       .s-creator  { padding: 64px 24px 80px; }
 
@@ -941,6 +1130,7 @@
       /* FIX 6 — ensure side padding on sections */
       .s-draw .col,
       .s-animate .col,
+      .s-print .col,
       .s-view .col,
       .s-faq .col { padding: 0 24px; }
     }
@@ -968,7 +1158,7 @@
       <img src="../assets/logo.webp" alt="Diorame logo" class="hero-logo" width="260">
       <p class="hero-brand"><span class="b">Diorame</span><span class="tm">™</span></p>
       <h1 class="hero-tagline">Dibuja en 2D. Anima. Dale vida en 3D.</h1>
-      <p class="hero-desc">Una herramienta de ilustración gratuita con profundidad automática, cámaras cinemáticas y filtros de efectos especiales geniales.</p>
+      <p class="hero-desc">Una herramienta de ilustración gratuita con profundidad automática, cámaras cinemáticas y un estudio de impresión: riso, fotocopia y stencil.</p>
       <div class="cta-group">
         <a class="btn-cta" href="https://diorame.dumaker.com/" target="_blank" rel="noopener noreferrer">
           <img src="../assets/arrow.svg" alt="" aria-hidden="true" class="btn-arrow">
@@ -1064,14 +1254,81 @@
           <span class="sr-eyebrow">Efecto destacado</span>
           <h3>Super Riso. Impreso, fotocopiado o pintado con spray.</h3>
           <p class="sr-body">Tres técnicas artesanales aplicadas a cada frame de tu escena, en tiempo real. Riso: tintas que no casan del todo, grano, papel con fibra y ese borde de tinta que no perdona. Fotocopia: copy art punk, copia de copia, tóner sucio, coloreado a rotulador o acuarela. Stencil: plantilla y spray, goteras, salpicaduras y la niebla que se cuela bajo el cartón. Elige un estilo y ajústalo. ¿Quieres más? Activa la reimpresión animada y tu escena se reimprime una y otra vez, como un stop motion hecho a mano.</p>
+          <div class="sr-compare">
+            <img class="sr-compare-base" src="../assets/sr-base-960.webp" srcset="../assets/sr-base-480.webp 480w, ../assets/sr-base-960.webp 960w, ../assets/sr-base-1600.webp 1600w" sizes="(max-width: 800px) 92vw, 720px" width="960" height="717" alt="Ilustración original: un rostro de piedra de perfil que mira un mar rojo en calma, entre ramas y rocas." loading="lazy" decoding="async">
+            <img class="sr-compare-after" src="../assets/sr-riso-960.webp" srcset="../assets/sr-riso-480.webp 480w, ../assets/sr-riso-960.webp 960w, ../assets/sr-riso-1600.webp 1600w" sizes="(max-width: 800px) 92vw, 720px" width="960" height="717" alt="La misma ilustración impresa en riso: tintas roja y verde azulada con grano y bordes con ligero desregistro sobre papel crema." loading="lazy" decoding="async">
+            <span class="sr-compare-tag sr-compare-tag--l">Original</span>
+            <span class="sr-compare-tag sr-compare-tag--r">Riso</span>
+            <span class="sr-compare-handle" aria-hidden="true"></span>
+            <input class="sr-compare-range" type="range" min="0" max="100" value="50" aria-label="Comparar el original con el resultado">
+          </div>
+          <div class="sr-thumbs" role="group" aria-label="Elige una técnica">
+            <button type="button" class="sr-thumb is-active" aria-pressed="true" data-label="Riso" data-alt="La misma ilustración impresa en riso: tintas roja y verde azulada con grano y bordes con ligero desregistro sobre papel crema." data-src="../assets/sr-riso-960.webp" data-srcset="../assets/sr-riso-480.webp 480w, ../assets/sr-riso-960.webp 960w, ../assets/sr-riso-1600.webp 1600w">
+              <img src="../assets/sr-riso-480.webp" width="480" height="358" alt="" loading="lazy" decoding="async">
+              <span>Riso</span>
+            </button>
+            <button type="button" class="sr-thumb" aria-pressed="false" data-label="Fotocopia" data-alt="La misma ilustración como fotocopia coloreada a mano: tóner negro, acuarela azul en el rostro y rotulador rojo." data-src="../assets/sr-fotocopia-960.webp" data-srcset="../assets/sr-fotocopia-480.webp 480w, ../assets/sr-fotocopia-960.webp 960w, ../assets/sr-fotocopia-1600.webp 1600w">
+              <img src="../assets/sr-fotocopia-480.webp" width="480" height="358" alt="" loading="lazy" decoding="async">
+              <span>Fotocopia</span>
+            </button>
+            <button type="button" class="sr-thumb" aria-pressed="false" data-label="Stencil" data-alt="La misma ilustración como arte de stencil con spray: rojo y negro planos, con goteras y salpicaduras sobre papel claro." data-src="../assets/sr-stencil-960.webp" data-srcset="../assets/sr-stencil-480.webp 480w, ../assets/sr-stencil-960.webp 960w, ../assets/sr-stencil-1600.webp 1600w">
+              <img src="../assets/sr-stencil-480.webp" width="480" height="358" alt="" loading="lazy" decoding="async">
+              <span>Stencil</span>
+            </button>
+          </div>
           <ul class="sr-list">
             <li>Riso: hasta 8 tintas, trama de grano o de puntos, papel y desregistro ajustables</li>
             <li>Fotocopia: generaciones, suciedad real, papeles flúor y color a mano con rotulador o acuarela</li>
             <li>Stencil: de 1 a 4 plantillas, goteras, salpicaduras, nube y soportes de pared, cartón o lienzo</li>
             <li>Estilos de un clic, reimpresión animada a 4–12 fps, exporta en PNG HQ / MP4 / GIF a calidad completa</li>
           </ul>
+          <figure class="sr-shot">
+            <img src="../assets/diorame-cine-super-riso-720.webp" srcset="../assets/diorame-cine-super-riso-720.webp 720w, ../assets/diorame-cine-super-riso-1440.webp 1440w" sizes="(max-width: 800px) 92vw, 696px" width="720" height="450" alt="Diorame en modo Cine con el panel de Super Riso abierto a la derecha y un paisaje impreso en riso en el lienzo." loading="lazy" decoding="async">
+            <figcaption>Super Riso dentro del modo Cine de Diorame. Funciona en movimiento: con la cámara, el wiggle, las partículas y el stop motion. En iPad y equipos modestos se aligera solo.</figcaption>
+          </figure>
         </div>
         <p class="sec-note reveal">Aplica 13 efectos de postprocesado a tu ilustración: trama de risografía procedural, Super Riso, Pixel Art con cuantización de paleta y dithering Bayer, profundidad de campo, grano de película, aberración cromática, niebla atmosférica, brillo y más. Más 11 modos de cámara cinemáticos con parallax y vibración de cámara en mano opcional.</p>
+      </div>
+    </section>
+
+    <!-- PRINT ──────────────────────────────────────────────────── -->
+    <section class="s-print">
+      <div class="col">
+        <span class="sec-badge reveal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V4h10v5"/><path d="M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><rect x="7" y="14" width="10" height="6" rx="1"/></svg> IMPRIME</span>
+        <h2 class="sec-heading reveal">Del boceto a la plancha: Diorame dibuja, Super Riso imprime. Abre cualquier imagen o un proyecto .dior en Super Riso Lab, gratis y en tu navegador.</h2>
+        <figure class="print-shot reveal">
+          <img src="../assets/lab-dior-encuadrado-960.webp" srcset="../assets/lab-dior-encuadrado-960.webp 960w, ../assets/lab-dior-encuadrado-1600.webp 1600w" sizes="(max-width: 800px) 92vw, 752px" width="960" height="600" alt="Super Riso Lab con un proyecto .dior encuadrado en el lienzo y, a la derecha, los paneles de técnica, estilo y tintas." loading="lazy" decoding="async">
+        </figure>
+        <div class="tools-grid reveal-stagger">
+          <div class="tool-card">
+            <span class="lab-mark"><img src="../assets/lab-personaje-marca-256.webp" width="256" height="327" alt="Mascota de Super Riso Lab: personaje rosa con sombrero alto negro y gafas de sol" loading="lazy" decoding="async"></span>
+            <h3>Super Riso Lab</h3>
+            <p>Elige tu papel (natural, prensa, acuarela, washi, reciclado, kraft o verjurado) y tu técnica: Riso, Fotocopia o Stencil. Imprime hojas de A6 a A2 hasta 600 ppp, tiradas de variaciones, bucle de vídeo y una plancha por tinta lista para una riso real.</p>
+          </div>
+          <div class="tool-card">
+            <h3>Proyectos .dior</h3>
+            <p>Tu proyecto es un solo archivo, con miniatura. Ábrelo en el Lab y encuádralo con zoom y mano como en un programa de dibujo: todo se redibuja en vectorial, así que exportas nítido a cualquier tamaño. Con «Sin efecto» exportas tu dibujo tal cual en alta resolución (A4 a 300 ppp y más).</p>
+          </div>
+        </div>
+        <div class="print-details reveal">
+          <figure>
+            <img src="../assets/sr-detalle-riso-800.webp" srcset="../assets/sr-detalle-riso-800.webp 800w, ../assets/sr-detalle-riso-1600.webp 1600w" sizes="(max-width: 600px) 92vw, 250px" width="800" height="500" alt="Detalle de la impresión riso a tamaño real: grano de tinta y fibra del papel." loading="lazy" decoding="async">
+            <figcaption>Grano</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/sr-detalle-fotocopia-800.webp" srcset="../assets/sr-detalle-fotocopia-800.webp 800w, ../assets/sr-detalle-fotocopia-1600.webp 1600w" sizes="(max-width: 600px) 92vw, 250px" width="800" height="500" alt="Detalle de la fotocopia a tamaño real: tóner, acuarela que sangra y papel con textura." loading="lazy" decoding="async">
+            <figcaption>Tóner</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/sr-detalle-stencil-800.webp" srcset="../assets/sr-detalle-stencil-800.webp 800w, ../assets/sr-detalle-stencil-1600.webp 1600w" sizes="(max-width: 600px) 92vw, 250px" width="800" height="500" alt="Detalle del stencil a tamaño real: punteado de spray, goteras y salpicaduras." loading="lazy" decoding="async">
+            <figcaption>Spray</figcaption>
+          </figure>
+        </div>
+        <p class="sec-note reveal">En escritorio, Exportar › Super Riso ↗ abre tu dibujo en el Lab con el mismo encuadre que tenías en pantalla, y «‹ Diorame» te devuelve. Mismo diseño, mismo tema claro y oscuro, mismas tipografías e iconos.</p>
+        <a class="btn-cta reveal" href="https://super-riso.dumaker.com" target="_blank" rel="noopener">
+          <img src="../assets/arrow.svg" alt="" aria-hidden="true" class="btn-arrow">
+          Abrir Super Riso Lab
+        </a>
       </div>
     </section>
 
@@ -1144,7 +1401,7 @@
               <span class="faq-plus" aria-hidden="true">+</span>
             </button>
             <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Diorame funciona en cualquier navegador moderno de escritorio o tablet: Chrome, Firefox, Safari y Edge. Está diseñado exclusivamente para escritorio y tablet; los móviles no están soportados por diseño. En un móvil simplemente no hay suficiente espacio en pantalla para sacar todo el partido a Diorame, ¡lo siento!</p>
+              <p itemprop="text">Diorame funciona en cualquier navegador moderno de escritorio o tablet: Chrome, Firefox, Safari y Edge. Está diseñado exclusivamente para escritorio y tablet; los móviles no están soportados por diseño. En un móvil simplemente no hay suficiente espacio en pantalla para sacar todo el partido a Diorame, ¡lo siento! Super Riso Lab, el estudio de impresión de Diorame, sí funciona en móvil, aunque está pensado para escritorio.</p>
             </div>
           </div>
 
@@ -1260,6 +1517,36 @@
 
           <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
             <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">¿Qué es Super Riso Lab?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Super Riso Lab es el estudio de impresión de Diorame: gratis, en tu navegador y sin cuenta — todo se procesa en tu navegador (WebGL2). Abre cualquier imagen o un proyecto .dior de Diorame y aplica Riso, Fotocopia o Stencil, elige tu papel (natural, prensa, acuarela, washi, reciclado, kraft o verjurado) y exporta. Con un .dior puedes encuadrar tu dibujo con zoom y mano como en un programa de dibujo, y todo se redibuja en vectorial, así que sale nítido a cualquier tamaño. Desde Diorame llegas en un clic con Exportar › Super Riso ↗ en escritorio, y vuelves con ‹ Diorame. También funciona en móvil, aunque está pensado para escritorio. Puedes guardar tus propios estilos en el navegador.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">¿Puedo imprimir mis dibujos de verdad?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Sí. Super Riso Lab exporta hojas de A6 a A2 hasta 600 ppp, tiradas de variaciones, bucle de vídeo y una plancha por tinta lista para una riso real. Si solo quieres tu dibujo tal cual, «Sin efecto» lo exporta en alta resolución (A4 a 300 ppp y más). Y «‹ Diorame» te devuelve a tu proyecto.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
+              <span itemprop="name">¿Qué es un archivo .dior y cómo guardo mis proyectos?</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Un .dior es el formato de proyecto de Diorame: un solo archivo con miniatura, así que todo tu dibujo viaja junto. Diorame tiene Guardar, Guardar como y Duplicar. En Chrome y Edge, Guardar sobrescribe el archivo; en Safari y Firefox, guardar es descargar. Con Diorame instalado como app, doble clic en un .dior lo abre en Diorame, y también puedes abrirlo en Super Riso Lab para imprimirlo. En Windows, el icono del archivo puede verse genérico según el sistema.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button class="faq-btn" aria-expanded="false">
               <span itemprop="name">¿Qué efectos de postprocesado incluye Diorame?</span>
               <span class="faq-plus" aria-hidden="true">+</span>
             </button>
@@ -1284,7 +1571,7 @@
               <span class="faq-plus" aria-hidden="true">+</span>
             </button>
             <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Sí. Diorame exporta como PNG, SVG, SVGZ (vector comprimido) y vídeo (WebM/MP4) con la cámara cinemática capturada en directo. También puedes exportar en alta calidad al doble de resolución — un re-render real, no un escalado: cada trazo y cada efecto se vuelve a dibujar al tamaño mayor, así el resultado es nítido de verdad y listo para imprimir, sin el aspecto blando de una imagen simplemente ampliada. Y puedes guardar tu proyecto como archivo .dior y continuar trabajando en él más tarde, o llevártelo a otro dispositivo.</p>
+              <p itemprop="text">Sí. Diorame exporta como PNG, SVG, SVGZ (vector comprimido) y vídeo (WebM/MP4) con la cámara cinemática capturada en directo. También puedes exportar en alta calidad al doble de resolución — un re-render real, no un escalado: cada trazo y cada efecto se vuelve a dibujar al tamaño mayor, así el resultado es nítido de verdad y listo para imprimir, sin el aspecto blando de una imagen simplemente ampliada. Y puedes guardar tu proyecto como archivo .dior y continuar trabajando en él más tarde, o llevártelo a otro dispositivo. Para archivos listos para imprimir, abre ese .dior en Super Riso Lab: todo se redibuja en vectorial, así que exportas nítido a cualquier tamaño, y con «Sin efecto» exportas tu dibujo tal cual en alta resolución (A4 a 300 ppp y más).</p>
             </div>
           </div>
 
@@ -1370,6 +1657,34 @@
   <footer class="s-footer">
     <p class="reveal">Diorame™ 2026</p>
   </footer>
+
+  <!-- ══ Super Riso comparator JS ═════════════════════════════════ -->
+  <script>
+    (function () {
+      var cmp = document.querySelector('.sr-compare');
+      if (!cmp) return;
+      var range = cmp.querySelector('.sr-compare-range');
+      var after = cmp.querySelector('.sr-compare-after');
+      var tag = cmp.querySelector('.sr-compare-tag--r');
+      range.addEventListener('input', function () {
+        cmp.style.setProperty('--pos', range.value + '%');
+      });
+      var thumbs = document.querySelectorAll('.sr-thumb');
+      thumbs.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          after.srcset = btn.getAttribute('data-srcset');
+          after.src = btn.getAttribute('data-src');
+          after.alt = btn.getAttribute('data-alt');
+          tag.textContent = btn.getAttribute('data-label');
+          thumbs.forEach(function (b) {
+            var on = b === btn;
+            b.classList.toggle('is-active', on);
+            b.setAttribute('aria-pressed', on ? 'true' : 'false');
+          });
+        });
+      });
+    })();
+  </script>
 
   <!-- ══ FAQ accordion JS ═════════════════════════════════════════ -->
   <script>
