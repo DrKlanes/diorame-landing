@@ -5,1821 +5,571 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
 
-  <!-- SEO -->
-  <title>Diorame — App de dibujo gratuita con profundidad 3D y efectos de cámara cinemáticos</title>
-  <meta name="description" content="Diorame es una app de ilustración gratuita que funciona en el navegador. Dibuja en 2D con herramientas de estilo Risografía por capas, dale vida a tu escena en 3D con cámaras parallax, efectos de profundidad y filtros cinemáticos. Sin instalación.">
+  <title>Diorame · App de dibujo gratuita con profundidad 3D y efectos de cámara cinemáticos</title>
+  <meta name="description" content="Diorame es una app de ilustración gratuita que funciona en el navegador. Dibuja en 2D por capas, anima cuadro a cuadro y dale vida en 3D con cámaras parallax, efectos cinemáticos e impresión riso, fotocopia y stencil. Sin instalación ni cuenta.">
   <meta name="robots" content="index,follow">
+  <meta name="author" content="Moisés (Dumaker)">
+  <meta name="theme-color" content="#f4f0e8">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Diorame — App de dibujo gratuita con profundidad 3D y efectos de cámara cinemáticos">
-  <meta property="og:description" content="Diorame es una app de ilustración gratuita que funciona en el navegador. Dibuja en 2D con herramientas de estilo Risografía por capas, dale vida a tu escena en 3D con cámaras parallax, efectos de profundidad y filtros cinemáticos. Sin instalación.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://diorame.com/es/">
+  <meta property="og:site_name" content="Diorame">
+  <meta property="og:title" content="Diorame · Dibuja en 2D. Anima. Dale vida en 3D.">
+  <meta property="og:description" content="App de ilustración gratuita en el navegador: capas con profundidad automática, cámaras cinemáticas e impresión riso, fotocopia y stencil.">
   <meta property="og:image" content="https://diorame.com/assets/og-image.jpg">
-  <meta property="og:image:alt" content="Diorame — App de dibujo gratuita con profundidad 3D y efectos de cámara cinemáticos">
-  <meta property="og:site_name" content="Diorame — App de dibujo gratuita con profundidad 3D y efectos de cámara cinemáticos">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://diorame.com/es/">
-  <meta name="twitter:title" content="Diorame — App de dibujo gratuita con profundidad 3D y efectos de cámara cinemáticos">
-  <meta name="twitter:description" content="Diorame es una app de ilustración gratuita que funciona en el navegador. Dibuja en 2D con herramientas de estilo Risografía por capas, dale vida a tu escena en 3D con cámaras parallax, efectos de profundidad y filtros cinemáticos. Sin instalación.">
   <meta name="twitter:image" content="https://diorame.com/assets/og-image.jpg">
-  <meta name="twitter:image:alt" content="Diorame — App de dibujo gratuita con profundidad 3D y efectos de cámara cinemáticos">
 
-  <!-- hreflang -->
+  <link rel="canonical" href="https://diorame.com/es/">
   <link rel="alternate" hreflang="en" href="https://diorame.com/en/">
   <link rel="alternate" hreflang="es" href="https://diorame.com/es/">
   <link rel="alternate" hreflang="x-default" href="https://diorame.com/">
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://diorame.com/es/">
-
-  <!-- Author & theme -->
-  <meta name="author" content="Moisés (Dumaker)">
-  <meta name="theme-color" content="#7c3aed">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="../assets/favicon.png">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://ko-fi.com">
-  <link rel="dns-prefetch" href="https://www.instagram.com">
-  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* ─── Reset ──────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    /* ─── Design tokens ──────────────────────────────────────────── */
-    :root {
-      --white:      #ffffff;
-      --black:      #000000;
-      --navy:       #1a0d3d;
-      --purple:     #7c3aed;   /* borders, accents, card text          */
-      --vivid:      #9707d2;   /* banner / FAQ bg, mission brand color */
-      --bg-light:   #fbf5ff;   /* mission bg                           */
-      --text:       #353535;   /* brand name                           */
-      --text-dark:  #030213;
-      --text-muted: #666666;
-      --text-dim:   #d6d6d6;   /* FAQ answers, banner subtitle         */
-      --f:  'Manrope', sans-serif;
-      --fd: 'Chewy', cursive;
-    }
-
-    /* ─── Base ───────────────────────────────────────────────────── */
-    body {
-      font-family: var(--f);
-      font-size: 16px;
-      line-height: 1.65;
-      color: var(--text);
-      background: var(--white);
-      -webkit-font-smoothing: antialiased;
-      cursor: url('../assets/cursor.png') 1 1, auto;
-    }
-
-    /* Custom cursor — overrides UA pointer on all elements and hover states */
-    *,
-    *::before,
-    *::after,
-    a, a:hover, a:focus, a:active,
-    button, button:hover, button:focus, button:active,
-    [role="button"],
-    .btn-cta, .btn-cta:hover, .btn-cta:active,
-    .faq-btn, .faq-btn:hover,
-    input, select, textarea {
-      cursor: url('../assets/cursor.png') 1 1, auto !important;
-    }
-
-    #lang-switcher,
-    #lang-switcher *,
-    #lang-switcher a,
-    #lang-switcher a:hover,
-    #lang-switcher a:focus,
-    #lang-switcher a:active,
-    #lang-switcher span {
-      cursor: url('../assets/cursor-small.png') 1 1, auto !important;
-    }
-
-    img { max-width: 100%; display: block; }
-    a   { color: inherit; text-decoration: none; }
-
-    /* ─── Skip link ──────────────────────────────────────────────── */
-    .skip-link {
-      position: absolute; top: -100%; left: 16px;
-      background: var(--black); color: var(--white);
-      border: 1px solid var(--white); border-radius: 12px;
-      padding: 12px 16px; font-size: 15px; z-index: 999;
-    }
-    .skip-link:focus { top: 16px; }
-
-    /* ─── Content column (610 px centred) ───────────────────────── */
-    .col {
-      max-width: 610px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ─── CTA button ─────────────────────────────────────────────── */
-    .btn-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--navy);
-      color: var(--white);
-      border: 2px solid var(--purple);
-      border-radius: 96px;
-      padding: 24px 32px;
-      font-family: var(--f);
-      font-size: 16px;
-      font-weight: 500;
-      text-decoration: none;
-      box-shadow: 0 8px 12px rgba(0,0,0,0.48);
-      --stroke-0: #ffffff; /* arrow.svg colour token */
-    }
-
-    .btn-cta .btn-arrow { width: 18px; height: 18px; object-fit: contain; }
-
-    /* ════════════════════════════════════════════════════════════════
-       1 · HERO
-    ════════════════════════════════════════════════════════════════ */
-    .s-hero {
-      position: relative;
-      isolation: isolate;
-      background: url('../assets/hero-bg.webp'), #FFFFFF;
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 64px;
-      min-height: 1260px;
-      padding: 64px 0 144px;
-      text-align: center;
-    }
-
-    /* Inner content block (logo → sub), compact 16 px gaps */
-    .hero-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-      padding: 0 24px;
-    }
-
-    .hero-logo {
-      width: 260px;
-      height: auto;
-    }
-
-    .hero-brand {
-      font-family: var(--f);
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1;
-      letter-spacing: -0.03em;
-      margin-top: calc(8px - 24px); /* reduce gap logo→brand from 24px to 8px */
-    }
-    .hero-brand .b { font-size: 32px; }
-    .hero-brand .tm { font-size: 20px; vertical-align: super; }
-
-    .hero-tagline {
-      font-size: 42px;
-      font-weight: 600;
-      color: var(--purple);
-      letter-spacing: -0.2px;
-      line-height: 1.25;
-      max-width: 620px;
-    }
-
-    .hero-desc {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.5;
-      max-width: 540px;
-    }
-
-    .hero-sub {
-      font-size: 16px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      max-width: 440px;
-    }
-    .hero-sub strong { display: block; font-weight: 700; margin-bottom: 4px; }
-
-    /* Images row — iPad centred, character bleeds right */
-    .hero-images {
-      position: relative;
-      width: 100%;
-      height: clamp(480px, 58vw, 780px);
-      flex-shrink: 0;
-      overflow: visible;
-    }
-    .hero-ipad {
-      position: relative;
-      width: clamp(440px, 63vw, 910px);
-      height: auto;
-      z-index: 2;
-      display: block;
-      margin: 0 auto;
-    }
-    .hero-char {
-      position: absolute;
-      width: 1415px;
-      height: auto;
-      right: -160px;
-      bottom: -502px;
-      z-index: -1;
-    }
-
-    /* ════════════════════════════════════════════════════════════════
-       2 · BANNER  — "Draw something. Give it life. Enjoy"
-    ════════════════════════════════════════════════════════════════ */
-    .s-banner {
-      background: var(--vivid);
-      padding: 128px 24px;
-      text-align: center;
-    }
-
-    .banner-display {
-      font-family: var(--fd);
-      font-size: clamp(40px, 7vw, 84px);
-      font-weight: 400;
-      color: var(--white);
-      letter-spacing: -1.68px;
-      line-height: 1.05;
-      margin-bottom: 28px;
-    }
-
-    .banner-sub {
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--text-dim);
-      letter-spacing: -0.2px;
-      line-height: 1.5;
-      max-width: 610px;
-      margin: 0 auto;
-    }
-
-    /* ════════════════════════════════════════════════════════════════
-       3+4 · DRAW + VIEW  (shared background wrapper)
-    ════════════════════════════════════════════════════════════════ */
-    .s-draw-view {
-      background: url('../assets/hero-bg.webp'), #FFFFFF;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      display: flex;
-      flex-direction: column;
-      gap: 64px;
-      padding: 96px 0;
-    }
-
-    /* ── DRAW ── */
-    .s-draw {
-      padding: 0;
-    }
-    .s-draw .col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    /* ── ANIMATE ── */
-    .s-animate {
-      padding: 0;
-    }
-    .s-animate .col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .sec-badge,
-    .sec-badge--view {
-      font-family: 'Manrope', sans-serif;
-      font-style: normal;
-      font-weight: 700;
-      font-size: 34px;
-      line-height: 114%;
-      text-align: center;
-      color: #9707D2;
-      width: 100%;
-      display: block;
-      margin-bottom: 16px;
-    }
-    .sec-badge svg { vertical-align: middle; margin-right: 6px; }
-
-    .sec-heading {
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--navy);
-      letter-spacing: -0.2px;
-      line-height: 1.5;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-    .s-view .sec-heading { color: var(--text-dark); }
-
-    .tools-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      width: 100%;
-      margin-bottom: 24px;
-    }
-
-    .tool-card {
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 64px 24px 48px;
-      gap: 16px;
-      width: 281px;
-      min-height: 292px;
-      border: 4px solid #7C3AED;
-      border-radius: 24px;
-      flex-grow: 1;
-      text-align: center;
-      color: var(--purple);
-    }
-    .tool-card svg {
-      width: 100px;
-      height: 100px;
-      flex-shrink: 0;
-      stroke-width: 1.2;
-    }
-    .tool-card h3 {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--purple);
-      text-align: center;
-      line-height: 1.2;
-    }
-    .tool-card p {
-      font-size: 16px;
-      color: var(--purple);
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    .sec-note {
-      font-size: 16px;
-      color: var(--text-muted);
-      line-height: 1.65;
-      text-align: center;
-    }
-
-    /* ── VIEW ── */
-    .s-view {
-      padding: 0;
-    }
-    .s-view .col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .view-wrap {
-      width: 100%;
-      height: 520px;
-      border: 4px solid var(--purple);
-      border-radius: 24px;
-      overflow: hidden;
-      margin-bottom: 24px;
-      flex-shrink: 0;
-    }
-    .view-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* ── CINEMA · Storytelling highlight ── */
-    .storytelling-highlight {
-      width: 100%;
-      max-width: 560px;
-      margin: 0 auto 24px;
-      padding: 28px 32px;
-      background: rgba(124, 58, 237, 0.06);
-      border: 1px solid rgba(124, 58, 237, 0.25);
-      border-radius: 20px;
-      text-align: center;
-    }
-    .storytelling-highlight .st-eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--purple);
-      margin-bottom: 10px;
-    }
-    .storytelling-highlight h3 {
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-    .storytelling-highlight .st-oneliner {
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--purple);
-      line-height: 1.4;
-      margin-bottom: 12px;
-    }
-    .storytelling-highlight .st-support {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ── CINEMA · Super Riso highlight ── */
-    .superriso-highlight {
-      width: 100%;
-      width: min(760px, calc(100vw - 48px));
-      margin: 0 0 24px;
-      padding: 32px 32px 28px;
-      background: rgba(124, 58, 237, 0.06);
-      border: 1px solid rgba(124, 58, 237, 0.25);
-      border-radius: 20px;
-      text-align: center;
-    }
-    .superriso-highlight .sr-eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--purple);
-      margin-bottom: 10px;
-    }
-    .superriso-highlight h3 {
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.2;
-      margin-bottom: 12px;
-    }
-    .superriso-highlight .sr-body {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
-    .superriso-highlight .sr-list {
-      list-style: none;
-      display: grid;
-      gap: 8px;
-      text-align: left;
-      max-width: 440px;
-      margin: 0 auto;
-    }
-    .superriso-highlight .sr-list li {
-      position: relative;
-      padding-left: 22px;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1.4;
-    }
-    .superriso-highlight .sr-list li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.5em;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--purple);
-    }
-
-    .superriso-highlight .sr-body { max-width: 560px; margin-left: auto; margin-right: auto; }
-
-    /* Super Riso · before/after comparator + technique thumbs */
-    .sr-compare {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 2400 / 1792;
-      border-radius: 14px;
-      overflow: hidden;
-      background: #eee;
-      margin: 0 auto 12px;
-      --pos: 50%;
-      -webkit-user-select: none;
-      user-select: none;
-    }
-    .sr-compare img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .sr-compare-after { clip-path: inset(0 0 0 var(--pos)); }
-    .sr-compare-handle {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: var(--pos);
-      width: 2px;
-      margin-left: -1px;
-      background: #fff;
-      box-shadow: 0 0 0 1px rgba(26, 13, 61, 0.25);
-      pointer-events: none;
-    }
-    .sr-compare-handle::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 36px;
-      height: 36px;
-      margin: -18px 0 0 -18px;
-      border-radius: 50%;
-      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c3aed' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 7l-5 5 5 5M16 7l5 5-5 5'/%3E%3C/svg%3E") center / 20px no-repeat;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    }
-    .sr-compare-range {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      opacity: 0;
-      -webkit-appearance: none;
-      appearance: none;
-      touch-action: pan-y;
-    }
-    .sr-compare-tag {
-      position: absolute;
-      bottom: 10px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      background: rgba(26, 13, 61, 0.78);
-      color: #fff;
-      pointer-events: none;
-    }
-    .sr-compare-tag--l { left: 10px; }
-    .sr-compare-tag--r { right: 10px; }
-    .sr-compare:has(.sr-compare-range:focus-visible) { outline: 3px solid var(--purple); outline-offset: 3px; }
-
-    .sr-thumbs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 22px;
-    }
-    .sr-thumb {
-      display: block;
-      padding: 0;
-      background: none;
-      border: 2px solid transparent;
-      border-radius: 12px;
-      font: inherit;
-      color: var(--navy);
-      text-align: center;
-      opacity: 0.75;
-      transition: opacity 0.2s ease, border-color 0.2s ease;
-    }
-    .sr-thumb img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 2400 / 1792;
-      object-fit: cover;
-      border-radius: 9px;
-      display: block;
-    }
-    .sr-thumb span {
-      display: block;
-      padding: 6px 0 4px;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .sr-thumb:hover { opacity: 1; }
-    .sr-thumb.is-active { opacity: 1; border-color: var(--purple); }
-    .sr-thumb:focus-visible { outline: 3px solid var(--purple); outline-offset: 2px; }
-
-    .sr-shot {
-      margin: 22px 0 0;
-    }
-    .sr-shot img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      border: 1px solid rgba(124, 58, 237, 0.25);
-    }
-    .sr-shot figcaption {
-      margin: 10px auto 0;
-      max-width: 520px;
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-
-    /* ── PRINT section ── */
-    .s-print { padding: 0; }
-    .s-print .col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .print-shot {
-      width: min(760px, calc(100vw - 48px));
-      margin: 0 0 24px;
-      border: 4px solid var(--purple);
-      border-radius: 24px;
-      overflow: hidden;
-    }
-    .print-shot img { width: 100%; height: auto; display: block; }
-    .lab-mark {
-      width: 112px;
-      height: 112px;
-      border-radius: 50%;
-      background: #f3e8ff;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-    .lab-mark img { width: 76%; height: 76%; object-fit: contain; }
-    .print-details {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      width: min(760px, calc(100vw - 48px));
-      margin: 0 0 24px;
-    }
-    .print-details figure { margin: 0; }
-    .print-details img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      border-radius: 14px;
-      border: 1px solid rgba(124, 58, 237, 0.25);
-      display: block;
-    }
-    .print-details figcaption {
-      margin-top: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--purple);
-    }
-    .s-print .btn-cta { margin-top: 24px; }
-    @media (max-width: 600px) {
-      .superriso-highlight { padding: 24px 16px 22px; }
-      .print-details { grid-template-columns: 1fr; }
-    }
-
-    /* ════════════════════════════════════════════════════════════════
-       5 · CREATOR BANNER
-    ════════════════════════════════════════════════════════════════ */
-    .s-creator {
-      background: #1A0D3D;
-      padding: 64px 24px 128px;
-      text-align: center;
-    }
-    .s-creator-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .creator-avatar {
-      width: 84px;
-      height: 84px;
-      border-radius: 200px;
-      object-fit: cover;
-      border: 1px solid var(--purple);
-      margin-bottom: 8px;
-    }
-
-    .creator-heading {
-      font-size: clamp(22px, 3.2vw, 34px);
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1.3;
-      max-width: 580px;
-    }
-    .creator-link {
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-    .creator-bio {
-      font-size: 16px;
-      color: var(--purple);
-    }
-    .creator-support {
-      font-size: 16px;
-      color: var(--white);
-      max-width: 480px;
-    }
-    .creator-kofi {
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    /* ════════════════════════════════════════════════════════════════
-       6 · MISSION / CTA
-    ════════════════════════════════════════════════════════════════ */
-    .s-mission {
-      background: url('../assets/view-screen.webp'), linear-gradient(0deg, #F1E1FA, #F1E1FA), url('../assets/hero-bg.webp'), #FBF5FF;
-      background-blend-mode: normal, multiply, normal, multiply;
-      background-size: cover, cover, cover, cover;
-      background-position: bottom center, center, center, center;
-      background-repeat: no-repeat, no-repeat, repeat, no-repeat;
-      min-height: 1110px;
-      padding: 128px 0px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      position: relative;
-      overflow: hidden;
-    }
-    .s-mission .col {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0px;
-      gap: 24px;
-      width: 610px;
-      text-align: center;
-    }
-
-    .mission-heading {
-      font-size: clamp(24px, 3.5vw, 34px);
-      font-weight: 400;
-      color: var(--navy);
-      letter-spacing: 0;
-      line-height: 1.14;
-    }
-    .mission-brand { color: var(--vivid); }
-
-    .mission-sub {
-      font-size: 16px;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-
-    .mission-meta {
-      font-size: 16px;
-      color: var(--text-muted);
-    }
-    .mission-meta a {
-      color: var(--text-dark);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    /* ════════════════════════════════════════════════════════════════
-       7 · FAQ
-    ════════════════════════════════════════════════════════════════ */
-    .s-faq {
-      background: var(--vivid);
-      padding: 128px 0;
-    }
-    .s-faq .col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .faq-heading {
-      font-family: var(--fd);
-      font-size: clamp(36px, 5vw, 48px);
-      font-weight: 400;
-      color: var(--white);
-      letter-spacing: -0.96px;
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    /* ── FAQ accordion ── */
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      border-top: 1px solid rgba(255,255,255,0.18);
-    }
-    .faq-item {
-      border-bottom: 1px solid rgba(255,255,255,0.18);
-    }
-    .faq-btn {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      width: 100%;
-      padding: 20px 0;
-      background: none;
-      border: none;
-      text-align: left;
-      font-family: var(--f);
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--white);
-      line-height: 1.4;
-    }
-    .faq-btn:hover { opacity: 0.85; }
-    .faq-plus {
-      display: block;
-      width: 24px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: 400;
-      color: var(--white);
-      flex-shrink: 0;
-      line-height: 1;
-      transition: transform 0.25s ease;
-    }
-    .faq-item.is-open .faq-plus { transform: rotate(45deg); }
-    .faq-answer {
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 0.35s ease, opacity 0.25s ease;
-    }
-    .faq-answer.is-open {
-      max-height: 800px;
-      opacity: 1;
-    }
-    .faq-answer p {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--text-dim);
-      line-height: 1.65;
-    }
-    .faq-answer p:last-child { padding-bottom: 20px; }
-    .faq-answer p:not(:last-child) { margin-bottom: 10px; }
-
-    /* ════════════════════════════════════════════════════════════════
-       8 · FOOTER
-    ════════════════════════════════════════════════════════════════ */
-    .s-footer {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 64px 24px 128px;
-      gap: 16px;
-      width: 100%;
-      background: linear-gradient(0deg, #DFC760, #DFC760), url('../assets/hero-bg.webp');
-      background-blend-mode: multiply, normal;
-      background-size: cover;
-    }
-    .s-footer p {
-      font-family: 'Manrope', sans-serif;
-      font-weight: 400;
-      font-size: 34px;
-      line-height: 114%;
-      text-align: center;
-      color: #1A0D3D;
-    }
-
-    /* ─── Motion ────────────────────────────────────────────────── */
-
-    /* ── Scroll-reveal ─── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* Staggered reveal */
-    .reveal-stagger > * {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
-    .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.12s; }
-    .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.24s; }
-    .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.36s; }
-    .reveal-stagger.visible > * { opacity: 1; transform: translateY(0); }
-
-    /* Reveal from left */
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-40px);
-      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .reveal-left.visible { opacity: 1; transform: translateX(0); }
-
-    /* Parallax hints */
-    .parallax-slow, .parallax-fast { will-change: transform; }
-
-    /* ── Hero entrance keyframes ─── */
-    @keyframes heroFadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes charSlideUp {
-      from { opacity: 0; transform: translateY(80px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes floatChar {
-      0%, 100% { transform: translateY(0px); }
-      50%       { transform: translateY(-12px); }
-    }
-
-    /* Hero staggered entrance (only elements inside .hero-content) */
-    .hero-logo    { animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.10s both; }
-    .hero-brand   { animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.25s both; }
-    .hero-tagline { animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.40s both; }
-    .hero-content .btn-cta { animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.55s both; }
-    .hero-content .btn-cta.anim-done { animation: none; }
-    .hero-sub     { animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.70s both; }
-    .hero-ipad    { animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.85s both; }
-    .hero-char    { animation: charSlideUp 1.2s cubic-bezier(0.22,1,0.36,1) 0.50s both; }
-    /* Release from animation fill so inline parallax transforms can apply */
-    .hero-ipad.anim-done,
-    .hero-char.anim-done {
-      animation: none;
-      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: transform;
-    }
-
-    /* ── Tool-card hover ─── */
-    .tool-card {
-      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                  box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .tool-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 32px rgba(124, 58, 237, 0.18);
-    }
-
-    /* ── CTA button hover (unified — both buttons share .btn-cta) ─── */
-    .btn-cta {
-      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                  box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .btn-cta:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 16px 32px rgba(124, 58, 237, 0.4);
-    }
-    .btn-cta:active {
-      transform: translateY(0px) scale(0.99);
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: transparent;
-      color: var(--purple);
-      border: 2px solid var(--purple);
-      border-radius: 96px;
-      padding: 18px 30px;
-      font-family: var(--f);
-      font-size: 16px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                  background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                  color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .btn-secondary:hover {
-      background: var(--purple);
-      color: var(--white);
-      transform: translateY(-2px);
-    }
-    .btn-secondary:active {
-      transform: translateY(0);
-    }
-
-    .hero-content .btn-secondary { animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.60s both; }
-
-    .cta-group {
-      display: inline-flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .cta-group .btn-cta,
-    .cta-group .btn-secondary {
-      width: 100%;
-    }
-
-    /* ── FAQ item hover ─── */
-    .faq-item { transition: background 0.2s ease; }
-    .faq-item:hover { background: rgba(255,255,255,0.06); border-radius: 12px; }
-
-    /* ── Reduced motion ─── */
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .reveal-stagger > *, .reveal-left {
-        transition: none; opacity: 1; transform: none;
-      }
-      .hero-logo, .hero-brand, .hero-tagline, .hero-sub,
-      .hero-content .btn-cta, .hero-ipad, .hero-char {
-        animation: none;
-      }
-    }
-
-    /* ─── Responsive ─────────────────────────────────────────────── */
-
-    /* ≤ 1024 px — character repositioned */
-    @media (max-width: 1024px) {
-      .hero-char {
-        width: 1415px;
-        height: auto;
-        right: 0;
-        bottom: -98px;
-        z-index: -1;
-      }
-    }
-
-    /* ≤ 768 px — full mobile pass */
-    @media (max-width: 768px) {
-      /* FIX 1 — character */
-      .hero-char {
-        width: 665px;
-        height: auto;
-        right: 0;
-        bottom: -195px;
-        z-index: -1;
-      }
-
-      /* FIX 3 — iPad fills container */
-      .hero-ipad {
-        width: 100%;
-        max-width: 100%;
-      }
-
-      /* FIX 6 — headings */
-      .hero-tagline   { font-size: 28px; line-height: 1.3; max-width: 100%; }
-      .hero-desc      { font-size: 17px; }
-      .hero-brand     { margin-top: calc(8px - 24px); }
-      .hero-brand .b  { font-size: 28px; }
-      .hero-brand .tm { font-size: 18px; }
-      .sec-heading    { font-size: 20px; }
-      .mission-heading { font-size: 20px; }
-      .banner-display { font-size: 48px; }
-
-      /* FIX 4 — CTA buttons */
-      .cta-group {
-        width: 100%;
-      }
-      .cta-group .btn-cta,
-      .cta-group .btn-secondary {
-        justify-content: center;
-      }
-
-      /* Sections */
-      .s-banner   { padding: 80px 24px; }
-      .s-faq      { padding: 80px 0; }
-      .s-draw-view { gap: 0; padding: 64px 0; }
-      .s-draw,
-      .s-animate,
-      .s-print,
-      .s-view     { padding: 32px 0; }
-      .s-creator  { padding: 64px 24px 80px; }
-
-      /* FIX 5 — mission */
-      .s-mission {
-        height: 728px;
-        padding: 64px 24px;
-        background-size: auto 50%, cover, cover, cover;
-        background-position: bottom center, center, center, center;
-      }
-      .s-mission .col {
-        width: 100%;
-        max-width: 100%;
-      }
-
-      /* FIX 3 — tool cards */
-      .tools-grid { grid-template-columns: 1fr; }
-      .tool-card  { width: 100%; height: auto; min-height: 220px; }
-
-      /* View video */
-      .view-wrap  { height: 300px; }
-
-      /* FIX 6 — ensure side padding on sections */
-      .s-draw .col,
-      .s-animate .col,
-      .s-print .col,
-      .s-view .col,
-      .s-faq .col { padding: 0 24px; }
-    }
-
-    /* ≤ 480 px */
-    @media (max-width: 480px) {
-      .btn-cta        { padding: 18px 24px; font-size: 14px; }
-      .hero-brand     { margin-top: calc(8px - 24px); }
-      .hero-brand .b  { font-size: 24px; }
-      .hero-brand .tm { font-size: 15px; }
-      .hero-tagline   { font-size: 22px; line-height: 1.3; }
-      .hero-desc      { font-size: 16px; }
-      .banner-display { letter-spacing: -0.5px; }
-      .faq-heading    { font-size: 32px; }
-    }
-  </style>
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="preload" href="../assets/fonts/manrope-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/chewy-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/diorama/capa-0.webp" as="image">
+  <link rel="stylesheet" href="../assets/site.css?v=19">
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Ir al contenido principal</a>
+  <a class="skip-link" href="#main">Ir al contenido</a>
 
-  <!-- ══ HERO ═════════════════════════════════════════════════════ -->
-  <section class="s-hero">
-    <div class="hero-content">
-      <img src="../assets/logo.webp" alt="Diorame logo" class="hero-logo" width="260">
-      <p class="hero-brand"><span class="b">Diorame</span><span class="tm">™</span></p>
-      <h1 class="hero-tagline">Dibuja en 2D. Anima. Dale vida en 3D.</h1>
-      <p class="hero-desc">Una herramienta de ilustración gratuita con profundidad automática, cámaras cinemáticas y un estudio de impresión: riso, fotocopia y stencil.</p>
-      <div class="cta-group">
-        <a class="btn-cta" href="https://diorame.dumaker.com/" target="_blank" rel="noopener noreferrer">
-          <img src="../assets/arrow.svg" alt="" aria-hidden="true" class="btn-arrow">
-          Abrir Diorame
-        </a>
-        <a href="https://www.youtube.com/watch?v=Ieb280ncEfA" target="_blank" rel="noopener" class="btn-secondary">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/>
-          </svg>
-          Ver el tutorial
-        </a>
+  <!-- ═══ NAV ═══ -->
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="nav-brand" href="#top" aria-label="Diorame, inicio">
+        <img src="../assets/img/logo-96.webp" width="96" height="61" alt="">
+        Diorame
+      </a>
+      <nav class="nav-links" aria-label="Secciones">
+        <a href="#dibuja">Dibuja</a>
+        <a href="#anima">Anima</a>
+        <a href="#cine">Cine</a>
+        <a href="#super-riso">Super Riso</a>
+        <a href="#imprime">Imprime</a>
+        <a href="#faq">Preguntas</a>
+      </nav>
+      <div class="nav-right">
+        <div class="lang" aria-label="Idioma">
+          <a href="/es/" aria-current="true" lang="es">ES</a>
+          <a href="/en/" lang="en" data-lang="en">EN</a>
+        </div>
+        <a class="btn btn--ink btn--sm no-mobile" href="https://diorame.dumaker.com/" target="_blank" rel="noopener">Abrir Diorame</a>
+        <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu-panel" aria-label="Abrir menú" data-close="Cerrar menú">
+          <span></span><span></span>
+        </button>
       </div>
-      <p class="hero-sub">
-        <strong>Una app de ilustración 2D para escritorio y tablet.</strong>
-        Sin instalación, sin cuenta, funciona completamente en tu navegador, ¡gratis! (para siempre) 👽
-      </p>
     </div>
-    <div class="hero-images">
-      <img src="../assets/ipad.webp" alt="iPad con una ilustración hecha con Diorame" class="hero-ipad" loading="lazy">
-      <img src="../assets/character.webp" alt="Personaje dibujado con Diorame" class="hero-char" loading="lazy">
-    </div>
-  </section>
+    <nav class="menu-panel" id="menu-panel" aria-label="Secciones" hidden>
+      <ul>
+        <li><a href="#dibuja">Dibuja</a></li>
+        <li><a href="#anima">Anima</a></li>
+        <li><a href="#cine">Cine</a></li>
+        <li><a href="#super-riso">Super Riso</a></li>
+        <li><a href="#imprime">Imprime</a></li>
+        <li><a href="#faq">Preguntas</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- ══ BANNER ════════════════════════════════════════════════════ -->
-  <section class="s-banner" aria-label="Tagline">
-    <p class="banner-display reveal">Dibújate algo. Dale vidilla. Gózalo.</p>
-    <p class="banner-sub reveal">Crea ilustraciones 2D por capas con profundidad Z automática y cámaras parallax 3D. Potente de sobra para expresar tu arte, suficientemente simple para empezar en segundos.</p>
-  </section>
+  <a class="to-top" id="to-top" href="#top" aria-label="Volver arriba">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </a>
 
-  <!-- ══ MAIN ══════════════════════════════════════════════════════ -->
   <main id="main">
 
-    <!-- DRAW + VIEW (shared background) ───────────────────────── -->
-    <section class="s-draw-view">
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="top">
+      <div class="wrap grid">
+        <div class="hero-copy">
+          <h1 class="h-display">
+            <span>Dibuja en 2D.</span>
+            <span>Anima.</span>
+            <span>Dale vida en</span>
+            <span class="big"><em class="inks" aria-label="3D."><span class="ink k3" aria-hidden="true">3D.</span><span class="ink k2" aria-hidden="true">3D.</span><span class="ink k1" aria-hidden="true">3D.</span><span class="ink-top" aria-hidden="true">3D.</span></em></span>
+          </h1>
+          <p class="lead">Una app de ilustración gratuita en la que cada capa ocupa su propio lugar en el espacio. Tú dibujas en plano; la cámara hace el resto.</p>
+          <div class="hero-ctas">
+            <button class="btn btn--ink only-mobile" type="button" id="share-btn" data-done="Enlace copiado">
+              Envíate el enlace
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg>
+            </button>
+            <a class="btn btn--ink no-mobile" href="https://diorame.dumaker.com/" target="_blank" rel="noopener">
+              Empieza a dibujar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="link" href="https://www.youtube.com/watch?v=Ieb280ncEfA" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+              Ver el tutorial
+            </a>
+          </div>
+          <p class="mobile-note only-mobile">Diorame se usa en tablet u ordenador. Envíate el enlace y dibuja allí.</p>        </div>
 
-    <!-- DRAW ───────────────────────────────────────────────────── -->
-    <section class="s-draw">
-      <div class="col">
-        <span class="sec-badge reveal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.5 4.5L19.5 8.5M14 6L18 10L9 19H5V15L14 6Z"/><path d="M5 19L5.5 15.5"/></svg> DIBUJA</span>
-        <h2 class="sec-heading reveal">Dibuja sin distracciones con solo dos herramientas. En Diorame, cada capa se posiciona automáticamente en el espacio 3D, sin configuración manual ni líos y sin sliders de profundidad.</h2>
-        <div class="tools-grid reveal-stagger">
-          <div class="tool-card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16.55 12.05L13.55 15.05M14.55 11.05L10.55 15.05M12.05 11.05L9.05 13.55M9.05 9.05C7.25 6.9 9.15 3.65 12.65 4.25C16.05 4.75 18.95 7.85 19.05 12.05C19.15 15.95 18.25 18.15 14.65 19.35C10.65 20.75 4.95 19.05 4.95 14.85C5.05 11.05 10.84 11.2 9.05 9.05Z"/></svg>
-            <h3>Blob</h3>
-            <p>Formas rellenas orgánicas con modos de simetría, dibujar dentro y dibujar detrás</p>
+        <div class="hero-stage">
+          <div class="dio" id="dio" aria-label="Ilustración hecha en Diorame, separada en sus seis capas de profundidad" role="img">
+            <div class="dio-world" id="dio-world">
+              <img class="dio-layer" style="--d:0;--x:3.708;--y:4.772;--w:81.708" src="../assets/diorama/capa-0.webp" width="1471" height="1019" alt="" fetchpriority="high">
+              <img class="dio-layer" style="--d:1;--x:10.958;--y:44.718;--w:68.75"  src="../assets/diorama/capa-1.webp" width="1238" height="569" alt="">
+              <img class="dio-layer" style="--d:2;--x:5.5;--y:51.046;--w:75.708"    src="../assets/diorama/capa-2.webp" width="1363" height="447" alt="">
+              <img class="dio-layer" style="--d:3;--x:27.75;--y:49.651;--w:68.542"  src="../assets/diorama/capa-3.webp" width="1234" height="638" alt="">
+              <img class="dio-layer" style="--d:4;--x:43.208;--y:65.255;--w:4.708"  src="../assets/diorama/capa-4.webp" width="85" height="90" alt="">
+              <img class="dio-layer" style="--d:4.5;--x:27.458;--y:68.204;--w:1.958" src="../assets/diorama/capa-5.webp" width="35" height="38" alt="">
+            </div>
           </div>
-          <div class="tool-card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.52 13.25C7.52 15.25 3.52 18.25 4.02 19.25C5.52 21.25 9.02 16.75 11.02 14.75M16.02 13.25L10.89 8.38L9.44 9.84C8.65 10.62 8.65 11.88 9.44 12.66L11.61 14.84C12.39 15.62 13.65 15.62 14.44 14.84L16.02 13.25ZM16.02 13.25L20.02 9.25L15.02 4.25L10.52 8.75M14.52 8.25L16.52 6.25"/></svg>
-            <h3>Brush</h3>
-            <p>Trazos en tres estilos: fluído, uniforme o tinta, y con grosor ajustable no destructivo</p>
-          </div>
+          <p class="hero-note hand" aria-hidden="true">
+            <span>Cada capa se coloca<br>sola en profundidad.</span>
+          </p>
         </div>
-        <p class="sec-note reveal">Incluye dibujar dentro, dibujar detrás, modo simetría, borrador y una herramienta de texto con 5 fuentes propias. Exporta como PNG, SVG o vídeo (con exportación en alta calidad ×2 real), o guarda tu proyecto como archivo .dior y continúa cuando y donde quieras.</p>
       </div>
     </section>
 
-    <!-- ANIMATE ─────────────────────────────────────────────────── -->
-    <section class="s-animate">
-      <div class="col">
-        <span class="sec-badge reveal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19C5 19 6.5 9 9 9C11.5 9 11 16 13 16C15 16 16 5 19 5"/><circle cx="5" cy="19" r="1" fill="currentColor"/></svg> ANIMA</span>
-        <h2 class="sec-heading reveal">Dale vida a tus capas. Las mismas capas que dibujas se convierten en fotogramas — un flipbook integrado en el lienzo. Sin línea de tiempo, sin rigging, solo cuadro a cuadro.</h2>
-        <div class="tools-grid reveal-stagger">
-          <div class="tool-card">
-            <h3>Cuadro a cuadro</h3>
-            <p>Cada capa es un fotograma. Framerate ajustable (4/6/8 fps), reproducción en bucle o ping-pong, y papel cebolla para animar con referencia.</p>
-          </div>
-          <div class="tool-card">
-            <h3>Animación en movimiento</h3>
-            <p>La animación también funciona en Cinema: mueve la cámara mientras tus fotogramas se reproducen, con profundidad parallax real o aplanada estilo flipbook.</p>
-          </div>
-        </div>
-        <p class="sec-note reveal">Exporta tu animación como vídeo (MP4/WebM), GIF con escala ajustable y bucle o ping-pong, o una secuencia PNG numerada lista para After Effects y otros programas. Animación simple, cuadro a cuadro, fiel al espíritu de Diorame: las restricciones creativas por encima de la complejidad.</p>
+    <!-- ═══ MARQUESINA ═══ -->
+    <div class="marquee" aria-label="Puntos fuertes">
+      <div class="marquee-track">
+        <ul><li>Gratis para siempre</li><li>Sin cuenta</li><li>Sin instalación</li><li>En el navegador</li><li>Escritorio y tablet</li><li>Apple Pencil y stylus</li><li>Exporta PNG, SVG, MP4 y GIF</li><li>Proyectos .dior</li><li>Código abierto</li><li>Hecho por un ilustrador</li></ul>
+        <ul aria-hidden="true"><li>Gratis para siempre</li><li>Sin cuenta</li><li>Sin instalación</li><li>En el navegador</li><li>Escritorio y tablet</li><li>Apple Pencil y stylus</li><li>Exporta PNG, SVG, MP4 y GIF</li><li>Proyectos .dior</li><li>Código abierto</li><li>Hecho por un ilustrador</li></ul>
+      </div>
+    </div>
+
+    <!-- ═══ FICHA ═══ -->
+    <section class="facts" aria-label="Diorame en cifras">
+      <div class="wrap">
+        <ul class="rv">
+          <li><b>0 €</b><span>Ahora y siempre. Sin cuenta, sin trucos.</span></li>
+          <li><b>2</b><span>herramientas de dibujo: Blob y Brush.</span></li>
+          <li><b>11</b><span>movimientos de cámara con parallax real.</span></li>
+          <li><b>13</b><span>efectos de cine, del grano a la niebla.</span></li>
+          <li><b>3</b><span>técnicas de impresión: riso, fotocopia y stencil.</span></li>
+        </ul>
       </div>
     </section>
 
-    <!-- VIEW ───────────────────────────────────────────────────── -->
-    <section class="s-view">
-      <div class="col">
-        <span class="sec-badge sec-badge--view reveal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="2"/><path d="M9.5 8V6.5C9.5 6.22 9.72 6 10 6H14C14.28 6 14.5 6.22 14.5 6.5V8"/><circle cx="12" cy="13.5" r="2.5"/></svg> CINE</span>
-        <h2 class="sec-heading reveal">Aquí es donde todo cobra vida. Aplica movimientos de cámara cinemáticos, profundidad de campo y efectos de postprocesado estilo risografía, entre otros, para convertir tu ilustración en una escena por explorar.</h2>
-        <div class="view-wrap reveal">
-          <video autoplay loop muted playsinline class="view-video" poster="../assets/view-screen.webp">
-            <source src="../assets/hero-video.mp4" type="video/mp4">
+    <!-- ═══ BANDA ═══ -->
+    <section class="band" aria-label="Lema">
+      <div class="wrap">
+        <p class="band-line"><em class="inks" id="band-inks" aria-label="Dibújate algo. Dale vidilla. Gózalo."><span class="ink k3" aria-hidden="true">Dibújate algo.<br>Dale vidilla.<br>Gózalo.</span><span class="ink k2" aria-hidden="true">Dibújate algo.<br>Dale vidilla.<br>Gózalo.</span><span class="ink k1" aria-hidden="true">Dibújate algo.<br>Dale vidilla.<br>Gózalo.</span><span class="ink-top" aria-hidden="true">Dibújate algo.<br>Dale vidilla.<br>Gózalo.</span></em></p>
+        <p class="band-sub rv">Potente de sobra para tu arte. Tan simple que empiezas en segundos.</p>
+      </div>
+    </section>
+
+    <!-- ═══ DIBUJA ═══ -->
+    <section class="sec draw" id="dibuja">
+      <div class="wrap">
+        <div class="grid sec-head">
+          <h2 class="h-1 rv">Dibuja<small>Dos herramientas. Ni una más.</small></h2>
+        </div>
+
+        <div class="grid">
+          <div class="sr-stage rv">
+            <div class="plate plate--video">
+              <video id="draw-video" class="js-autoplay" muted loop playsinline preload="none" poster="../assets/img/dibuja-blob-poster.webp" width="1400" height="1046" aria-label="Timelapse de una ilustración de Diorame: aparecen sus formas, una a una">
+                <source src="../assets/video/dibuja-blob.mp4" type="video/mp4">
+              </video>
+              <span class="plate-tag" id="draw-tag">Blob</span>
+            </div>
+          </div>
+
+          <div class="sr-side" role="group" aria-label="Herramienta">
+            <button class="tech tool-btn" type="button" aria-pressed="true" data-label="Blob"
+              data-video="../assets/video/dibuja-blob.mp4" data-poster="../assets/img/dibuja-blob-poster.webp"
+              data-alt="Timelapse de una ilustración de Diorame: aparecen sus formas, una a una">
+              <span class="tech-name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16.55 12.05L13.55 15.05M14.55 11.05L10.55 15.05M12.05 11.05L9.05 13.55M9.05 9.05C7.25 6.9 9.15 3.65 12.65 4.25C16.05 4.75 18.95 7.85 19.05 12.05C19.15 15.95 18.25 18.15 14.65 19.35C10.65 20.75 4.95 19.05 4.95 14.85C5.05 11.05 10.84 11.2 9.05 9.05Z"/></svg> Blob</span>
+              <span class="tech-desc"><span>Formas rellenas y orgánicas. Con simetría, dibujar dentro y dibujar detrás.</span></span>
+            </button>
+            <button class="tech tool-btn" type="button" aria-pressed="false" data-label="Brush"
+              data-video="../assets/video/dibuja-brush.mp4" data-poster="../assets/img/dibuja-brush-poster.webp"
+              data-alt="Timelapse de la misma ilustración: los trazos de pincel añaden hierba, texturas y detalles">
+              <span class="tech-name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.52 13.25C7.52 15.25 3.52 18.25 4.02 19.25C5.52 21.25 9.02 16.75 11.02 14.75M16.02 13.25L10.89 8.38L9.44 9.84C8.65 10.62 8.65 11.88 9.44 12.66L11.61 14.84C12.39 15.62 13.65 15.62 14.44 14.84L16.02 13.25ZM16.02 13.25L20.02 9.25L15.02 4.25L10.52 8.75M14.52 8.25L16.52 6.25"/></svg> Brush</span>
+              <span class="tech-desc"><span>Trazos fluidos, uniformes o de tinta, con un grosor que puedes cambiar después. Es lo que da la hierba, las texturas y el detalle.</span></span>
+            </button>
+            <p class="sr-about">Y además: borrador, texto con 5 fuentes propias, mover capas y paletas de color fijas. Las restricciones son parte del diseño, no un límite. Exporta a PNG, SVG o vídeo, o guarda tu proyecto en un archivo .dior.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ANIMA ═══ -->
+    <section class="sec anim" id="anima">
+      <div class="wrap">
+        <div class="grid sec-head">
+          <h2 class="h-1 rv">Anima<small>Cada capa, un fotograma.</small></h2>
+        </div>
+
+        <div class="grid anim-grid">
+          <div class="anim-side">
+            <p class="lead rv">Las mismas capas que dibujas se convierten en fotogramas. Un flipbook dentro del lienzo: sin línea de tiempo, sin rigging, cuadro a cuadro.</p>
+            <dl class="specs rv">
+              <div><dt>Ritmo</dt><dd>4, 6 u 8 fotogramas por segundo</dd></div>
+              <div><dt>Repetición</dt><dd>Bucle o ping-pong</dd></div>
+              <div><dt>Referencia</dt><dd>Papel cebolla</dd></div>
+              <div><dt>En Cine</dt><dd>La cámara se mueve mientras se anima</dd></div>
+              <div><dt>Exporta</dt><dd>MP4, WebM, GIF o secuencia PNG</dd></div>
+            </dl>
+          </div>
+
+          <div class="flip rv" id="flip">
+            <div class="flip-stage" aria-label="Demostración de animación cuadro a cuadro: una abeja vuela con papel cebolla" role="img">
+              <img class="flip-ghost g2" src="../assets/img/abeja.webp" alt="" width="300" height="319">
+              <img class="flip-ghost g1" src="../assets/img/abeja.webp" alt="" width="300" height="319">
+              <img class="flip-bee" src="../assets/img/abeja.webp" alt="" width="300" height="319">
+              <span class="flip-count num" id="flip-count">1 / 8</span>
+            </div>
+            <div class="flip-ui">
+              <div class="seg" role="group" aria-label="Fotogramas por segundo">
+                <button type="button" data-fps="4">4 fps</button>
+                <button type="button" data-fps="6">6 fps</button>
+                <button type="button" data-fps="8" aria-pressed="true">8 fps</button>
+              </div>
+              <div class="seg" role="group" aria-label="Repetición">
+                <button type="button" data-mode="loop" aria-pressed="true">Bucle</button>
+                <button type="button" data-mode="pingpong">Ping-pong</button>
+              </div>
+              <button type="button" class="chip" id="flip-onion" aria-pressed="true">Papel cebolla</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CINE ═══ -->
+    <section class="sec cine" id="cine">
+      <div class="wrap">
+        <div class="grid sec-head">
+          <h2 class="h-1 rv">Cine<small>Aquí es donde todo cobra vida.</small></h2>
+        </div>
+
+        <div class="cine-screen rv">
+          <video class="js-autoplay" muted loop playsinline preload="none" poster="../assets/img/cine-poster.webp" width="1280" height="804" aria-label="Escena de Diorame en modo Cine: la cámara recorre las capas de una ilustración">
+            <source src="../assets/video/cine.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="storytelling-highlight reveal">
-          <span class="st-eyebrow">Preset de cámara destacado</span>
-          <h3>Narrativa</h3>
-          <p class="st-oneliner">Una cámara que lee tu ilustración y la convierte en cine.</p>
-          <p class="st-support">En vez de un recorrido prefijado, la cámara lee tus capas y compone un travelling que viaja por ellas — de fondo a frente, deteniéndose en cada una. Encuadre inteligente, movimiento orgánico y enfoque que sigue a la cámara. Cero configuración, un clic.</p>
-        </div>
-        <div class="superriso-highlight reveal">
-          <span class="sr-eyebrow">Efecto destacado</span>
-          <h3>Super Riso. Impreso, fotocopiado o pintado con spray.</h3>
-          <p class="sr-body">Tres técnicas artesanales aplicadas a cada frame de tu escena, en tiempo real. Riso: tintas que no casan del todo, grano, papel con fibra y ese borde de tinta que no perdona. Fotocopia: copy art punk, copia de copia, tóner sucio, coloreado a rotulador o acuarela. Stencil: plantilla y spray, goteras, salpicaduras y la niebla que se cuela bajo el cartón. Elige un estilo y ajústalo. ¿Quieres más? Activa la reimpresión animada y tu escena se reimprime una y otra vez, como un stop motion hecho a mano.</p>
-          <div class="sr-compare">
-            <img class="sr-compare-base" src="../assets/sr-base-960.webp" srcset="../assets/sr-base-480.webp 480w, ../assets/sr-base-960.webp 960w, ../assets/sr-base-1600.webp 1600w" sizes="(max-width: 800px) 92vw, 720px" width="960" height="717" alt="Ilustración original: un rostro de piedra de perfil que mira un mar rojo en calma, entre ramas y rocas." loading="lazy" decoding="async">
-            <img class="sr-compare-after" src="../assets/sr-riso-960.webp" srcset="../assets/sr-riso-480.webp 480w, ../assets/sr-riso-960.webp 960w, ../assets/sr-riso-1600.webp 1600w" sizes="(max-width: 800px) 92vw, 720px" width="960" height="717" alt="La misma ilustración impresa en riso: tintas roja y verde azulada con grano y bordes con ligero desregistro sobre papel crema." loading="lazy" decoding="async">
-            <span class="sr-compare-tag sr-compare-tag--l">Original</span>
-            <span class="sr-compare-tag sr-compare-tag--r">Riso</span>
-            <span class="sr-compare-handle" aria-hidden="true"></span>
-            <input class="sr-compare-range" type="range" min="0" max="100" value="50" aria-label="Comparar el original con el resultado">
+
+        <div class="grid cine-grid">
+          <div class="cine-col rv">
+            <h3 class="h-3">11 movimientos de cámara</h3>
+            <ul class="cams">
+              <li>Avance</li><li>Espiral</li><li>Yoyo</li><li>Pulso</li><li>Giro</li><li>Arco</li><li>Grúa</li><li>Travelling</li><li>Órbita</li><li>Zoom</li><li class="is-star">Narrativa</li>
+            </ul>
+            <p class="cine-star"><span class="hand">Narrativa</span> lee tus capas y compone sola un travelling de fondo a frente, deteniéndose en cada una. El foco viaja con la cámara. Un clic.</p>
           </div>
-          <div class="sr-thumbs" role="group" aria-label="Elige una técnica">
-            <button type="button" class="sr-thumb is-active" aria-pressed="true" data-label="Riso" data-alt="La misma ilustración impresa en riso: tintas roja y verde azulada con grano y bordes con ligero desregistro sobre papel crema." data-src="../assets/sr-riso-960.webp" data-srcset="../assets/sr-riso-480.webp 480w, ../assets/sr-riso-960.webp 960w, ../assets/sr-riso-1600.webp 1600w">
-              <img src="../assets/sr-riso-480.webp" width="480" height="358" alt="" loading="lazy" decoding="async">
-              <span>Riso</span>
-            </button>
-            <button type="button" class="sr-thumb" aria-pressed="false" data-label="Fotocopia" data-alt="La misma ilustración como fotocopia coloreada a mano: tóner negro, acuarela azul en el rostro y rotulador rojo." data-src="../assets/sr-fotocopia-960.webp" data-srcset="../assets/sr-fotocopia-480.webp 480w, ../assets/sr-fotocopia-960.webp 960w, ../assets/sr-fotocopia-1600.webp 1600w">
-              <img src="../assets/sr-fotocopia-480.webp" width="480" height="358" alt="" loading="lazy" decoding="async">
-              <span>Fotocopia</span>
-            </button>
-            <button type="button" class="sr-thumb" aria-pressed="false" data-label="Stencil" data-alt="La misma ilustración como arte de stencil con spray: rojo y negro planos, con goteras y salpicaduras sobre papel claro." data-src="../assets/sr-stencil-960.webp" data-srcset="../assets/sr-stencil-480.webp 480w, ../assets/sr-stencil-960.webp 960w, ../assets/sr-stencil-1600.webp 1600w">
-              <img src="../assets/sr-stencil-480.webp" width="480" height="358" alt="" loading="lazy" decoding="async">
-              <span>Stencil</span>
-            </button>
+          <div class="cine-col rv">
+            <h3 class="h-3">13 efectos</h3>
+            <ul class="fx">
+              <li>Super Riso</li><li>Trama riso</li><li>Pixel art</li><li>Profundidad de campo</li><li>Grano de película</li><li>Aberración cromática</li><li>Niebla</li><li>Brillo</li><li>Viñeta</li><li>Distorsión de lente</li><li>Partículas</li><li>Grunge</li><li>Vibración de línea</li>
+            </ul>
+            <p class="muted">Todos combinables. Y cámara en mano opcional, en tres intensidades.</p>
           </div>
-          <ul class="sr-list">
-            <li>Riso: hasta 8 tintas, trama de grano o de puntos, papel y desregistro ajustables</li>
-            <li>Fotocopia: generaciones, suciedad real, papeles flúor y color a mano con rotulador o acuarela</li>
-            <li>Stencil: de 1 a 4 plantillas, goteras, salpicaduras, nube y soportes de pared, cartón o lienzo</li>
-            <li>Estilos de un clic, reimpresión animada a 4–12 fps, exporta en PNG HQ / MP4 / GIF a calidad completa</li>
-          </ul>
-          <figure class="sr-shot">
-            <img src="../assets/diorame-cine-super-riso-720.webp" srcset="../assets/diorame-cine-super-riso-720.webp 720w, ../assets/diorame-cine-super-riso-1440.webp 1440w" sizes="(max-width: 800px) 92vw, 696px" width="720" height="450" alt="Diorame en modo Cine con el panel de Super Riso abierto a la derecha y un paisaje impreso en riso en el lienzo." loading="lazy" decoding="async">
-            <figcaption>Super Riso dentro del modo Cine de Diorame. Funciona en movimiento: con la cámara, el wiggle, las partículas y el stop motion. En iPad y equipos modestos se aligera solo.</figcaption>
-          </figure>
         </div>
-        <p class="sec-note reveal">Aplica 13 efectos de postprocesado a tu ilustración: trama de risografía procedural, Super Riso, Pixel Art con cuantización de paleta y dithering Bayer, profundidad de campo, grano de película, aberración cromática, niebla atmosférica, brillo y más. Más 11 modos de cámara cinemáticos con parallax y vibración de cámara en mano opcional.</p>
       </div>
     </section>
 
-    <!-- PRINT ──────────────────────────────────────────────────── -->
-    <section class="s-print">
-      <div class="col">
-        <span class="sec-badge reveal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V4h10v5"/><path d="M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><rect x="7" y="14" width="10" height="6" rx="1"/></svg> IMPRIME</span>
-        <h2 class="sec-heading reveal">Del boceto a la plancha: Diorame dibuja, Super Riso imprime. Abre cualquier imagen o un proyecto .dior en Super Riso Lab, gratis y en tu navegador.</h2>
-        <figure class="print-shot reveal">
-          <img src="../assets/lab-dior-encuadrado-960.webp" srcset="../assets/lab-dior-encuadrado-960.webp 960w, ../assets/lab-dior-encuadrado-1600.webp 1600w" sizes="(max-width: 800px) 92vw, 752px" width="960" height="600" alt="Super Riso Lab con un proyecto .dior encuadrado en el lienzo y, a la derecha, los paneles de técnica, estilo y tintas." loading="lazy" decoding="async">
-        </figure>
-        <div class="tools-grid reveal-stagger">
-          <div class="tool-card">
-            <span class="lab-mark"><img src="../assets/lab-personaje-marca-256.webp" width="256" height="327" alt="Mascota de Super Riso Lab: personaje rosa con sombrero alto negro y gafas de sol" loading="lazy" decoding="async"></span>
-            <h3>Super Riso Lab</h3>
-            <p>Elige tu papel (natural, prensa, acuarela, washi, reciclado, kraft o verjurado) y tu técnica: Riso, Fotocopia o Stencil. Imprime hojas de A6 a A2 hasta 600 ppp, tiradas de variaciones, bucle de vídeo y una plancha por tinta lista para una riso real.</p>
-          </div>
-          <div class="tool-card">
-            <h3>Proyectos .dior</h3>
-            <p>Tu proyecto es un solo archivo, con miniatura. Ábrelo en el Lab y encuádralo con zoom y mano como en un programa de dibujo: todo se redibuja en vectorial, así que exportas nítido a cualquier tamaño. Con «Sin efecto» exportas tu dibujo tal cual en alta resolución (A4 a 300 ppp y más).</p>
-          </div>
+    <!-- ═══ SUPER RISO ═══ -->
+    <section class="sec sr" id="super-riso">
+      <div class="wrap">
+        <div class="grid sec-head">
+          <h2 class="h-1 rv">Super Riso<small>Impreso, fotocopiado o pintado con spray.<br class="no-mobile"> En tiempo real.</small></h2>
         </div>
-        <div class="print-details reveal">
-          <figure>
-            <img src="../assets/sr-detalle-riso-800.webp" srcset="../assets/sr-detalle-riso-800.webp 800w, ../assets/sr-detalle-riso-1600.webp 1600w" sizes="(max-width: 600px) 92vw, 250px" width="800" height="500" alt="Detalle de la impresión riso a tamaño real: grano de tinta y fibra del papel." loading="lazy" decoding="async">
-            <figcaption>Grano</figcaption>
-          </figure>
-          <figure>
-            <img src="../assets/sr-detalle-fotocopia-800.webp" srcset="../assets/sr-detalle-fotocopia-800.webp 800w, ../assets/sr-detalle-fotocopia-1600.webp 1600w" sizes="(max-width: 600px) 92vw, 250px" width="800" height="500" alt="Detalle de la fotocopia a tamaño real: tóner, acuarela que sangra y papel con textura." loading="lazy" decoding="async">
-            <figcaption>Tóner</figcaption>
-          </figure>
-          <figure>
-            <img src="../assets/sr-detalle-stencil-800.webp" srcset="../assets/sr-detalle-stencil-800.webp 800w, ../assets/sr-detalle-stencil-1600.webp 1600w" sizes="(max-width: 600px) 92vw, 250px" width="800" height="500" alt="Detalle del stencil a tamaño real: punteado de spray, goteras y salpicaduras." loading="lazy" decoding="async">
-            <figcaption>Spray</figcaption>
-          </figure>
+
+        <div class="grid">
+          <div class="sr-stage rv">
+            <span class="sr-peek" aria-hidden="true"><img src="../assets/img/super-riso-mascota.webp" width="320" height="408" alt="" loading="lazy" decoding="async"></span>
+            <div class="plate" id="plate" data-big="../assets/img/sr-riso-1600.webp">
+              <img id="plate-img" src="../assets/img/sr-riso-960.webp" srcset="../assets/img/sr-riso-960.webp 960w, ../assets/img/sr-riso-1600.webp 1600w" sizes="(max-width: 960px) 92vw, 64vw" width="960" height="717" alt="La ilustración impresa en riso: tintas roja y verde azulada con grano y desregistro sobre papel crema." loading="lazy" decoding="async">
+              <span class="plate-tag" id="plate-tag">Riso</span>
+              <span class="loupe" id="loupe" aria-hidden="true"></span>
+            </div>
+            <figure class="proof">
+              <img src="../assets/img/sr-base-960.webp" width="960" height="717" alt="La ilustración original, sin efecto: un rostro de piedra de perfil que mira un mar rojo en calma." loading="lazy" decoding="async">
+              <figcaption>El original</figcaption>
+            </figure>
+            <p class="sr-hint hand" aria-hidden="true">
+              <svg viewBox="0 0 60 44" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M56 36C40 38 20 30 10 10"/><path d="M6 20l3-11 10 4"/></svg>
+              <span id="sr-hint-text" data-touch="Toca para ampliar">Pasa la lupa</span>
+            </p>
+          </div>
+
+          <div class="sr-side" role="group" aria-label="Técnica">
+            <button class="tech" type="button" aria-pressed="true"
+              data-label="Riso" data-src="../assets/img/sr-riso-960.webp" data-big="../assets/img/sr-riso-1600.webp"
+              data-alt="La misma ilustración impresa en riso: tintas roja y verde azulada con grano y desregistro sobre papel crema.">
+              <span class="tech-name">Riso <span class="tech-inks" aria-hidden="true"><i style="background:#e8403a"></i><i style="background:#2b8f8a"></i></span></span>
+              <span class="tech-desc"><span>Hasta 8 tintas que no casan del todo, trama de grano o de puntos, papel con fibra y ese borde de tinta que no perdona.</span></span>
+            </button>
+            <button class="tech" type="button" aria-pressed="false"
+              data-label="Fotocopia" data-src="../assets/img/sr-fotocopia-960.webp" data-big="../assets/img/sr-fotocopia-1600.webp"
+              data-alt="La misma ilustración como fotocopia coloreada a mano: tóner negro, acuarela azul y rotulador rojo.">
+              <span class="tech-name">Fotocopia <span class="tech-inks" aria-hidden="true"><i style="background:#1d1b1f"></i><i style="background:#2f86d6"></i><i style="background:#e8403a"></i></span></span>
+              <span class="tech-desc"><span>Copy art punk: copia de copia, tóner sucio, papeles flúor y color a mano con rotulador o acuarela.</span></span>
+            </button>
+            <button class="tech" type="button" aria-pressed="false"
+              data-label="Stencil" data-src="../assets/img/sr-stencil-960.webp" data-big="../assets/img/sr-stencil-1600.webp"
+              data-alt="La misma ilustración como stencil con spray: rojo y negro planos, con goteras y salpicaduras.">
+              <span class="tech-name">Stencil <span class="tech-inks" aria-hidden="true"><i style="background:#d8403c"></i><i style="background:#1d1b1f"></i></span></span>
+              <span class="tech-desc"><span>De 1 a 4 plantillas y spray de verdad: goteras, salpicaduras y la niebla que se cuela bajo el cartón.</span></span>
+            </button>
+            <a class="link" href="https://super-riso.dumaker.com" target="_blank" rel="noopener">
+              Abrir Super Riso Lab
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </a>
+            <p class="sr-about">Tres técnicas artesanales, aplicadas en tiempo real a lo que ve la cámara. Elige un estilo, ajusta y exporta a calidad completa.</p>
+          </div>
+
+
         </div>
-        <p class="sec-note reveal">En escritorio, Exportar › Super Riso ↗ abre tu dibujo en el Lab con el mismo encuadre que tenías en pantalla, y «‹ Diorame» te devuelve. Mismo diseño, mismo tema claro y oscuro, mismas tipografías e iconos.</p>
-        <a class="btn-cta reveal" href="https://super-riso.dumaker.com" target="_blank" rel="noopener">
-          <img src="../assets/arrow.svg" alt="" aria-hidden="true" class="btn-arrow">
-          Abrir Super Riso Lab
-        </a>
+        <div class="doors">
+          <article class="door rv">
+            <svg class="door-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="2"/><path d="M9.5 8V6.5c0-.28.22-.5.5-.5h4c.28 0 .5.22.5.5V8"/><circle cx="12" cy="13.5" r="2.5"/></svg>
+            <h3 class="h-3">Dentro de Diorame, en Cine</h3>
+            <p>Super Riso es uno de los efectos del modo Cine. Se aplica a cada fotograma mientras la cámara se mueve, así que tu escena y tu animación salen impresas. Con reimpresión animada de 4 a 12 fps, como un stop motion, y exportación a PNG HQ, MP4 y GIF a calidad completa.</p>
+          </article>
+          <article class="door rv">
+            <img class="door-ico door-ico--img" src="../assets/img/super-riso-mascota.webp" width="320" height="408" alt="" loading="lazy">
+            <h3 class="h-3">Fuera, en Super Riso Lab</h3>
+            <p>Desde Dibuja, <b>Exportar › Super Riso</b> abre tu dibujo en el estudio de impresión con el mismo encuadre que tenías en pantalla. Allí eliges papel, tamaño de hoja y lo preparas para imprimir de verdad.</p>
+            <a class="link" href="#imprime">Ver el Lab
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+            </a>
+          </article>
+        </div>
       </div>
     </section>
 
-    </section><!-- /s-draw-view -->
+    <!-- ═══ IMPRIME ═══ -->
+    <section class="sec print" id="imprime">
+      <div class="wrap">
+        <div class="grid sec-head">
+          <h2 class="h-1 rv">Imprime<small>Del boceto a la plancha.</small></h2>
+        </div>
 
-    <!-- CREATOR BANNER ─────────────────────────────────────────── -->
-    <section class="s-creator">
-      <div class="s-creator-inner reveal">
-        <img src="../assets/dumaker.webp" alt="Dumaker" class="creator-avatar" width="84" height="84" loading="lazy">
-        <p class="creator-heading">Diorame es una idea de <a href="https://www.instagram.com/dumaker/" target="_blank" rel="noopener noreferrer" class="creator-link">@dumaker</a></p>
-        <p class="creator-bio">Illustrator™, Designer™ y Bacín™ de Albacete, España</p>
-        <p class="creator-support">Diorame es un proyecto libre e independiente. Si quieres apoyarlo, puedes hacerlo <a href="https://ko-fi.com/dumaker" target="_blank" rel="noopener noreferrer" class="creator-kofi">en mi ko-fi</a></p>
+        <div class="grid print-grid">
+          <figure class="print-stage rv">
+            <div class="canvas-card">
+              <img src="../assets/img/lab-interfaz-1600.webp" srcset="../assets/img/lab-interfaz-1000.webp 1000w, ../assets/img/lab-interfaz-1600.webp 1600w, ../assets/img/lab-interfaz-2400.webp 2400w" sizes="(max-width: 960px) 92vw, 58vw" width="1600" height="940" alt="Super Riso Lab con el paisaje de Diorame impreso en riso sobre la hoja y, a la derecha, los paneles de encuadre, técnica, estilo y tintas." loading="lazy" decoding="async">
+            </div>
+          </figure>
+
+          <div class="print-side">
+            <p class="lead rv">Super Riso Lab es el estudio de impresión de Diorame. Gratis y en el navegador. Abre cualquier imagen o tu proyecto .dior: todo se redibuja en vectorial, así que sale nítido a cualquier tamaño.</p>
+            <dl class="specs rv">
+              <div><dt>Hojas</dt><dd>De A6 a A2, hasta 600 ppp</dd></div>
+              <div><dt>Tiradas</dt><dd>Variaciones de la misma impresión</dd></div>
+              <div><dt>Planchas</dt><dd>Una por tinta, para una riso real</dd></div>
+              <div><dt>Vídeo</dt><dd>La impresión en bucle</dd></div>
+              <div><dt>Sin efecto</dt><dd>Tu dibujo tal cual, en alta</dd></div>
+            </dl>
+            <a class="btn btn--ink rv" href="https://super-riso.dumaker.com" target="_blank" rel="noopener">
+              Abrir Super Riso Lab
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="papers rv">
+          <div class="papers-head">
+            <h3 class="h-3">Siete papeles</h3>
+            <p class="hand papers-note">Pruébalos: cambian el papel de esta página.</p>
+          </div>
+          <div class="papers-list" role="group" aria-label="Papel de la página">
+            <button type="button" class="paper" aria-pressed="true"  data-paper="natural"   data-color="#f4f0e8" style="--c:#f4f0e8"><i></i>Natural</button>
+            <button type="button" class="paper" aria-pressed="false" data-paper="prensa"    data-color="#ece6d6" style="--c:#ece6d6"><i></i>Prensa</button>
+            <button type="button" class="paper" aria-pressed="false" data-paper="acuarela"  data-color="#f6f3ee" style="--c:#f6f3ee"><i></i>Acuarela</button>
+            <button type="button" class="paper" aria-pressed="false" data-paper="washi"     data-color="#f3eee4" style="--c:#f3eee4"><i></i>Washi</button>
+            <button type="button" class="paper" aria-pressed="false" data-paper="reciclado" data-color="#e2dbcf" style="--c:#e2dbcf"><i></i>Reciclado</button>
+            <button type="button" class="paper" aria-pressed="false" data-paper="kraft"     data-color="#c4a27f" style="--c:#c4a27f"><i></i>Kraft</button>
+            <button type="button" class="paper" aria-pressed="false" data-paper="verjurado" data-color="#d2ab7d" style="--c:#d2ab7d"><i></i>Verjurado</button>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- MISSION ────────────────────────────────────────────────── -->
-    <section class="s-mission">
-      <div class="col">
-        <h2 class="mission-heading reveal"><span class="mission-brand">Diorame</span> es la app de dibujo que siempre hubiera querido tener</h2>
-        <h2 class="mission-heading reveal">Así que decidí hacerla realidad</h2>
-        <p class="mission-sub reveal">Una herramienta creativa gratuita en el navegador, para ilustrar en 2D y darle vida en 3D, como un diorama digital, ¡sin complicaciones!</p>
-        <a class="btn-cta reveal" href="https://diorame.dumaker.com/" target="_blank" rel="noopener noreferrer">
-          <img src="../assets/arrow.svg" alt="" aria-hidden="true" class="btn-arrow">
-          Empieza a dibujar con Diorame
-        </a>
-        <p class="mission-meta">Diorame está inspirado en <a href="https://www.iorama.studio/graintouch" target="_blank" rel="noopener noreferrer">Graintouch</a>
-        <br>Construido con vibe coding · Hecho en Albacete, España</p>
-              </div>
+    <!-- ═══ AUTOR ═══ -->
+    <section class="sec maker" id="autor">
+      <div class="wrap">
+        <h2 class="maker-title rv">La app de dibujo que siempre quise tener. <span class="hand">Así que la hice.</span></h2>
+        <div class="grid maker-grid">
+          <div class="maker-who rv">
+            <img src="../assets/img/dumaker-192.webp" width="192" height="192" alt="Dumaker" loading="lazy">
+            <p><b>Moisés, alias Dumaker.</b><br>Ilustrador y diseñador en Albacete.</p>
+          </div>
+          <div class="maker-text rv">
+            <p>Llevo años dibujando y diseñando, y siempre eché de menos una herramienta así: simple como un cuaderno, con la textura de una risografía y la magia de un diorama. No soy programador, así que la construyo con la IA como copiloto: cada función, cada restricción y cada detalle salen de mi mirada de ilustrador, y la IA los traduce a código.</p>
+            <p>Cientos de horas después, Diorame es gratis, sin cuenta y de código abierto, porque una herramienta hecha para artistas debería pertenecer a los artistas. Si te gusta y quieres apoyarlo, <a href="https://ko-fi.com/dumaker" target="_blank" rel="noopener">invítame a un café en Ko-fi</a>.</p>
+            <a class="btn btn--ink no-mobile" href="https://diorame.dumaker.com/" target="_blank" rel="noopener">
+              Empieza a dibujar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- FAQ ────────────────────────────────────────────────────── -->
-    <section class="s-faq" id="faq" aria-label="Preguntas Frecuentes" itemscope itemtype="https://schema.org/FAQPage">
-      <div class="col">
-        <h2 class="faq-heading reveal">Preguntas Frecuentes</h2>
-        <div class="faq-list">
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Qué es Diorame?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Diorame es una herramienta de ilustración gratuita en el navegador que te permite dibujar en 2D y dar vida a tu trabajo en 3D al instante. Cada capa se coloca automáticamente a una profundidad diferente, creando efectos parallax brutales y movimientos de cámara cinemáticos, y todo sin necesidad de conocimientos de 3D o controles complejos.</p>
-            </div>
+    <!-- ═══ PREGUNTAS ═══ -->
+    <section class="sec faq" id="faq" itemscope itemtype="https://schema.org/FAQPage">
+      <div class="wrap grid">
+        <aside class="faq-aside">
+          <h2 class="h-1">Preguntas</h2>
+          <ul class="faq-nav"><li><a href="#faq-empezar">Empezar</a></li><li><a href="#faq-dibujar">Dibujar y animar</a></li><li><a href="#faq-cine">Cine</a></li><li><a href="#faq-riso">Super Riso e impresión</a></li><li><a href="#faq-proyecto">Sobre el proyecto</a></li></ul>
+        </aside>
+        <div class="faq-body">
+          <div class="faq-group" id="faq-empezar">
+            <h3 class="faq-gname">Empezar</h3>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Qué es Diorame?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Una herramienta de ilustración gratuita en el navegador para dibujar en 2D y dar vida a tu trabajo en 3D al instante. Cada capa se coloca sola a una profundidad distinta, con parallax y movimientos de cámara cinemáticos, sin conocimientos de 3D ni controles complejos.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Es gratis? ¿Necesito crear una cuenta?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Completamente gratis, sin cuenta y para siempre. No hay truco: abres la app y empiezas a dibujar. Sin instalación ni registro.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿En qué dispositivos y navegadores funciona?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>En cualquier navegador moderno de escritorio o tablet: Chrome, Firefox, Safari y Edge. Los móviles no están soportados, por diseño: en una pantalla tan pequeña no hay sitio para sacarle partido. Super Riso Lab sí funciona en móvil, aunque está pensado para escritorio.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Funciona con Apple Pencil o un stylus?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Sí. Diorame está optimizado para tablet y funciona con cualquier lápiz compatible con tu navegador, Apple Pencil incluido. Los gestos para zoom, desplazamiento, órbita y deshacer o rehacer también funcionan.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Es una alternativa a Procreate, Illustrator u otras apps de dibujo?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>No pretende reemplazar a Procreate, Fresco, Illustrator o Clip Studio Paint, que son herramientas profesionales con años de desarrollo. Diorame es otra cosa: una herramienta de ilustración centrada en la simplicidad, la estética riso y la profundidad 3D automática. Piénsalo menos como un competidor y más como un espacio creativo que no habías tenido antes.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Qué lo hace diferente de otras apps de dibujo?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>La mayoría de apps de dibujo son planas. Diorame coloca cada capa en el espacio 3D, así que al pasar al modo Cine tienes parallax real y movimientos de cámara cinemáticos, sin rigging ni posicionamiento manual. Es la única herramienta de dibujo gratuita en el navegador construida alrededor de la idea de diorama.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Es obligatorio usar las funciones 3D y de animación?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Para nada. Diorame es, ante todo, una app de dibujo. Blob, Brush, las capas, las paletas y los modificadores están pensados para que dibujar sea simple y disfrutable por sí solo. El 3D, las cámaras y los efectos están ahí cuando los quieras.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Algún consejo antes de empezar?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Guarda a menudo. Diorame funciona en el navegador y, como cualquier app web, puede cerrarse por accidente; mantén tu archivo .dior a mano. Y para la mejor calidad de vídeo, además del exportador MP4 integrado, puedes usar la grabación de pantalla de tu dispositivo.</p></div></div>
+            </details>
           </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Es Diorame una alternativa a Procreate, Illustrator u otras apps de dibujo?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Diorame no pretende reemplazar a Procreate, Adobe Fresco, Adobe Illustrator o Clip Studio Paint, éstas son herramientas profesionales con años de desarrollo. Diorame es algo diferente: una herramienta de ilustración gratuita en el navegador centrada en la simplicidad, la estética tipo risografía y la profundidad 3D automática. Si quieres una app de dibujo sin instalación ni cuenta que convierte tus ilustraciones por capas en escenas 3D cinemáticas, Diorame es la única que hace exactamente eso. Piénsalo menos como un competidor y más como un espacio creativo que nunca antes habías tenido.</p>
-            </div>
+          <div class="faq-group" id="faq-dibujar">
+            <h3 class="faq-gname">Dibujar y animar</h3>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Qué herramientas de dibujo tiene?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Dos principales: Blob, para formas rellenas y orgánicas, y Brush, para trazos fluidos, uniformes o de tinta. Además, borrador, texto con 5 fuentes propias y una herramienta para mover capas enteras. Los modificadores incluyen simetría, dibujar dentro, dibujar detrás y modo orgánico.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Puedo animar?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Sí. Diorame convierte tus capas en fotogramas: un flipbook construido sobre el mismo sistema de capas que ya usas. Activa la animación dentro de Dibuja, ajusta el ritmo y reprodúcela en bucle o ping-pong. El papel cebolla te deja ver los fotogramas vecinos mientras dibujas.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Necesito saber animar?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>No. Si sabes dibujar en capas, sabes animar. Sin líneas de tiempo, sin keyframes y sin rigging: dibujas cada fotograma y le das al play.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿En qué formatos puedo exportar animaciones?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Vídeo MP4 o WebM con bucles configurables, GIF animado con escala ajustable y bucle o ping-pong, o una secuencia PNG numerada para montarla en After Effects u otros programas.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Tiene sonido?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Sí, efectos de sonido opcionales: pequeños sonidos que responden a lo que haces para una sesión más inmersiva. Vienen desactivados y los activas cuando quieras.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Qué es un archivo .dior y cómo guardo mis proyectos?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Es el formato de proyecto de Diorame: un solo archivo con miniatura en el que viaja todo tu dibujo. Hay Guardar, Guardar como y Duplicar. En Chrome y Edge, Guardar sobrescribe el archivo; en Safari y Firefox, guardar es descargar. Con Diorame instalado como app, un doble clic en un .dior lo abre directamente.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Puedo exportar mis ilustraciones?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Sí: PNG, SVG, SVGZ y vídeo WebM o MP4 con la cámara en movimiento. La exportación en alta calidad redibuja cada trazo y cada efecto al doble de resolución, no es un escalado, así que el resultado es nítido de verdad.</p></div></div>
+            </details>
           </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Es gratis? ¿Necesito crear una cuenta?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Completamente gratis, sin cuenta. Y para siempre. No hay truco. Abre la app y empieza a dibujar. Sin instalación, sin registro.</p>
-            </div>
+          <div class="faq-group" id="faq-cine">
+            <h3 class="faq-gname">Cine</h3>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Cuáles son los movimientos de cámara?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Once: Avance, Espiral, Yoyo, Pulso, Giro, Arco, Grúa, Travelling, Órbita, Zoom y Narrativa. Todos usan la profundidad real de tus capas. Puedes añadir cámara en mano en tres intensidades y ajustar la velocidad general.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Qué es la cámara Narrativa?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Un movimiento que anima tu dibujo solo. En vez de un recorrido fijo, lee tus capas y compone un travelling que viaja por ellas de fondo a frente, deteniéndose en cada una. Cada dibujo genera su propia ruta. Con profundidad de campo, el foco viaja con la cámara. Un clic, cero configuración.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Qué efectos incluye?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Trece: Super Riso, trama riso, pixel art, profundidad de campo, grano de película, aberración cromática, niebla, brillo, viñeta, distorsión de lente, partículas, grunge y vibración de línea. Todos ajustables y combinables.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Qué es el modo Pixel Art?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Me encanta el pixel art, así que no podía faltar: convierte tu ilustración en pixel art en tiempo real, con tamaño de píxel de 2 a 16, de 2 a 32 colores y tramado Bayer ajustable. Se combina con el resto de efectos.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Usar varios efectos afecta al rendimiento?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Puede. Combinar muchos efectos en un equipo modesto puede ralentizar la cámara en Cine. Si lo notas, reduce los efectos activos o su intensidad. Dibuja siempre va fluido, con los efectos que sea.</p></div></div>
+            </details>
           </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿En qué dispositivos y navegadores funciona Diorame?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Diorame funciona en cualquier navegador moderno de escritorio o tablet: Chrome, Firefox, Safari y Edge. Está diseñado exclusivamente para escritorio y tablet; los móviles no están soportados por diseño. En un móvil simplemente no hay suficiente espacio en pantalla para sacar todo el partido a Diorame, ¡lo siento! Super Riso Lab, el estudio de impresión de Diorame, sí funciona en móvil, aunque está pensado para escritorio.</p>
-            </div>
+          <div class="faq-group" id="faq-riso">
+            <h3 class="faq-gname">Super Riso e impresión</h3>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Qué es Super Riso?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Un efecto del modo Cine que da a tu escena el aspecto de una impresión hecha a mano, en tiempo real y con tres técnicas: Riso, Fotocopia y Stencil. Se aplica a cada fotograma mientras la cámara se mueve, así que también funciona con tus animaciones. Comparten estilos de un clic, ajustes de impresión, reimpresión animada de 4 a 12 fps y exportación a calidad completa. En iPad se aligera solo.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Puedo hacer ilustración estilo risografía?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Sí. Diorame nace de la estética riso: paletas fijas, trama procedural y efectos de registro. Para un acabado más rico, Super Riso convierte tu escena en una risografía escaneada, con hasta 8 tintas, trama de grano o de puntos, desregistro y texturas de papel propias.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Puedo hacer efectos de fotocopia o copy art?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Sí, con la técnica Fotocopia de Super Riso, de estética punk y fanzine: oscuridad del tóner, generaciones de copia de copia, suciedad real (motas, pelos, arañazos, rayas del tambor), modo línea o foto, papeles flúor y color a mano sobre la copia con rotulador o acuarela.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Puedo hacer arte con plantilla y spray (stencil)?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Sí, con la técnica Stencil: de 1 a 4 plantillas por tonos o por los colores de tu dibujo, puentes de corte, punteado de spray, plantilla levantada, goteras, salpicaduras y nube de fondo, sobre pared, muro oscuro, cartón, lienzo, madera o papel. Las goteras y salpicaduras aparecen con la cámara quieta, por diseño.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Qué es Super Riso Lab?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>El estudio de impresión de Diorame: gratis, en el navegador y sin cuenta. Abre cualquier imagen o un proyecto .dior, aplica Riso, Fotocopia o Stencil, elige entre siete papeles y exporta. Con un .dior encuadras tu dibujo con zoom y mano, y todo se redibuja en vectorial. Desde Dibuja llegas con Exportar › Super Riso, y vuelves con ‹ Diorame.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Puedo imprimir mis dibujos de verdad?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Sí. Super Riso Lab exporta hojas de A6 a A2 hasta 600 ppp, tiradas de variaciones, bucle de vídeo y una plancha por tinta lista para una riso real. Si solo quieres tu dibujo tal cual, «Sin efecto» lo exporta en alta resolución.</p></div></div>
+            </details>
           </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Qué herramientas de dibujo tiene Diorame?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Dos herramientas principales: Blob, para formas rellenas orgánicas, y Brush, para trazos en tres estilos, fluído, uniforme y tinta. También incluye un Borrador, una herramienta de Texto con 5 fuentes propias y una herramienta de Mover para transformar capas enteras. Los modificadores de dibujo incluyen simetría, dibujar dentro, dibujar detrás y modo orgánico.</p>
-            </div>
+          <div class="faq-group" id="faq-proyecto">
+            <h3 class="faq-gname">Sobre el proyecto</h3>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">¿Qué inspiró Diorame?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Graintouch, una preciosa app de dibujo para iPad de Iorama Studio: su estética riso, su simplicidad y sus herramientas orgánicas. La idea central de Diorame es propia: profundidad 3D automática por capa, parallax real, cámaras cinemáticas e impresión en tiempo real.</p></div></div>
+            </details>
+            <details class="qa" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <summary><span itemprop="name">Diorame se construyó con IA. ¿Qué opinas al respecto?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text"><p>Soy ilustrador, diseñador y dibujante, no programador. Durante años creí que la app de dibujo que tenía en la cabeza sería inalcanzable. La IA cambió eso, no como sustituto de la creatividad ni del talento (rechazo esa idea por completo), sino como colaboradora que me permitió construir algo que no habría podido construir solo.</p><p>El código es mío en el sentido que importa: cada decisión, cada función y cada restricción son intencionadas y vienen de años pensando cómo debería ser mi app de dibujo ideal. La IA escribió la sintaxis. Yo mantuve la visión.</p><p>Diorame es gratuito y de código abierto (licencia CC BY-NC-SA 4.0, repositorio público en GitHub) porque una herramienta hecha para artistas debería pertenecer a los artistas.</p></div></div>
+            </details>
           </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Puedo animar en Diorame?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Sí. Diorame convierte tus capas en fotogramas de animación — un flipbook construido sobre el mismo sistema de capas que ya usas. Activa el modo animación dentro de Draw, ajusta el framerate y reproduce tus fotogramas en bucle o ping-pong. El papel cebolla te deja ver los fotogramas vecinos mientras trabajas, igual que en la animación tradicional.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿En qué formatos puedo exportar animaciones?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Vídeo (MP4 o WebM con bucles configurables), GIF animado (con escala ajustable, bucle o ping-pong), o una secuencia PNG numerada para montar en programas externos como After Effects.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Necesito saber animar?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">No. Si sabes dibujar en capas, sabes animar. El sistema cuadro a cuadro con referencia de papel cebolla lo mantiene accesible — sin líneas de tiempo, sin keyframes, sin rigging. Solo dibuja cada fotograma y dale al play.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Diorame tiene sonido?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Sí — Diorame incluye efectos de sonido opcionales: pequeños sonidos sutiles que responden a tus acciones para una sesión de dibujo más inmersiva. Están desactivados por defecto y puedes activarlos cuando quieras.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Qué hace diferente a Diorame de otras apps de dibujo?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">La mayoría de las apps de dibujo son planas. Diorame coloca automáticamente cada capa en el espacio 3D, así que cuando cambias al modo Cine obtienes profundidad parallax real y movimientos de cámara cinemáticos, sin rigging, sin posicionamiento manual. Es la única herramienta de dibujo gratuita en el navegador construida alrededor del concepto de diorama.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Es obligatorio usar las funciones 3D y de animación?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">¡Que va! Diorame es, ante todo, una app de dibujo. Las herramientas Blob y Brush, el sistema de capas, las paletas de color, los modificadores y demás, todo está diseñado para que dibujar sea simple y disfrutable por sí solo. El parallax 3D, las cámaras cinemáticas y los efectos de postprocesado están ahí cuando los quieres, pero puedes ignorar el modo Cine completamente y simplemente dibujar. Sin presión, sin complejidad.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Puedo usar Diorame para ilustración estilo Risografía?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Sí. Diorame está construido alrededor de la estética Risografía, paletas de color fijas, trama halftone procedural, simulación de extensión de tinta y efectos de registro. El postprocesado Riso usa un pipeline de tres pasadas que replica la textura e imperfección de las impresiones Riso reales. Para un acabado de impresión más rico, Super Riso convierte tu escena en una risografía escaneada en tiempo real — hasta 8 tintas, trama de grano o de puntos, desregistro y texturas de papel propias — y además ofrece las técnicas Fotocopia y Stencil.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Qué es Super Riso?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Super Riso es un efecto en tiempo real que le da a tu escena el aspecto de una impresión hecha a mano, directamente en el navegador, con tres técnicas. Riso: una risografía escaneada — hasta 8 tintas (los colores de tu dibujo, cuatricromía riso o una paleta riso), trama de grano o de puntos, desregistro, papel con fibras y texturas propias generadas a partir de impresiones riso reales. Fotocopia: copy art punk y fanzine DIY — oscuridad del tóner, generaciones de copia de copia, suciedad real (motas, pelos, arañazos, rayas del tambor), modo línea o foto, papeles flúor y coloreado a mano sobre la copia con rotulador o acuarela. Stencil: arte urbano con spray — de 1 a 4 plantillas por tonos o por los colores de tu dibujo, puentes de corte, punteado de spray, goteras, salpicaduras, nube de fondo, sobre pared, muro oscuro, cartón, lienzo, madera o papel. Las tres comparten estilos de un clic, ajustes de impresión comunes, reimpresión animada a 4–12 fps y exportación a calidad completa (PNG HQ, MP4, GIF). Funciona en escritorio e iPad y convive con el efecto Riso clásico, más ligero.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Puedo hacer efectos de fotocopia / copy art?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Sí, con la técnica Fotocopia de Super Riso — copy art en tiempo real con estética punk y fanzine DIY. Simula la oscuridad y el negro del tóner, las generaciones de copia de copia, y la suciedad real de la fotocopiadora: motas, pelos, arañazos, huellas de tóner, velo y rayas del tambor. Elige modo línea o foto, papeles de copia incluidos los flúor, y colorea la copia a mano con rotulador (trazos reales de punta biselada que se solapan y se pasan del borde) o acuarela (cerco, floraciones, granulación). Incluye estilos como Flyer punk, Fanzine a rotulador, Acuarela sobre copia, Papel flúor, Copia de copia, Modo foto, Munari y Tapa abierta.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Puedo hacer arte con plantilla / spray (stencil)?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Sí, con la técnica Stencil de Super Riso — arte urbano con spray en tiempo real. Monta de 1 a 4 plantillas por tonos o por los colores de tu dibujo, con puentes de corte opcionales para letras de plantilla, y las pinta con spray de verdad: punteado de gotas, plantilla levantada (la niebla se cuela por debajo), goteras, salpicaduras, nube de fondo y acento de color. Admite pared, muro oscuro, cartón, lienzo, madera y papel. Incluye estilos como Banksy en cartón, Lienzo limpio, Retrato en muro, Multicapa, Acento de color, Capas de color, Callejero sucio y Plantilla de letras. (Las goteras y salpicaduras aparecen con la cámara quieta, por diseño.)</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Qué es Super Riso Lab?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Super Riso Lab es el estudio de impresión de Diorame: gratis, en tu navegador y sin cuenta — todo se procesa en tu navegador (WebGL2). Abre cualquier imagen o un proyecto .dior de Diorame y aplica Riso, Fotocopia o Stencil, elige tu papel (natural, prensa, acuarela, washi, reciclado, kraft o verjurado) y exporta. Con un .dior puedes encuadrar tu dibujo con zoom y mano como en un programa de dibujo, y todo se redibuja en vectorial, así que sale nítido a cualquier tamaño. Desde Diorame llegas en un clic con Exportar › Super Riso ↗ en escritorio, y vuelves con ‹ Diorame. También funciona en móvil, aunque está pensado para escritorio. Puedes guardar tus propios estilos en el navegador.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Puedo imprimir mis dibujos de verdad?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Sí. Super Riso Lab exporta hojas de A6 a A2 hasta 600 ppp, tiradas de variaciones, bucle de vídeo y una plancha por tinta lista para una riso real. Si solo quieres tu dibujo tal cual, «Sin efecto» lo exporta en alta resolución (A4 a 300 ppp y más). Y «‹ Diorame» te devuelve a tu proyecto.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Qué es un archivo .dior y cómo guardo mis proyectos?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Un .dior es el formato de proyecto de Diorame: un solo archivo con miniatura, así que todo tu dibujo viaja junto. Diorame tiene Guardar, Guardar como y Duplicar. En Chrome y Edge, Guardar sobrescribe el archivo; en Safari y Firefox, guardar es descargar. Con Diorame instalado como app, doble clic en un .dior lo abre en Diorame, y también puedes abrirlo en Super Riso Lab para imprimirlo. En Windows, el icono del archivo puede verse genérico según el sistema.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Qué efectos de postprocesado incluye Diorame?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">13 efectos en total: trama Risografía procedural, Super Riso, Pixel Art con cuantización de paleta y dithering Bayer, profundidad de campo, grano de película, aberración cromática, niebla atmosférica, brillo, viñeta, distorsión de lente, partículas, overlay grunge y vibración de línea. Todos ajustables y combinables.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Qué es el modo Pixel Art?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Amo el pixel art, así que no podía faltar un efecto de postprocesado dedicado que conviera tu ilustración en pixel art en tiempo real, con tamaño de píxel configurable (2–16), profundidad de color (2–32 colores) e intensidad de dithering Bayer. Funciona sobre tu ilustración 2D por capas, incluyendo los efectos Riso, grano o aberración cromática.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Puedo exportar mis ilustraciones?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Sí. Diorame exporta como PNG, SVG, SVGZ (vector comprimido) y vídeo (WebM/MP4) con la cámara cinemática capturada en directo. También puedes exportar en alta calidad al doble de resolución — un re-render real, no un escalado: cada trazo y cada efecto se vuelve a dibujar al tamaño mayor, así el resultado es nítido de verdad y listo para imprimir, sin el aspecto blando de una imagen simplemente ampliada. Y puedes guardar tu proyecto como archivo .dior y continuar trabajando en él más tarde, o llevártelo a otro dispositivo. Para archivos listos para imprimir, abre ese .dior en Super Riso Lab: todo se redibuja en vectorial, así que exportas nítido a cualquier tamaño, y con «Sin efecto» exportas tu dibujo tal cual en alta resolución (A4 a 300 ppp y más).</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Cuáles son los modos de cámara cinemáticos?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">11 animaciones de cámara predefinidas: Avance, Espiral, Yoyo, Pulso, Giro, Arco, Grúa, Travelling, Órbita, Zoom y Narrativa. Cada una funciona con la profundidad parallax 3D de tus capas. También puedes añadir vibración de cámara en mano en tres niveles de intensidad y ajustar la velocidad cinemática general.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Qué es el modo de cámara Narrativa?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Narrativa es un preset de cámara cinemática que anima tu dibujo solo. En vez de un movimiento fijo, lee las capas de tu ilustración y compone un travelling que viaja por ellas una a una, de fondo a frente, deteniéndose a contemplar cada una. El recorrido es data-driven — cada dibujo genera su propia ruta única. El encuadre inteligente mantiene cada capa equilibrada en el cuadro, el movimiento es orgánico con una sutil respiración tipo cámara en mano, y combinado con la profundidad de campo el foco viaja con la cámara, enfocando cada capa a medida que llega. Un clic, cero configuración.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Funciona Diorame con un lápiz óptico, stylus, o Apple Pencil?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Sí. Diorame está optimizado para uso en tablet y funciona con cualquier lápiz óptico compatible con tu navegador, incluyendo Apple Pencil en iPad. Los gestos táctiles para zoom, desplazamiento, órbita y deshacer/rehacer están totalmente soportados.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Algún consejo antes de empezar?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Guarda tu proyecto a menudo, Diorame funciona completamente en el navegador y, como cualquier app web, puede bloquearse o cerrarse por accidente. Usa el botón de guardar regularmente y mantén tu archivo .dior a mano. Además: aunque Diorame incluye un exportador MP4 integrado, para la mejor calidad de vídeo recomendamos usar la grabación de pantalla nativa de tu dispositivo (iPad, Windows y macOS tienen opciones integradas que capturan con calidad total de la pantalla).</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Usar varios efectos afecta al rendimiento?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Puede. Combinar varios efectos de postprocesado simultáneamente (especialmente en equipos poco potentes) puede ralentizar los movimientos de cámara cinemáticos en el modo Cine. Si notas ralentización, prueba a reducir el número de efectos activos o bajar su intensidad. El modo DRAW siempre es fluido independientemente de la configuración de efectos.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">¿Qué inspiró Diorame?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Diorame se inspiró en Graintouch, una preciosa y única app de dibujo para iPad de Iorama Studio, concretamente en su estética Risografía, su simplicidad y sus herramientas de dibujo orgánico. Pero la idea central que hace único a Diorame es completamente original: profundidad 3D automática por capa, parallax real en el modo Cine, movimientos de cámara cinemáticos y postprocesado estilo Risografía. Nada de eso existe en Graintouch.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-            <button class="faq-btn" aria-expanded="false">
-              <span itemprop="name">Diorame se construyó con IA. ¿Qué opinas al respecto?</span>
-              <span class="faq-plus" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text">Soy ilustrador, diseñador y dibujante, no programador. Durante años creí que la app de dibujo que tenía en mi cabeza sería inalcanzable, para siempre. Pero la IA cambió eso. No como sustituto de la creatividad, el talento o la chispa irremplazable que hace que el arte sea humano (joder, sí, ¡rechazo esa idea completamente!), sino como colaborador que me permitió construir algo que no podría haber construido solo.</p>
-              <p>El código es mío en el sentido que, creo, importa realmente: cada decisión, cada funcionalidad, cada restricción es intencional y viene de años pensando, intuyendo y sintiendo cómo debería ser mi app de dibujo ideal. La IA escribió la sintaxis. Yo mantuve la visión.</p>
-              <p>Diorame es gratuito y de código abierto (licencia CC BY-NC-SA 4.0, repositorio público en GitHub) porque una herramienta hecha para artistas debería pertenecer a los artistas.</p>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ══ FOOTER ════════════════════════════════════════════════════ -->
-  <footer class="s-footer">
-    <p class="reveal">Diorame™ 2026</p>
+  <!-- ═══ COLOFÓN ═══ -->
+  <footer class="colophon">
+    <div class="wrap grid">
+      <div class="col-who">
+        <p class="col-cta-line hand">¿A qué esperas? Dibújate algo.</p>
+        <a class="btn btn--ink btn--on-dark no-mobile" href="https://diorame.dumaker.com/" target="_blank" rel="noopener">
+          Abrir Diorame
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <nav class="col-links" aria-label="Enlaces">
+        <a href="https://diorame.dumaker.com/" target="_blank" rel="noopener">Abrir Diorame</a>
+        <a href="https://super-riso.dumaker.com" target="_blank" rel="noopener">Super Riso Lab</a>
+        <a href="https://www.youtube.com/watch?v=Ieb280ncEfA" target="_blank" rel="noopener">Tutorial</a>
+        <a href="https://github.com/DrKlanes/diorame" target="_blank" rel="noopener">Código en GitHub</a>
+        <a href="https://ko-fi.com/dumaker" target="_blank" rel="noopener">Apóyalo en Ko-fi</a>
+        <a href="https://www.instagram.com/dumaker/" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+      <div class="col-base">
+        <span>Diorame™ 2026 · Una idea de <a href="https://www.instagram.com/dumaker/" target="_blank" rel="noopener">@dumaker</a> · Hecho en Albacete, España</span>
+        <span>Inspirado en <a href="https://www.iorama.studio/graintouch" target="_blank" rel="noopener">Graintouch</a> · Licencia CC BY-NC-SA 4.0</span>
+      </div>
+    </div>
   </footer>
 
-  <!-- ══ Super Riso comparator JS ═════════════════════════════════ -->
-  <script>
-    (function () {
-      var cmp = document.querySelector('.sr-compare');
-      if (!cmp) return;
-      var range = cmp.querySelector('.sr-compare-range');
-      var after = cmp.querySelector('.sr-compare-after');
-      var tag = cmp.querySelector('.sr-compare-tag--r');
-      range.addEventListener('input', function () {
-        cmp.style.setProperty('--pos', range.value + '%');
-      });
-      var thumbs = document.querySelectorAll('.sr-thumb');
-      thumbs.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          after.srcset = btn.getAttribute('data-srcset');
-          after.src = btn.getAttribute('data-src');
-          after.alt = btn.getAttribute('data-alt');
-          tag.textContent = btn.getAttribute('data-label');
-          thumbs.forEach(function (b) {
-            var on = b === btn;
-            b.classList.toggle('is-active', on);
-            b.setAttribute('aria-pressed', on ? 'true' : 'false');
-          });
-        });
-      });
-    })();
-  </script>
-
-  <!-- ══ FAQ accordion JS ═════════════════════════════════════════ -->
-  <script>
-    (function () {
-      var items = document.querySelectorAll('.faq-item');
-      items.forEach(function (item) {
-        var btn    = item.querySelector('.faq-btn');
-        var answer = item.querySelector('.faq-answer');
-        btn.addEventListener('click', function () {
-          var isOpen = item.classList.contains('is-open');
-          /* close all */
-          items.forEach(function (i) {
-            i.classList.remove('is-open');
-            i.querySelector('.faq-answer').classList.remove('is-open');
-            i.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
-          });
-          /* open the clicked one if it was closed */
-          if (!isOpen) {
-            item.classList.add('is-open');
-            answer.classList.add('is-open');
-            btn.setAttribute('aria-expanded', 'true');
-          }
-        });
-      });
-    })();
-  </script>
-
-  <!-- ══ Motion JS ════════════════════════════════════════════════ -->
-  <script>
-  (function () {
-
-    // ── 1. Scroll reveal via IntersectionObserver ─────────────────
-    var revealEls = document.querySelectorAll('.reveal, .reveal-stagger, .reveal-left');
-    if ('IntersectionObserver' in window) {
-      var revealObs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      revealEls.forEach(function (el) { revealObs.observe(el); });
-    } else {
-      // Fallback: show everything immediately
-      revealEls.forEach(function (el) { el.classList.add('visible'); });
-    }
-
-    // ── 2–4. Parallax (desktop only) ──────────────────────────────
-    var heroIpad    = document.querySelector('.hero-ipad');
-    var heroChar    = document.querySelector('.hero-char');
-    var heroSection = document.querySelector('.s-hero');
-
-    console.log('parallax init — ipad:', heroIpad, 'char:', heroChar, 'hero:', heroSection);
-
-    if (heroIpad) {
-      heroIpad.addEventListener('animationend', function () {
-        heroIpad.classList.add('anim-done');
-      }, { once: true });
-    }
-    if (heroChar) {
-      heroChar.addEventListener('animationend', function () {
-        heroChar.classList.add('anim-done');
-      }, { once: true });
-    }
-
-    function onScroll() {
-      var scrollY = window.scrollY;
-      if (heroIpad) heroIpad.style.transform = 'translate3d(0, ' + (scrollY * -0.08) + 'px, 0)';
-      if (heroChar) heroChar.style.transform  = 'translate3d(0, ' + (scrollY * -0.04) + 'px, 0)';
-    }
-
-    function onMouseMove(e) {
-      var rect = heroSection.getBoundingClientRect();
-      var cx = (e.clientX - rect.left) / rect.width  - 0.5;
-      var cy = (e.clientY - rect.top)  / rect.height - 0.5;
-      if (heroIpad) heroIpad.style.transform = 'translate(' + (cx * 12) + 'px,' + (cy * 8) + 'px)';
-      if (heroChar) heroChar.style.transform  = 'translate(' + (cx *  6) + 'px,' + (cy * 4) + 'px)';
-    }
-
-    function onMouseLeave() {
-      if (heroIpad) heroIpad.style.transform = '';
-      if (heroChar) heroChar.style.transform  = '';
-    }
-
-    if (window.innerWidth > 1024) {
-      window.addEventListener('scroll', onScroll, { passive: true });
-      if (heroSection) {
-        heroSection.addEventListener('mousemove', onMouseMove);
-        heroSection.addEventListener('mouseleave', onMouseLeave);
-      }
-    }
-
-    // ── 5. Release hero CTA from entrance animation so hover works ─
-    var heroCta = document.querySelector('.hero-content .btn-cta');
-    if (heroCta) {
-      heroCta.addEventListener('animationend', function () {
-        heroCta.classList.add('anim-done');
-      }, { once: true });
-    }
-
-    // ── 6. Video fade-in ───────────────────────────────────────────
-    var video = document.querySelector('.view-video');
-    if (video && 'IntersectionObserver' in window) {
-      video.style.opacity    = '0';
-      video.style.transition = 'opacity 0.9s ease';
-      var videoObs = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) {
-          video.style.opacity = '1';
-          videoObs.unobserve(video);
-        }
-      }, { threshold: 0.2 });
-      videoObs.observe(video);
-    }
-
-  })();
-  </script>
-
-
-  <div id="lang-switcher" style="position:fixed;top:16px;right:16px;z-index:9999;display:flex;gap:8px;background:rgba(255,255,255,0.95);border:1px solid rgba(124,58,237,0.2);border-radius:24px;padding:6px 14px;box-shadow:0 2px 12px rgba(0,0,0,0.08);cursor:url('../assets/cursor-small.png') 1 1, auto !important;">
-    <a href="/en/" onclick="localStorage.setItem('diorame-lang','en')" style="font-family:Manrope,sans-serif;font-size:13px;font-weight:600;color:#7c3aed;text-decoration:none;cursor:url('../assets/cursor-small.png') 1 1, auto !important;">EN</a>
-    <span style="color:#d6d6d6;font-size:13px;cursor:url('../assets/cursor-small.png') 1 1, auto !important;">|</span>
-    <a href="/es/" onclick="localStorage.setItem('diorame-lang','es')" style="font-family:Manrope,sans-serif;font-size:13px;font-weight:700;color:#1a0d3d;text-decoration:none;cursor:url('../assets/cursor-small.png') 1 1, auto !important;">ES</a>
-  </div>
-  <script>
-    // LANG SWITCHER CURSOR FIX — hotspot at top-right so image extends down-left (stays inside viewport)
-    (function () {
-      var cursorValue = "url('../assets/cursor-small.png') 1 1, auto";
-      var ls = document.getElementById('lang-switcher');
-      if (!ls) return;
-      ls.style.setProperty('cursor', cursorValue, 'important');
-      ls.querySelectorAll('*').forEach(function (el) {
-        el.style.setProperty('cursor', cursorValue, 'important');
-      });
-    })();
-  </script>
+  <script src="../assets/site.js?v=19" defer></script>
 </body>
 </html>
