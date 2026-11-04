@@ -205,6 +205,8 @@ button { font: inherit; color: inherit; background: none; border: 0; }
 .hero-copy .h-display .big { font-size: 2.5em; line-height: .86; letter-spacing: -.05em; margin-top: .04em; }
 .hero-copy .lead { max-width: 32ch; margin-bottom: clamp(28px, 3vw, 40px); }
 .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+.hero-tour { margin-top: 18px; }
+.hero-tour .link { font-size: var(--t-14); font-weight: 600; color: var(--ink-2); }
 /* Marquesina de puntos fuertes */
 .marquee {
   position: relative; overflow: hidden;
