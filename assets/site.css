@@ -716,3 +716,36 @@ body { transition: background-color .5s ease; }
 .to-top svg { width: 18px; height: 18px; }
 .to-top.is-on { opacity: .9; transform: none; pointer-events: auto; }
 @media (hover: hover) { .to-top:hover { opacity: 1; transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--ink); } }
+
+/* ---------- Páginas de descubrimiento (/en/risograph-app/, /es/app-risografia/) ---------- */
+.sub-hero { padding-block: clamp(24px, 3vw, 40px) clamp(40px, 5vw, 72px); }
+.crumbs { font-size: var(--t-14); font-weight: 600; color: var(--ink-2); margin-bottom: clamp(24px, 3vw, 40px); }
+.crumbs a { text-decoration: underline; text-underline-offset: 4px; }
+.crumbs [aria-current] { color: var(--ink); }
+.sub-split { display: grid; grid-template-columns: 7fr 5fr; gap: var(--gap); align-items: center; }
+.sub-split--lab { grid-template-columns: 5fr 7fr; }
+.sub-split--lab > img { width: 100%; height: auto; border-radius: var(--r-md); border: 1.5px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+.sub-copy .h-1 { margin-bottom: clamp(20px, 2.4vw, 32px); }
+.sub-copy .lead { max-width: 44ch; margin-bottom: clamp(28px, 3vw, 40px); }
+.sub-mascot { justify-self: center; }
+.sub-mascot img { width: min(100%, 300px); height: auto; }
+.sub-sec { padding-block: clamp(48px, 6vw, 96px); border-top: 1px solid var(--rule); }
+.sub-sec .h-2 { margin-bottom: clamp(24px, 3vw, 40px); }
+.sub-sec p { max-width: 62ch; color: var(--ink-2); }
+.doors--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 0; }
+.doors--3 .door img { width: 100%; height: auto; border-radius: calc(var(--r-md) - 6px); }
+.steps { list-style: none; counter-reset: step; display: grid; gap: 20px; max-width: 62ch; }
+.steps li { counter-increment: step; position: relative; padding-left: 56px; color: var(--ink-2); }
+.steps li::before {
+  content: counter(step); position: absolute; left: 0; top: -2px; width: 36px; height: 36px;
+  display: grid; place-items: center; border: 1.5px solid var(--ink); border-radius: 50%;
+  font-family: var(--f-num); font-weight: 600; color: var(--purple);
+}
+.steps b { color: var(--ink); }
+.sr-more { margin: 14px 0 0 22px; }
+.sr-more .link { font-size: var(--t-14); font-weight: 600; color: var(--ink-2); }
+@media (max-width: 960px) {
+  .sub-split, .sub-split--lab { grid-template-columns: 1fr; }
+  .sub-mascot { display: none; }
+  .doors--3 { grid-template-columns: 1fr; }
+}
