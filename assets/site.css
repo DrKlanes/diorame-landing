@@ -749,3 +749,12 @@ body { transition: background-color .5s ease; }
   .sub-mascot { display: none; }
   .doors--3 { grid-template-columns: 1fr; }
 }
+
+/* ---------- Página de parallax: vídeo y enlace desde Cine ---------- */
+.sub-copy--wide { max-width: 860px; }
+.sub-copy--wide .lead { max-width: 56ch; }
+.sub-video { margin-top: clamp(32px, 4vw, 56px); }
+.sub-video video { display: block; width: 100%; height: auto; border-radius: var(--r-md); border: 1.5px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); background: #000; }
+.sub-video figcaption { margin-top: 12px; font-size: var(--t-14); color: var(--ink-2); }
+.cine-more { margin-top: clamp(28px, 3vw, 40px); }
+.cine-more .link { font-size: var(--t-14); font-weight: 600; color: var(--ink-2); }
