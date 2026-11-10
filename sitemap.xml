@@ -19,4 +19,22 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://diorame.com/es/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://diorame.com/en/"/>
   </url>
+  <url>
+    <loc>https://diorame.com/en/risograph-app/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diorame.com/en/risograph-app/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://diorame.com/es/app-risografia/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diorame.com/en/risograph-app/"/>
+  </url>
+  <url>
+    <loc>https://diorame.com/es/app-risografia/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://diorame.com/en/risograph-app/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://diorame.com/es/app-risografia/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://diorame.com/en/risograph-app/"/>
+  </url>
 </urlset>

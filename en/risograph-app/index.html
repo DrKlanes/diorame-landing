@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
+  <title>Free risograph drawing app in your browser | Diorame</title>
+  <meta name="description" content="Draw in layers, print them as riso, photocopy or stencil art in real time and export one plate per ink. Free, no account, no install.">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="Dumaker">
+  <meta name="theme-color" content="#f4f0e8">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://diorame.com/en/risograph-app/">
+  <meta property="og:site_name" content="Diorame">
+  <meta property="og:title" content="Free risograph drawing app in your browser | Diorame">
+  <meta property="og:description" content="Draw in layers, print them as riso, photocopy or stencil art in real time and export one plate per ink. Free, no account, no install.">
+  <meta property="og:image" content="https://diorame.com/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free risograph drawing app in your browser | Diorame">
+  <meta name="twitter:description" content="Draw in layers, print them as riso, photocopy or stencil art in real time and export one plate per ink. Free, no account, no install.">
+  <meta name="twitter:image" content="https://diorame.com/assets/og-image.jpg">
+
+  <link rel="canonical" href="https://diorame.com/en/risograph-app/">
+  <link rel="alternate" hreflang="en" href="https://diorame.com/en/risograph-app/">
+  <link rel="alternate" hreflang="es" href="https://diorame.com/es/app-risografia/">
+  <link rel="alternate" hreflang="x-default" href="https://diorame.com/en/risograph-app/">
+
+  <link rel="icon" type="image/png" href="../../assets/img/favicon.png">
+  <link rel="preload" href="../../assets/fonts/manrope-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/chewy-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/site.css?v=22">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is it really free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Free forever, no account, nothing to install. It is open source (CC BY-NC-SA 4.0)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I get files for a real riso printer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Super Riso Lab exports one plate per ink, on sheets from A6 to A2 at up to 600 dpi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work on iPad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, on tablets and computers, with Apple Pencil and stylus support. Phones are not supported."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which browsers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chrome, Firefox, Safari and Edge."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://diorame.com/en/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Risograph app",
+      "item": "https://diorame.com/en/risograph-app/"
+    }
+  ]
+}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="nav-brand" href="/en/" aria-label="Diorame, home">
+        <img src="../../assets/img/logo-96.webp" width="96" height="61" alt="">
+        Diorame
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="/en/#draw">Draw</a>
+        <a href="/en/#animate">Animate</a>
+        <a href="/en/#cinema">Cinema</a>
+        <a href="/en/#super-riso">Super Riso</a>
+        <a href="/en/#print">Print</a>
+        <a href="/en/#faq">Questions</a>
+      </nav>
+      <div class="nav-right">
+        <div class="lang" aria-label="Language">
+          <a href="/es/app-risografia/" lang="es">ES</a>
+          <a href="/en/risograph-app/" aria-current="true" lang="en">EN</a>
+        </div>
+        <a class="btn btn--ink btn--sm no-mobile" href="https://diorame.dumaker.com/" target="_blank" rel="noopener">Open Diorame</a>
+        <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu-panel" aria-label="Open menu" data-close="Close menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="menu-panel" id="menu-panel" aria-label="Sections" hidden>
+      <ul>
+        <li><a href="/en/#draw">Draw</a></li>
+        <li><a href="/en/#animate">Animate</a></li>
+        <li><a href="/en/#cinema">Cinema</a></li>
+        <li><a href="/en/#super-riso">Super Riso</a></li>
+        <li><a href="/en/#print">Print</a></li>
+        <li><a href="/en/#faq">Questions</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <a class="to-top" id="to-top" href="#top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </a>
+
+  <main id="main">
+
+    <section class="sub-hero" id="top">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/en/">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Risograph app</span>
+        </nav>
+        <div class="sub-split">
+          <div class="sub-copy">
+            <h1 class="h-1">Draw riso in your browser. Print it for real.</h1>
+            <p class="lead">Diorame is a free drawing app where every layer lives in its own place in space, like a digital diorama. Its Super Riso effect prints what you draw as riso, photocopy or stencil, in real time. No account, no install.</p>
+            <a class="btn btn--ink" href="https://diorame.dumaker.com/" target="_blank" rel="noopener">
+              Open Diorame
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="sub-mascot" aria-hidden="true"><img src="../../assets/img/super-riso-mascota.webp" width="320" height="408" alt=""></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sub-sec" id="techniques">
+      <div class="wrap">
+        <h2 class="h-2">Three ways to print what you draw</h2>
+        <div class="doors doors--3">
+          <article class="door">
+            <img src="../../assets/img/sr-riso-960.webp" width="960" height="717" alt="The same illustration printed in riso: red and teal inks with grain and misregistration on cream paper." loading="lazy" decoding="async">
+            <h3 class="h-3">Riso</h3>
+            <p>Up to 8 inks, grain or dot screens, fibrous paper and the misregistration that makes it look printed by hand.</p>
+          </article>
+          <article class="door">
+            <img src="../../assets/img/sr-fotocopia-960.webp" width="960" height="717" alt="The same illustration as a hand-coloured photocopy: black toner, blue watercolour and red marker." loading="lazy" decoding="async">
+            <h3 class="h-3">Photocopy</h3>
+            <p>Toner darkness, copy-of-a-copy generations, fluorescent papers and hand colouring with marker or watercolour.</p>
+          </article>
+          <article class="door">
+            <img src="../../assets/img/sr-stencil-960.webp" width="960" height="717" alt="The same illustration as spray-painted stencil art: flat red and black, with drips and splatters." loading="lazy" decoding="async">
+            <h3 class="h-3">Stencil</h3>
+            <p>One to four stencils, spray, drips and splatters on wall, cardboard, canvas, wood or paper.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sub-sec" id="steps">
+      <div class="wrap">
+        <h2 class="h-2">From sketch to plate in three steps</h2>
+        <ol class="steps">
+          <li><b>Draw.</b> Two tools, Blob and Brush, plus eraser and text.</li>
+          <li><b>Open Cinema and pick Super Riso.</b> Choose Riso, Photocopy or Stencil. It reprints every frame, so it can also be animated.</li>
+          <li><b>Send the drawing to Super Riso Lab</b> with Export &gt; Super Riso. Pick paper and sheet size (A6 to A2, up to 600 dpi) and export one plate per ink.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sub-sec" id="lab">
+      <div class="wrap sub-split sub-split--lab">
+        <div>
+          <h2 class="h-2">Super Riso Lab, the print studio</h2>
+          <p><a class="link" href="https://super-riso.dumaker.com" target="_blank" rel="noopener">Super Riso Lab</a> is a free print studio in the browser: seven papers, print runs of variations, a looping video and a high-resolution export without effect.</p>
+        </div>
+        <img src="../../assets/img/lab-interfaz-1600.webp" srcset="../../assets/img/lab-interfaz-1000.webp 1000w, ../../assets/img/lab-interfaz-1600.webp 1600w, ../../assets/img/lab-interfaz-2400.webp 2400w" sizes="(max-width: 960px) 92vw, 58vw" width="1600" height="940" alt="Super Riso Lab with the Diorame landscape printed in riso on the sheet and, on the right, the framing, technique, style and ink panels." loading="lazy" decoding="async">
+      </div>
+    </section>
+
+    <section class="sub-sec" id="why">
+      <div class="wrap">
+        <h2 class="h-2">Why Diorame, and not diorama</h2>
+        <p>Because every layer is a scene in space, as in a diorama: you draw flat and the camera builds the depth. The name just swapped the A for an E. If you came looking for a diorama maker, this is the digital kind.</p>
+      </div>
+    </section>
+
+    <section class="sec faq" id="faq">
+      <div class="wrap grid">
+        <aside class="faq-aside">
+          <h2 class="h-1">Questions</h2>
+        </aside>
+        <div class="faq-body">
+          <div class="faq-group">
+            <details class="qa">
+              <summary><span>Is it really free?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a"><div><p>Yes. Free forever, no account, nothing to install. It is open source (CC BY-NC-SA 4.0).</p></div></div>
+            </details>
+            <details class="qa">
+              <summary><span>Can I get files for a real riso printer?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a"><div><p>Super Riso Lab exports one plate per ink, on sheets from A6 to A2 at up to 600 dpi.</p></div></div>
+            </details>
+            <details class="qa">
+              <summary><span>Does it work on iPad?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a"><div><p>Yes, on tablets and computers, with Apple Pencil and stylus support. Phones are not supported.</p></div></div>
+            </details>
+            <details class="qa">
+              <summary><span>Which browsers?</span><i aria-hidden="true"></i></summary>
+              <div class="qa-a"><div><p>Chrome, Firefox, Safari and Edge.</p></div></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="colophon">
+    <div class="wrap grid">
+      <div class="col-who">
+        <p class="col-cta-line hand">What are you waiting for? Draw something.</p>
+        <a class="btn btn--ink btn--on-dark no-mobile" href="https://diorame.dumaker.com/" target="_blank" rel="noopener">
+          Open Diorame
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <nav class="col-links" aria-label="Links">
+        <a href="https://diorame.dumaker.com/" target="_blank" rel="noopener">Open Diorame</a>
+        <a href="https://super-riso.dumaker.com" target="_blank" rel="noopener">Super Riso Lab</a>
+        <a href="/en/risograph-app/">Risograph app</a>
+        <a href="https://youtu.be/CDC0PQLCHCQ" target="_blank" rel="noopener noreferrer">Interface tour (2 min)</a>
+        <a href="https://github.com/DrKlanes/diorame" target="_blank" rel="noopener">Code on GitHub</a>
+        <a href="https://ko-fi.com/dumaker" target="_blank" rel="noopener">Support it on Ko-fi</a>
+        <a href="https://www.instagram.com/dumaker/" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+      <div class="col-base">
+        <span>Diorame™ 2026 · An idea by <a href="https://www.instagram.com/dumaker/" target="_blank" rel="noopener">@dumaker</a> · Made in Albacete, Spain</span>
+        <span>Inspired by <a href="https://www.iorama.studio/graintouch" target="_blank" rel="noopener">Graintouch</a> · CC BY-NC-SA 4.0 licence</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/site.js?v=19" defer></script>
+</body>
+</html>
