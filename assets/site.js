@@ -212,6 +212,13 @@
     vids.forEach(function (v) { vio.observe(v); });
   }
 
+  /* Movimiento reducido: los vídeos con autoplay se paran y muestran controles */
+  if (reduce) {
+    document.querySelectorAll('video[autoplay]').forEach(function (v) {
+      v.removeAttribute('autoplay'); v.pause(); v.controls = true;
+    });
+  }
+
   /* ── Anima: flipbook con papel cebolla ─────────────────────────── */
   var flip = document.getElementById('flip');
   if (flip) {
