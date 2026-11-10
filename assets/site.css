@@ -125,6 +125,9 @@ button { font: inherit; color: inherit; background: none; border: 0; }
   transform: translate(calc(var(--ox) * var(--k)), calc(var(--oy) * var(--k)));
   will-change: transform;
 }
+/* las capas de tinta llevan el texto en data-text: el DOM no lo repite */
+.inks .ink { white-space: pre-line; }
+.inks .ink::before { content: attr(data-text); }
 .inks .ink-top { position: relative; color: var(--purple); }
 .inks .k1 { --k: 1; color: #c98bff; }
 .inks .k2 { --k: 2; color: #ddb6ff; }
