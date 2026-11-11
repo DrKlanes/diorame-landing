@@ -193,6 +193,8 @@ button { font: inherit; color: inherit; background: none; border: 0; }
 .lang { display: flex; gap: 2px; font-family: var(--f-num); font-size: var(--t-12); font-weight: 600; letter-spacing: .04em; }
 .lang a { padding: 6px 7px; border-radius: 6px; color: var(--ink-3); }
 .lang a[aria-current="true"] { color: var(--ink); }
+.lang a[href*="risograph-app"], .lang a[href*="app-risografia"], .lang a[href*="parallax-illustration"], .lang a[href*="ilustracion-parallax"] { color: var(--ink-2); }
+.lang a[aria-current="true"][href*="risograph-app"], .lang a[aria-current="true"][href*="app-risografia"], .lang a[aria-current="true"][href*="parallax-illustration"], .lang a[aria-current="true"][href*="ilustracion-parallax"] { color: var(--ink); }
 @media (hover: hover) { .lang a:hover { color: var(--purple); } }
 
 @media (max-width: 960px) { .nav-links { display: none; } }
@@ -757,4 +759,5 @@ body { transition: background-color .5s ease; }
 .sub-video video { display: block; width: 100%; height: auto; border-radius: var(--r-md); border: 1.5px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); background: #000; }
 .sub-video figcaption { margin-top: 12px; font-size: var(--t-14); color: var(--ink-2); }
 .cine-more { margin-top: clamp(28px, 3vw, 40px); }
-.cine-more .link { font-size: var(--t-14); font-weight: 600; color: var(--ink-2); }
+.cine-more .link { font-size: var(--t-14); font-weight: 600; color: var(--purple-l); }
+.cine-more .link:hover, .cine-more .link:focus-visible { color: #fff; }
